@@ -62,6 +62,24 @@ public partial class @Action : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""be76249d-6248-40dc-8490-1988e88e2dc2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""852080dd-0629-48e8-8c1f-fedf9a9271a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +258,28 @@ public partial class @Action : IInputActionCollection2, IDisposable
                     ""action"": ""LineMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4f41c29-2600-4593-8859-b03abd3a2215"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b6da6c1-d72b-4af9-b2c5-ff63495dddf2"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +292,8 @@ public partial class @Action : IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_LineMove = m_Player.FindAction("LineMove", throwIfNotFound: true);
+        m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
+        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +357,8 @@ public partial class @Action : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_LineMove;
+    private readonly InputAction m_Player_Select;
+    private readonly InputAction m_Player_Fire;
     public struct PlayerActions
     {
         private @Action m_Wrapper;
@@ -323,6 +367,8 @@ public partial class @Action : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @LineMove => m_Wrapper.m_Player_LineMove;
+        public InputAction @Select => m_Wrapper.m_Player_Select;
+        public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -344,6 +390,12 @@ public partial class @Action : IInputActionCollection2, IDisposable
                 @LineMove.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLineMove;
                 @LineMove.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLineMove;
                 @LineMove.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLineMove;
+                @Select.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -360,6 +412,12 @@ public partial class @Action : IInputActionCollection2, IDisposable
                 @LineMove.started += instance.OnLineMove;
                 @LineMove.performed += instance.OnLineMove;
                 @LineMove.canceled += instance.OnLineMove;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
         }
     }
@@ -370,5 +428,7 @@ public partial class @Action : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnLineMove(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
 }
