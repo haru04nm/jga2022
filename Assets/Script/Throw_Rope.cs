@@ -21,7 +21,6 @@ public class Throw_Rope : MonoBehaviour
     [SerializeField]
     GameObject RightHand;
 
-    GameObject beforeObject;
 
     Rigidbody rbody;
     GameObject Aim;
@@ -33,6 +32,8 @@ public class Throw_Rope : MonoBehaviour
     Ray ray;
     Vector3 anchorTarget;
     GameObject hitObject;
+
+    GameObject beforeHit;
     //private Action _action;
  
 
@@ -145,7 +146,6 @@ public class Throw_Rope : MonoBehaviour
             rightShoulderFlag = false;
             animator.SetBool("ThrowFlag", false);
 
-            Debug.Log(rightShoulderFlag);
         }
     }
     
