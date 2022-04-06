@@ -12,16 +12,12 @@ public class GravityON : MonoBehaviour
         rbody = this.GetComponent<Rigidbody>();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
-        if (Throw_Rope.pushFlag==false)
+        if(GetComponent<Rigidbody>().isKinematic)
         {
-            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<Rigidbody>().isKinematic = false;
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-            this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
     }
 
 }
