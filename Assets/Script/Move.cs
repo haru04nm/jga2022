@@ -104,7 +104,7 @@ public class Move : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         groundFlag = true;
     }

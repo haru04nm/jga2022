@@ -11,7 +11,6 @@ public class Throw_Rope : MonoBehaviour
 
     public static bool pushFlag = false;
     bool lineFlag = false;
-    public static bool moveObjectFlag = false;
     private bool rightShoulderFlag;
 
 
@@ -92,7 +91,6 @@ public class Throw_Rope : MonoBehaviour
         {
 
             lineFlag = true;
-            moveObjectFlag = true;
 
             if (this.springJoint == null)
             {
@@ -122,9 +120,7 @@ public class Throw_Rope : MonoBehaviour
         }
         else
         {
-
             lineFlag = false;
-            moveObjectFlag = false;
             Destroy(this.springJoint);
             Destroy(this.lineRenderer);
             this.springJoint = null;
@@ -145,7 +141,6 @@ public class Throw_Rope : MonoBehaviour
             rightShoulderFlag = false;
             animator.SetBool("ThrowFlag", false);
 
-            Debug.Log(rightShoulderFlag);
         }
     }
     
