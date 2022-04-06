@@ -43,13 +43,6 @@ public class Throw_Rope : MonoBehaviour
         Aim = transform.Find("AimLine").gameObject;
         hitObject = null;
 
-        /*
-        _action.Player.Throw.started += OnThrow;
-        _action.Player.Throw.performed += OnThrow;
-        _action.Player.Throw.canceled += OnThrow;
-
-        _action.Enable();
-        */
     }
 
     private void Update()
@@ -121,13 +114,11 @@ public class Throw_Rope : MonoBehaviour
                     this.lineRenderer.startWidth = 0.3f;
                     this.lineRenderer.endWidth = 0.3f;
                     GetComponent<LineRenderer>().material.color = new Color32(148, 78, 48, 1);
+                    this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
                 }
             }
 
-            // SpringJointÇÃé©ëRí∑Ç∆ê⁄ë±êÊÇê›íËÇ∑ÇÈ
-            //this.springJoint.maxDistance = this.stringLength;
-            //this.springJoint.connectedAnchor = hitObject.transform.InverseTransformPoint(anchorTarget);
-            this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
+            
         }
         else
         {
@@ -148,7 +139,6 @@ public class Throw_Rope : MonoBehaviour
             rightShoulderFlag = true;
             animator.SetBool("ThrowFlag", true);
 
-            Debug.Log(rightShoulderFlag);
         }
         if (context.phase == InputActionPhase.Canceled)
         {

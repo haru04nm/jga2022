@@ -36,26 +36,26 @@ public class LineMove : MonoBehaviour
     {
 
         // ‰EŒü‚¢‚Ä‚¢‚é‚Æ‚«
-        if ((upFlag && angleCount <= 300 && angleCount >= -200) || (minFlag && upFlag))
+        if ((upFlag && angleCount <= 500 && angleCount >= -200) || (minFlag && upFlag))
         {
             angleCount++;
             // RotateAround(’†S‚ÌêŠ,Ž²,‰ñ“]Šp“x)
             this.transform.RotateAround(center.transform.position, Vector3.forward, angle * Time.deltaTime);
         }
-        if ((downFlag && angleCount >= -200 && angleCount <=300) || (maxFlag && downFlag))
+        if ((downFlag && angleCount >= -200 && angleCount <= 500) || (maxFlag && downFlag))
         {
             angleCount--;
             this.transform.RotateAround(center.transform.position, Vector3.back, angle * Time.deltaTime);
         }
 
         // ¶Œü‚¢‚Ä‚¢‚é‚Æ‚«
-        if ((upLFlag && angleCount <= 300 && angleCount >= -200) || (minFlag && upLFlag))
+        if ((upLFlag && angleCount <= 500 && angleCount >= -200) || (minFlag && upLFlag))
         {
             angleCount++;
             // RotateAround(’†S‚ÌêŠ,Ž²,‰ñ“]Šp“x)
             this.transform.RotateAround(center.transform.position, Vector3.back, angle * Time.deltaTime);
         }
-        if ((DownLFlag && angleCount >= -200 && angleCount <= 300) || (maxFlag && DownLFlag))
+        if ((DownLFlag && angleCount >= -200 && angleCount <= 500) || (maxFlag && DownLFlag))
         {
             angleCount--;
             this.transform.RotateAround(center.transform.position, Vector3.forward, angle * Time.deltaTime);
