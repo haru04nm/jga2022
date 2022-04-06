@@ -52,6 +52,7 @@ public class Throw_Rope : MonoBehaviour
         Vector3 dir = Aim.GetComponent<LineMove>().GetDirection().normalized;
         //Debug.Log(dir);
 
+
         if (Physics.Raycast(head.transform.position, dir, out hit, 9f))
         {
             Debug.DrawRay(head.transform.position, dir * hit.distance, Color.yellow);
@@ -83,8 +84,10 @@ public class Throw_Rope : MonoBehaviour
             Aim.SetActive(true);
             hitObject.GetComponent<Rigidbody>().isKinematic = true;
             hitObject = null;
+            beforeHit = null;
         }
-        
+
+        Debug.Log(hitObject);
     }
 
     private void FixedUpdate()
@@ -123,7 +126,6 @@ public class Throw_Rope : MonoBehaviour
         }
         else
         {
-
             lineFlag = false;
             moveObjectFlag = false;
             Destroy(this.springJoint);
@@ -137,15 +139,15 @@ public class Throw_Rope : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
+            beforeHit = hitObject;
+
             rightShoulderFlag = true;
             animator.SetBool("ThrowFlag", true);
-
         }
         if (context.phase == InputActionPhase.Canceled)
         {
             rightShoulderFlag = false;
             animator.SetBool("ThrowFlag", false);
-
         }
     }
     

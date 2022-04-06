@@ -2082,7 +2082,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1133644361265857096, guid: c0c2545b51b2b2545b6af8cd88ca3ae3, type: 3}
       propertyPath: m_Constraints
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1133644361265857097, guid: c0c2545b51b2b2545b6af8cd88ca3ae3, type: 3}
       propertyPath: m_ConnectedBody
@@ -2090,7 +2090,7 @@ PrefabInstance:
       objectReference: {fileID: 207643096}
     - target: {fileID: 1133644361265857097, guid: c0c2545b51b2b2545b6af8cd88ca3ae3, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 8
+      value: 4.6800003
       objectReference: {fileID: 0}
     - target: {fileID: 1133644361265857099, guid: c0c2545b51b2b2545b6af8cd88ca3ae3, type: 3}
       propertyPath: m_RootOrder
