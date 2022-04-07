@@ -26,7 +26,7 @@ public class Stage_Clear : MonoBehaviour
         {
             clearFlag = true;
             ui.SetActive(true);
-            FirstButton.Select();
+            //FirstButton.Select();
 
             StartVibration(1.0f, 0.7f, 0.7f);
 
