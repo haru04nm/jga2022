@@ -10,9 +10,10 @@ public class ElevatorMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        GameObject child = transform.GetChild(0).gameObject;
 
-        if (collision.gameObject.tag=="Player")
+        //if (collision.gameObject.tag=="Player")
+        if (child.GetComponent<BoxCollider>().isTrigger)
         {
             Debug.Log("2");
             if (areaNum==1)
@@ -31,9 +32,13 @@ public class ElevatorMove : MonoBehaviour
 
     void UpMove()
     {
-        //if
+        if (this.transform.position.y>=10.0f)
+        {
+            //this.transform.
+            areaNum++;
+        }
 
-        areaNum++;
+        
     }
 
     void DownMove()
