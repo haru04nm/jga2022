@@ -8,15 +8,15 @@ public class Break_Wall : MonoBehaviour
     GameObject targetObjectName;
 
 
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject == targetObjectName)
         {
 
             Expload.exploadFlag = true;
+            Destroy(this.gameObject);
 
-
-            this.gameObject.SetActive(false);
             Destroy(targetObjectName);
 
         }

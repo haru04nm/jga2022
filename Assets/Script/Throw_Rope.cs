@@ -50,16 +50,14 @@ public class Throw_Rope : MonoBehaviour
     {
 
         Vector3 dir = Aim.GetComponent<LineMove>().GetDirection().normalized;
-        //Debug.Log(dir);
 
 
         if (Physics.Raycast(head.transform.position, dir, out hit, 9f))
         {
             Debug.DrawRay(head.transform.position, dir * hit.distance, Color.yellow);
 
-            if (rightShoulderFlag)
+            if (rightShoulderFlag && hitObject==null)
             {
-                //animator.SetBool("ThrowFlag", true);
                 pushFlag = true;
                 anchorTarget = dir * hit.distance;
                 distance = Vector3.Distance(head.transform.position, hit.point);    // ‹——£ŒvŽZ
