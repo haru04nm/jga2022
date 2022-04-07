@@ -8,14 +8,17 @@ public class ElevatorMove : MonoBehaviour
 
     float[] areaY;
 
-    private void OnCollisionEnter(Collision collision)
+    Rigidbody rb;
+
+    GameObject child;
+
+    private void OnCollisionStay(Collision collision)
     {
-        GameObject child = transform.GetChild(0).gameObject;
+         child= transform.GetChild(0).gameObject;
 
         //if (collision.gameObject.tag=="Player")
         if (child.GetComponent<BoxCollider>().isTrigger)
         {
-            Debug.Log("2");
             if (areaNum==1)
             {
                 //ã‚èŠÖ”
@@ -32,10 +35,14 @@ public class ElevatorMove : MonoBehaviour
 
     void UpMove()
     {
-        if (this.transform.position.y>=10.0f)
+        
+        if (this.transform.position.y<=10.0f)
         {
-            //this.transform.
-            areaNum++;
+            Debug.Log("2");
+
+            transform.position = new Vector3(-13, 10.0f, 0.5f);
+            //rb.velocity = new Vector3(0, 10.0f, 0.5f);
+            //areaNum++;
         }
 
         
