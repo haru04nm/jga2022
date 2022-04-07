@@ -29,5 +29,8 @@ public class Select_Buttan : MonoBehaviour
         SceneManager.LoadScene("Stage2");
     }
 
-
+    public void PushButtan__StageSelect()
+    {
+        SceneManager.LoadScene("StageSelect");
+    }
 }
