@@ -85,7 +85,6 @@ public class Throw_Rope : MonoBehaviour
             beforeHit = null;
         }
 
-        Debug.Log(hitObject);
     }
 
     private void FixedUpdate()
