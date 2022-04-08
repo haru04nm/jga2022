@@ -39,6 +39,7 @@ public class Throw_Rope : MonoBehaviour
     [SerializeField]
     Stage_Clear flag;
 
+    bool hitKinematic;
 
     private void Start()
     {
@@ -67,6 +68,9 @@ public class Throw_Rope : MonoBehaviour
                 Aim.SetActive(false);
 
                 hitObject = hit.collider.gameObject;
+
+                hitKinematic = hitObject.GetComponent<Rigidbody>().isKinematic;
+
                 hitObject.GetComponent<Rigidbody>().isKinematic = false;
             }
         }
@@ -83,7 +87,7 @@ public class Throw_Rope : MonoBehaviour
 
             pushFlag = false;
             Aim.SetActive(true);
-            hitObject.GetComponent<Rigidbody>().isKinematic = true;
+            hitObject.GetComponent<Rigidbody>().isKinematic = hitKinematic;
             hitObject = null;
             beforeHit = null;
         }
