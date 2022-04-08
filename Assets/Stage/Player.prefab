@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 4773291788450206188}
   RightHand: {fileID: 1088988895062112356}
+  flag: {fileID: 2516339585790572551, guid: 647b1d2d809aa7d47801722adb420926, type: 3}
 --- !u!114 &1183945713921256461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b022fb94e3dda7e489c2f982fbf617a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flag: {fileID: 2516339585790572551, guid: 647b1d2d809aa7d47801722adb420926, type: 3}
 --- !u!114 &3534720906070958869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +322,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 34c827ba-79e4-46f7-9b59-d206d9c44c0b
     m_ActionName: Player/LineMove[/Keyboard/w,/Keyboard/s,/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: be76249d-6248-40dc-8490-1988e88e2dc2
+    m_ActionName: Player/Select[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 852080dd-0629-48e8-8c1f-fedf9a9271a7
+    m_ActionName: Player/Fire[/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1285,6 +1295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {fileID: 4773291788450206188}
   move: {fileID: 1183945713921256461}
+  flag: {fileID: 0}
 --- !u!1 &8939138595786618935
 GameObject:
   m_ObjectHideFlags: 0

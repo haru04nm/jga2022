@@ -4,45 +4,33 @@ using UnityEngine;
 
 public class Switch_Door : MonoBehaviour
 {
-    public static bool blueFlag;
     public static bool redFlag;
+    public static bool blueFlag;
 
     private void Start()
     {
-        blueFlag = true;
-        redFlag = false;
+        blueFlag = false;
+        redFlag = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("blueFlag = " + blueFlag);
-        Debug.Log("redFlag = " + redFlag);
-
-
-
-        if (blueFlag)
-        {
-            blueFlag = false;
-        }
-        else
-        {
-            blueFlag = true;
-        }
-
-        if (redFlag)
+        if(redFlag)
         {
             redFlag = false;
         }
-        else
+        if(redFlag==false)
         {
             redFlag = true;
         }
 
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
+        if(blueFlag)
+        {
+            blueFlag = false;
+        }
+        if(blueFlag==false)
+        {
+            blueFlag = true;
+        }
     }
 }
