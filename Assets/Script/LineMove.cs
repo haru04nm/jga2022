@@ -88,7 +88,10 @@ public class LineMove : MonoBehaviour
 
     public void OnLineMove(InputAction.CallbackContext context)
     {
-        if (flag.IsClearFlag) return;
+        if (flag.IsClearFlag)
+        { 
+            return; 
+        }
 
 
         _moveInputValue = context.ReadValue<Vector2>();

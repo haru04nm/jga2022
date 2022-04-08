@@ -14,11 +14,13 @@ public class Move : MonoBehaviour
     Rigidbody rbody;
     private Animator animator;
     private Vector2 _moveInputValue;
-
+    GameObject body;
+    RaycastHit hit;
 
     [SerializeField]
     Stage_Clear flag;
 
+    const int LayerMask = ~(1 << 6);
 
     public bool LeftFlg
     {
@@ -29,59 +31,22 @@ public class Move : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody>();
         animator = transform.Find("Mesh Object").gameObject.GetComponent<Animator>();
-        /*
-        // Input Actionインスタンス生成
-        _action = new Action();
-
-        // Actionイベント登録
-        _action.Player.Move.started += OnMove;
-        _action.Player.Move.performed += OnMove;
-        _action.Player.Move.canceled += OnMove;
-
-        _action.Enable();
-        */
+        body = GameObject.Find("Body").gameObject;
     }
 
     private void Update()
     {
-        
-        if (Stage_Clear.clearFlag == false)
+        //RaycastHit hit;
+        groundFlag = Physics.Raycast(transform.position, Vector3.down, 0.1f, LayerMask);
+        /*
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f, LayerMask))
         {
-            /*
-            vx = 0;
+            groundFlag = true;
+            //Debug.Log("!! " + hit.collider.name);
+            //Debug.DrawRay(transform.position, Vector3.down, Color.yellow);
 
-            if (action.Player.Move.triggered)
-            {
-                vx = speed;
-                leftFlag = false;
-                this.transform.rotation = Quaternion.Euler(0.0f, ry, 0.0f);
-            }
-            if (action.Player.Move.triggered)
-            {
-                vx = -speed;
-                leftFlag = true;
-                this.transform.rotation = Quaternion.Euler(0.0f, ly, 0.0f);
-            }
-            */
-
-            /*
-            if (_action.Player.Jump.triggered && groundFlag)
-            {
-                if (pushFlag == false)
-                {
-                    jumpFlag = true;
-                    pushFlag = true;
-                    groundFlag = false;
-                    animator.SetBool("JumpFlg", true);
-                }
-            }
-            else
-            {
-                pushFlag = false;
-                animator.SetBool("JumpFlg", false);
-            }
-            */
         }
+        */
 
     }
 
@@ -112,7 +77,7 @@ public class Move : MonoBehaviour
             animator.SetBool("JumpFlg", false);
         }
     }
-
+    /*
     private void OnTriggerStay(Collider other)
     {
         groundFlag = true;
@@ -122,7 +87,7 @@ public class Move : MonoBehaviour
     {
         groundFlag = false;
     }
-
+    */
     public void OnMove(InputAction.CallbackContext context)
     {
         if (flag.IsClearFlag) return;
