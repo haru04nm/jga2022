@@ -15,6 +15,15 @@ public class Select : MonoBehaviour
         SceneManager.LoadScene("StageSelect");
     }
 
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+
     public void Stage1()
     {
         SceneManager.LoadScene("Stage1");

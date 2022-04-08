@@ -13,5 +13,4 @@ public class Select_Buttan : MonoBehaviour
         // 初めに選指定したボタンを選択する
         FirstButton.Select();
     }
-
 }

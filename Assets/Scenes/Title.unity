@@ -308,7 +308,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5514433773726808527, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_Name
-      value: Button (2)
+      value: quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838518524621981591, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_Text
+      value: "\u3084\u3081\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
@@ -321,6 +325,34 @@ PrefabInstance:
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_Colors.m_NormalColor.r
       value: 0.427451
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1343518987}
+    - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Select, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7793939913212379891, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_Pivot.x
@@ -417,7 +449,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5514433773726808527, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_Name
-      value: Button (1)
+      value: option
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838518524621981591, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_Text
+      value: "\u30AA\u30D7\u30B7\u30E7\u30F3"
       objectReference: {fileID: 0}
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_TargetGraphic
@@ -756,6 +792,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstButton: {fileID: 1061072624}
+--- !u!1 &1343518986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1343518988}
+  - component: {fileID: 1343518987}
+  m_Layer: 0
+  m_Name: select
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1343518987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343518986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1181b46b4288e494d89f92e3eacbc2f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1343518988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343518986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 560.25806, y: 248.27953, z: 392.964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353003794
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,16 +1032,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541950843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: e34898a123772a84584f017679f7e997, type: 3}
+  m_PointAction: {fileID: 0}
+  m_MoveAction: {fileID: 7115519904047485281, guid: e34898a123772a84584f017679f7e997, type: 3}
+  m_SubmitAction: {fileID: -1192593997200837223, guid: e34898a123772a84584f017679f7e997, type: 3}
+  m_CancelAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 2
 --- !u!114 &1541950845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,6 +1079,91 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1593224506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593224508}
+  - component: {fileID: 1593224507}
+  m_Layer: 0
+  m_Name: Action
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1593224507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593224506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e34898a123772a84584f017679f7e997, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 13126683-19fc-41b7-a501-9b302d8414d1
+    m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 68453e37-897e-4d49-96d6-dcb5d303877d
+    m_ActionName: Player/Jump[/XInputControllerWindows/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 46221fe4-91d6-4f3e-8991-458b4ea20d7b
+    m_ActionName: Player/Throw[/XInputControllerWindows/rightShoulder,/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 34c827ba-79e4-46f7-9b59-d206d9c44c0b
+    m_ActionName: Player/LineMove[/XInputControllerWindows/rightStick,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/w,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: be76249d-6248-40dc-8490-1988e88e2dc2
+    m_ActionName: Player/Select[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 852080dd-0629-48e8-8c1f-fedf9a9271a7
+    m_ActionName: Player/Fire[/XInputControllerWindows/buttonEast]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!4 &1593224508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593224506}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 67.86226, y: 138.12279, z: 396.02002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1640736607 stripped
 RectTransform:
@@ -1207,7 +1380,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5514433773726808527, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: start
       objectReference: {fileID: 0}
     - target: {fileID: 6838518524621981591, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_Text
@@ -1236,18 +1409,18 @@ PrefabInstance:
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 573961108}
+      objectReference: {fileID: 1343518987}
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PushButtan__Stage1
+      value: StageSelect
       objectReference: {fileID: 0}
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Select_Buttan, Assembly-CSharp
+      value: Select, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
