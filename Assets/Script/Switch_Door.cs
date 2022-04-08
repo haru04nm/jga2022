@@ -7,6 +7,8 @@ public class Switch_Door : MonoBehaviour
     public static bool redFlag;
     public static bool blueFlag;
 
+    bool onFlag;
+
     private void Start()
     {
         blueFlag = false;
@@ -15,22 +17,34 @@ public class Switch_Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(redFlag)
+        
+
+        if(onFlag)
         {
-            redFlag = false;
-        }
-        if(redFlag==false)
-        {
-            redFlag = true;
+            if (redFlag)
+            {
+                redFlag = false;
+            }
+            else
+            {
+                redFlag = true;
+            }
+
+            if (blueFlag)
+            {
+                blueFlag = false;
+            }
+            else
+            {
+                blueFlag = true;
+            }
+
         }
 
-        if(blueFlag)
-        {
-            blueFlag = false;
-        }
-        if(blueFlag==false)
-        {
-            blueFlag = true;
-        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        onFlag = false;
     }
 }

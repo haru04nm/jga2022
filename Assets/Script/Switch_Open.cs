@@ -14,10 +14,12 @@ public class Switch_Open : MonoBehaviour
         {
             if (Switch_Door.redFlag)
             {
+                Debug.Log("!!");
                 this.gameObject.SetActive(true);
             }
-            if(Switch_Door.redFlag==false)
+            else
             {
+                Debug.Log("??");
                 this.gameObject.SetActive(false);
             }
 
@@ -28,7 +30,7 @@ public class Switch_Open : MonoBehaviour
             {
                 this.gameObject.SetActive(true);
             }
-            if(Switch_Door.blueFlag==false)
+            else
             {
                 this.gameObject.SetActive(false);
             }
