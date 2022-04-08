@@ -14,6 +14,6 @@ public class Select_Clear : MonoBehaviour
     void Start()
     {
         button = ButtonSummary.GetComponent<Button>();
-        button.Select();
+        //button.Select();
     }
 }

@@ -14,23 +14,4 @@ public class Select_Buttan : MonoBehaviour
         FirstButton.Select();
     }
 
-    public void PushButtan_Title()
-    {
-        SceneManager.LoadScene("title");
-    }
-
-    public void PushButtan__Stage1()
-    {
-        SceneManager.LoadScene("Stage1");
-    }
-
-    public void PushButtan__Stage2()
-    {
-        SceneManager.LoadScene("Stage2");
-    }
-
-    public void PushButtan__StageSelect()
-    {
-        SceneManager.LoadScene("StageSelect");
-    }
 }
