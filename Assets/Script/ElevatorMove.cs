@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class ElevatorMove : MonoBehaviour
 {
-    /*
     int areaNum = 1;
 
     float[] areaY;
 
     Rigidbody rb;
 
-    GameObject child;
+    //GameObject child;
 
     private void OnCollisionStay(Collision collision)
     {
-         child= transform.GetChild(0).gameObject;
+         //child= transform.GetChild(0).gameObject;
 
-        //if (collision.gameObject.tag=="Player")
-        if (child.GetComponent<BoxCollider>().isTrigger)
+        if (collision.gameObject.tag=="Player")
+        //if (child.GetComponent<BoxCollider>().isTrigger)
         {
             if (areaNum==1)
             {
@@ -29,32 +28,34 @@ public class ElevatorMove : MonoBehaviour
             if (areaNum==2)
             {
                 //â∫ÇËä÷êî
-                DownMove();
+               DownMove();
             }
         }
     }
 
     void UpMove()
     {
+        transform.Translate(0, 0.1f, 0);
         
-        if (this.transform.position.y<=10.0f)
+        if (this.transform.position.y>=10.0f)
         {
-            Debug.Log("2");
-
-            transform.position = new Vector3(-13, 10.0f, 0.5f);
-            //rb.velocity = new Vector3(0, 10.0f, 0.5f);
-            //areaNum++;
-        }
-
-        
+            areaNum++;
+        }        
     }
 
     void DownMove()
-    {
-        areaNum--;
-    }
-    */
+    { 
+        transform.Translate(0, -0.1f, 0);
 
+        if (this.transform.position.y<=1.5f)
+        {
+            areaNum--;
+        }
+       
+    }
+
+
+    /*
     private bool EVflag;
     private float floar;
     // Start is called before the first frame update
@@ -67,14 +68,14 @@ public class ElevatorMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < 34 && floar == 1f && EVflag == true)
+        if (transform.position.y < 10.0f && floar == 1f && EVflag == true)
         {
             transform.Translate(0, 0.1f, 0);
 
         }
 
 
-        if (transform.position.y > 6f && floar == 2f && EVflag == true)
+        if (transform.position.y > 1.5f && floar == 2f && EVflag == true)
         {
             transform.Translate(0, -0.1f, 0);
         }
@@ -103,5 +104,6 @@ public class ElevatorMove : MonoBehaviour
             EVflag = false;
         }
     }
+    */
 
 }
