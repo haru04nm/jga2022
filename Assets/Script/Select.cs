@@ -29,4 +29,9 @@ public class Select : MonoBehaviour
     {
         SceneManager.LoadScene("Stage3");
     }
+
+    public void Stage4()
+    {
+        SceneManager.LoadScene("Stage3");
+    }
 }
