@@ -35,7 +35,10 @@ public class Throw_Rope : MonoBehaviour
 
     GameObject beforeHit;
     //private Action _action;
- 
+
+    [SerializeField]
+    Stage_Clear flag;
+
 
     private void Start()
     {
@@ -134,6 +137,9 @@ public class Throw_Rope : MonoBehaviour
     
     public void OnThrow(InputAction.CallbackContext context)
     {
+        if (flag.IsClearFlag) return;
+
+
         if (context.phase == InputActionPhase.Performed)
         {
             beforeHit = hitObject;

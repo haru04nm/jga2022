@@ -14,7 +14,10 @@ public class Move : MonoBehaviour
     Rigidbody rbody;
     private Animator animator;
     private Vector2 _moveInputValue;
-    //private Action _action;
+
+
+    [SerializeField]
+    Stage_Clear flag;
 
 
     public bool LeftFlg
@@ -85,6 +88,12 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (flag.IsClearFlag)
+        {
+            animator.speed = 0;
+            return;
+        }
+
         rbody.velocity = new Vector3(_moveInputValue.x * speed, rbody.velocity.y, 0);
 
         animator.SetFloat("Move", rbody.velocity.magnitude);
@@ -116,6 +125,9 @@ public class Move : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (flag.IsClearFlag) return;
+
+
         // MoveƒAƒNƒVƒ‡ƒ“‚Ì“ü—ÍŽæ“¾
         _moveInputValue = context.ReadValue<Vector2>();
 

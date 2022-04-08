@@ -4,36 +4,33 @@ using UnityEngine;
 
 public class Door_Open : MonoBehaviour
 {
-    [SerializeField]
-    float doorNum;
+    GameObject Blue;
+    GameObject Red;
 
-    private void FixedUpdate()
+    private void Start()
     {
-        
-        if (doorNum == 1)
-        {
-            if (Switch_Door.blueFlag == false)
-            {
-                this.gameObject.SetActive(true);
-            }
-            else
-            {
-                this.gameObject.SetActive(false);
-            }
-        }
-        
-        if(doorNum == 2)
-        {
-            if (Switch_Door.redFlag == false)
-            {
-                this.gameObject.SetActive(true);
-            }
-            else
-            {
-                this.gameObject.SetActive(false);
-            }
+        Blue = transform.Find("blue").gameObject;
+        Red = transform.Find("red").gameObject;
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (Blue.activeSelf == true)
+        {
+            Blue.SetActive(false);
         }
-        
+        if(Blue.activeSelf==false)
+        {
+            Blue.SetActive(true);
+        }
+
+        if(Red.activeSelf==true)
+        {
+            Red.SetActive(false);
+        }
+        if(Red.activeSelf==false)
+        {
+            Red.SetActive(true);
+        }
     }
 }

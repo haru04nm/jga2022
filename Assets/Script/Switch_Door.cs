@@ -19,7 +19,8 @@ public class Switch_Door : MonoBehaviour
         Debug.Log("redFlag = " + redFlag);
 
 
-        if(blueFlag)
+
+        if (blueFlag)
         {
             blueFlag = false;
         }
@@ -27,7 +28,7 @@ public class Switch_Door : MonoBehaviour
         {
             blueFlag = true;
         }
-        
+
         if (redFlag)
         {
             redFlag = false;
@@ -36,6 +37,12 @@ public class Switch_Door : MonoBehaviour
         {
             redFlag = true;
         }
-        
+
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
     }
 }

@@ -22,7 +22,11 @@ public class LineMove : MonoBehaviour
     bool minFlag;
 
     private Vector2 _moveInputValue;
-    
+
+    [SerializeField]
+    Stage_Clear flag;
+
+
 
     public Vector3 GetDirection()
     {
@@ -84,6 +88,9 @@ public class LineMove : MonoBehaviour
 
     public void OnLineMove(InputAction.CallbackContext context)
     {
+        if (flag.IsClearFlag) return;
+
+
         _moveInputValue = context.ReadValue<Vector2>();
 
 

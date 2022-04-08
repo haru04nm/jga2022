@@ -54,4 +54,17 @@ public class Stage_Clear : MonoBehaviour
     {
         StartCoroutine(LoopVibration(t, l, r));
     }
+
+    public bool IsClearFlag
+    {
+        get
+        {
+            return clearFlag;
+        }
+
+        set
+        {
+            clearFlag = value;
+        }
+    }
 }
