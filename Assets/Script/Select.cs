@@ -5,20 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class Select : MonoBehaviour
 {
-    public void Title()
+    string nextSceneName;
+    readonly List<string> NotFadeScene = new List<string>
     {
-        Stage_Clear.clearFlag = false;
+        //"StageSelect",
+    };
 
-
-
-        SceneManager.LoadScene("title");
+    private void Start()
+    {
+        nextSceneName = "";
     }
 
-    public void StageSelect()
+    private void FixedUpdate()
     {
-        Stage_Clear.clearFlag = false;
+        if (nextSceneName != "" && !FadeOut.IsFadeOut)
+        {
+            Stage_Clear.clearFlag = false;
+            SceneManager.LoadScene(nextSceneName);
+        }
+    }
 
-        SceneManager.LoadScene("StageSelect");
+    public void Button(string sceneName)
+    {
+        FadeOut.IsFadeOut = NotFadeScene.IndexOf(sceneName) == -1;
+        nextSceneName = sceneName;
     }
 
     public void Quit()
@@ -28,33 +38,5 @@ public class Select : MonoBehaviour
         #else
             Application.Quit();
         #endif
-    }
-
-    public void Stage1()
-    {
-        Stage_Clear.clearFlag = false;
-
-        SceneManager.LoadScene("Stage1");
-    }
-
-    public void Stage2()
-    {
-        Stage_Clear.clearFlag = false;
-
-        SceneManager.LoadScene("Stage2");
-    }
-
-    public void Stage3()
-    {
-        Stage_Clear.clearFlag = false;
-
-        SceneManager.LoadScene("Stage3");
-    }
-
-    public void Stage4()
-    {
-        Stage_Clear.clearFlag = false;
-
-        SceneManager.LoadScene("Stage3");
     }
 }
