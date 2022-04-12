@@ -17,29 +17,30 @@ public class Switch_Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-
-        if(onFlag)
+                
+        if (redFlag)
         {
-            if (redFlag)
-            {
-                redFlag = false;
-            }
-            else
-            {
-                redFlag = true;
-            }
-
-            if (blueFlag)
-            {
-                blueFlag = false;
-            }
-            else
-            {
-                blueFlag = true;
-            }
-
+            redFlag = false;
+            Debug.Log("redFlag = "+ redFlag);
         }
+        else
+        {
+            redFlag = true;
+            Debug.Log("redFlag = " + redFlag);
+        }
+
+        if (blueFlag)
+        {
+            blueFlag = false;
+            Debug.Log("blueFlag = "+blueFlag);
+        }
+        else
+        {
+            blueFlag = true;
+            Debug.Log("blueFlag = " + blueFlag);
+        }
+
+        
 
     }
 

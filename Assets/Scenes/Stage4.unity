@@ -226,10 +226,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4705617513414103635, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4773291788450206188, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -290,7 +286,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
 --- !u!1 &197780460
 GameObject:

@@ -14,12 +14,10 @@ public class Switch_Open : MonoBehaviour
         {
             if (Switch_Door.redFlag)
             {
-                Debug.Log("!!");
                 this.gameObject.SetActive(true);
             }
             else
             {
-                Debug.Log("??");
                 this.gameObject.SetActive(false);
             }
 
