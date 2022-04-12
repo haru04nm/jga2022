@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {fileID: 4773291788450206188}
   move: {fileID: 1183945713921256461}
-  flag: {fileID: 0}
+  flag: {fileID: 2516339585790572551, guid: 647b1d2d809aa7d47801722adb420926, type: 3}
 --- !u!1 &8939138595786618935
 GameObject:
   m_ObjectHideFlags: 0

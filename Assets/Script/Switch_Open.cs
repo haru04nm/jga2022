@@ -7,31 +7,36 @@ public class Switch_Open : MonoBehaviour
     [SerializeField]
     float doorNum;
 
+    GameObject red;
+    GameObject blue;
+
+    private void Start()
+    {
+        red= GameObject.Find("red").gameObject;
+        blue= GameObject.Find("blue").gameObject;
+    }
+
     private void Update()
     {
 
-        if(doorNum == 1)
+        if (Switch_Door.redFlag)
         {
-            if (Switch_Door.redFlag)
-            {
-                this.gameObject.SetActive(true);
-            }
-            else
-            {
-                this.gameObject.SetActive(false);
-            }
-
+            red.gameObject.SetActive(true);
+            Debug.Log("!!");
         }
-        if(doorNum == 2)
+        else
         {
-            if(Switch_Door.blueFlag)
-            {
-                this.gameObject.SetActive(true);
-            }
-            else
-            {
-                this.gameObject.SetActive(false);
-            }
+            red.gameObject.SetActive(false);
+            Debug.Log("??");
+        }
+
+        if (Switch_Door.blueFlag)
+        {
+            blue.gameObject.SetActive(true);
+        }
+        else
+        {
+            blue.gameObject.SetActive(false);
         }
     }
 }

@@ -21,23 +21,19 @@ public class Switch_Door : MonoBehaviour
         if (redFlag)
         {
             redFlag = false;
-            Debug.Log("redFlag = "+ redFlag);
         }
         else
         {
             redFlag = true;
-            Debug.Log("redFlag = " + redFlag);
         }
 
         if (blueFlag)
         {
             blueFlag = false;
-            Debug.Log("blueFlag = "+blueFlag);
         }
         else
         {
             blueFlag = true;
-            Debug.Log("blueFlag = " + blueFlag);
         }
 
         
