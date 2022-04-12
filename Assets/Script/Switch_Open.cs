@@ -7,13 +7,15 @@ public class Switch_Open : MonoBehaviour
     [SerializeField]
     float doorNum;
 
-    GameObject red;
-    GameObject blue;
+    [SerializeField]
+    GameObject Switch1;
+    [SerializeField]
+    GameObject Switch2;
 
     private void Start()
     {
-        red= GameObject.Find("red").gameObject;
-        blue= GameObject.Find("blue").gameObject;
+        Switch1 = GameObject.Find("red").gameObject;
+        Switch2 = GameObject.Find("blue").gameObject;
     }
 
     private void Update()
@@ -21,22 +23,22 @@ public class Switch_Open : MonoBehaviour
 
         if (Switch_Door.redFlag)
         {
-            red.gameObject.SetActive(true);
+            Switch1.gameObject.SetActive(true);
             Debug.Log("!!");
         }
         else
         {
-            red.gameObject.SetActive(false);
+            Switch1.gameObject.SetActive(false);
             Debug.Log("??");
         }
 
         if (Switch_Door.blueFlag)
         {
-            blue.gameObject.SetActive(true);
+            Switch2.gameObject.SetActive(true);
         }
         else
         {
-            blue.gameObject.SetActive(false);
+            Switch2.gameObject.SetActive(false);
         }
     }
 }
