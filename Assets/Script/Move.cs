@@ -38,6 +38,8 @@ public class Move : MonoBehaviour
     {
         //RaycastHit hit;
         groundFlag = Physics.Raycast(transform.position, Vector3.down, 0.1f, LayerMask);
+
+
         /*
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f, LayerMask))
         {

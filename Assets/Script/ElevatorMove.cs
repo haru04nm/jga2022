@@ -8,6 +8,8 @@ public class ElevatorMove : MonoBehaviour
 
     float[] areaY;
 
+    bool isHitFlag = false;
+
     Rigidbody rb;
 
     //GameObject child;
@@ -19,16 +21,25 @@ public class ElevatorMove : MonoBehaviour
         if (collision.gameObject.tag=="Player")
         //if (child.GetComponent<BoxCollider>().isTrigger)
         {
-            if (areaNum==1)
+            isHitFlag = true;
+        }
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (isHitFlag)
+        {
+            if (areaNum == 1)
             {
                 //ã‚èŠÖ”
                 UpMove();
             }
 
-            if (areaNum==2)
+            if (areaNum == 2)
             {
                 //‰º‚èŠÖ”
-               DownMove();
+                DownMove();
             }
         }
     }
@@ -40,6 +51,7 @@ public class ElevatorMove : MonoBehaviour
         if (this.transform.position.y>=10.0f)
         {
             areaNum++;
+            isHitFlag = false;
         }        
     }
 
@@ -50,6 +62,7 @@ public class ElevatorMove : MonoBehaviour
         if (this.transform.position.y<=1.5f)
         {
             areaNum--;
+            isHitFlag = false;
         }
        
     }
