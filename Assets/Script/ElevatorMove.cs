@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ElevatorMove : MonoBehaviour
 {
-    int areaNum = 1;
+    int nextAreaNum = 1;
+    int oldAreaNum;
 
+    [SerializeField]
     float[] areaY;
+
+    [SerializeField]
+    int stageAreaNum;
 
     bool isHitFlag = false;
 
@@ -33,13 +38,15 @@ public class ElevatorMove : MonoBehaviour
             if (deletTime>=1.0f)
             {
                 tobira.SetActive(true);
-                if (areaNum == 1)
+                
+                
+                if (nextAreaNum > oldAreaNum)
                 {
                     //è„ÇËä÷êî
                     UpMove();
                 }
 
-                if (areaNum == 2)
+                if (nextAreaNum < oldAreaNum)
                 {
                     //â∫ÇËä÷êî
                     DownMove();
@@ -63,9 +70,14 @@ public class ElevatorMove : MonoBehaviour
     {
         transform.Translate(0, 0.1f, 0);
         
-        if (this.transform.position.y>=10.0f)
+        if (this.transform.position.y>=areaY[nextAreaNum-1])
         {
-            areaNum++;
+            oldAreaNum = nextAreaNum;
+            nextAreaNum++;
+            if (nextAreaNum > stageAreaNum)
+            {
+                nextAreaNum -= 2;
+            }
             isHitFlag = false;
             deletTime = 0.0f;
             tobira.SetActive(false);
@@ -76,9 +88,14 @@ public class ElevatorMove : MonoBehaviour
     { 
         transform.Translate(0, -0.1f, 0);
 
-        if (this.transform.position.y<=1.5f)
+        if (this.transform.position.y<=areaY[nextAreaNum-1])
         {
-            areaNum--;
+            oldAreaNum = nextAreaNum;
+            nextAreaNum--;
+            if (nextAreaNum == 0)
+            {
+                nextAreaNum += 2;
+            }
             isHitFlag = false;
             deletTime = 0.0f;
             tobira.SetActive(false);
