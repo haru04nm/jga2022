@@ -69,9 +69,13 @@ public class Throw_Rope : MonoBehaviour
 
                 hitObject = hit.collider.gameObject;
 
-                hitKinematic = hitObject.GetComponent<Rigidbody>().isKinematic;
+                if (hitObject.GetComponent<Rigidbody>() != null)
+                {
+                    hitKinematic = hitObject.GetComponent<Rigidbody>().isKinematic;
 
-                hitObject.GetComponent<Rigidbody>().isKinematic = false;
+                    hitObject.GetComponent<Rigidbody>().isKinematic = false;
+
+                }
             }
         }
 
@@ -87,7 +91,11 @@ public class Throw_Rope : MonoBehaviour
 
             pushFlag = false;
             Aim.SetActive(true);
-            hitObject.GetComponent<Rigidbody>().isKinematic = hitKinematic;
+            if(hitObject.GetComponent<Rigidbody>() != null)
+            {
+                hitObject.GetComponent<Rigidbody>().isKinematic = hitKinematic;
+
+            }
             hitObject = null;
             beforeHit = null;
         }
