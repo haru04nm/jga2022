@@ -30,7 +30,7 @@ public class ElevatorMove : MonoBehaviour
         {
             deletTime += Time.deltaTime;
 
-            if (deletTime>=2.5f)
+            if (deletTime>=1.0f)
             {
                 tobira.SetActive(true);
                 if (areaNum == 1)
