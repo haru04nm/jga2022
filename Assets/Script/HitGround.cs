@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HitGround : MonoBehaviour
 {
+    /*
     bool isHitFlag = false;
 
     GameObject tobira;
@@ -44,4 +45,5 @@ public class HitGround : MonoBehaviour
             isHitFlag = value;
         }
     }
+    */
 }

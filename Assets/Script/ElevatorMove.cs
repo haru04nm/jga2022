@@ -10,37 +10,52 @@ public class ElevatorMove : MonoBehaviour
 
     bool isHitFlag = false;
 
-    Rigidbody rb;
+    float deletTime;
+
+    Time time;
+
+    GameObject tobira;
 
     //GameObject child;
 
-    private void OnCollisionStay(Collision collision)
+    private void Start()
     {
-         //child= transform.GetChild(0).gameObject;
-
-        if (collision.gameObject.tag=="Player")
-        //if (child.GetComponent<BoxCollider>().isTrigger)
-        {
-            isHitFlag = true;
-        }
+        tobira = GameObject.Find("èoì¸å˚").gameObject;
+        tobira.SetActive(false);
     }
-
 
     private void FixedUpdate()
     {
         if (isHitFlag)
         {
-            if (areaNum == 1)
-            {
-                //è„ÇËä÷êî
-                UpMove();
-            }
+            deletTime += Time.deltaTime;
 
-            if (areaNum == 2)
+            if (deletTime>=2.5f)
             {
-                //â∫ÇËä÷êî
-                DownMove();
+                tobira.SetActive(true);
+                if (areaNum == 1)
+                {
+                    //è„ÇËä÷êî
+                    UpMove();
+                }
+
+                if (areaNum == 2)
+                {
+                    //â∫ÇËä÷êî
+                    DownMove();
+                }
             }
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        //child= transform.GetChild(0).gameObject;
+
+        if (collision.gameObject.tag == "Player")
+        //if (child.GetComponent<BoxCollider>().isTrigger)
+        {
+            isHitFlag = true;
         }
     }
 
@@ -52,6 +67,8 @@ public class ElevatorMove : MonoBehaviour
         {
             areaNum++;
             isHitFlag = false;
+            deletTime = 0.0f;
+            tobira.SetActive(false);
         }        
     }
 
@@ -63,8 +80,9 @@ public class ElevatorMove : MonoBehaviour
         {
             areaNum--;
             isHitFlag = false;
+            deletTime = 0.0f;
+            tobira.SetActive(false);
         }
-       
     }
 
 
