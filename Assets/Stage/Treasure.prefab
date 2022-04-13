@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e69cd3e29f70e44a97502781a5a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1088988894362924221, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
   ui: {fileID: 0}
   FirstButton: {fileID: 0}
 --- !u!1001 &2516339585904155489
