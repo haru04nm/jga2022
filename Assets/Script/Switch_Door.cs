@@ -10,6 +10,7 @@ public class Switch_Door : MonoBehaviour
     [SerializeField]
     GameObject door1;
     [SerializeField]
+    GameObject door2;
 
     private void Start()
     {
@@ -38,11 +39,25 @@ public class Switch_Door : MonoBehaviour
             blueFlag = true;
         }
 
+
+
         if(redFlag)
         {
-
+            door1.gameObject.SetActive(true);
         }
-        
+        else
+        {
+            door1.gameObject.SetActive(false);
+        }
+        if (blueFlag)
+        {
+            door2.gameObject.SetActive(true);
+        }
+        else
+        {
+            door2.gameObject.SetActive(false);
+        }
+
 
     }
 
