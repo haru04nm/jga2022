@@ -21,11 +21,15 @@ public class ElevatorMove : MonoBehaviour
 
     GameObject tobira;
 
+    GameObject saka;
+
     //GameObject child;
 
     private void Start()
     {
         tobira = GameObject.Find("o“üŒû").gameObject;
+        saka = GameObject.Find("â").gameObject;
+        saka.SetActive(true);
         tobira.SetActive(false);
     }
 
@@ -38,7 +42,8 @@ public class ElevatorMove : MonoBehaviour
             if (deletTime>=2.5f)
             {
                 tobira.SetActive(true);
-                
+
+                saka.SetActive(false);
                 
                 if (nextAreaNum > oldAreaNum)
                 {
@@ -81,6 +86,7 @@ public class ElevatorMove : MonoBehaviour
             isHitFlag = false;
             deletTime = 0.0f;
             tobira.SetActive(false);
+            saka.SetActive(true);
         }        
     }
 
@@ -99,6 +105,7 @@ public class ElevatorMove : MonoBehaviour
             isHitFlag = false;
             deletTime = 0.0f;
             tobira.SetActive(false);
+            saka.SetActive(true);
         }
     }
 
