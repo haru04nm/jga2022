@@ -7,10 +7,12 @@ public class Stage_Clear : MonoBehaviour
 {
     [SerializeField]
     GameObject player;
+
     [SerializeField]
     GameObject ui;
+
     [SerializeField]
-    Button FirstButton;
+    List<GameObject> confettiList;
 
     public static bool clearFlag;
 
@@ -25,7 +27,11 @@ public class Stage_Clear : MonoBehaviour
         {
             clearFlag = true;
             ui.SetActive(true);
-            //FirstButton.Select();
+            
+            foreach (var confetti in confettiList)
+            {
+                confetti.SetActive(true);
+            }
 
         }
     }
