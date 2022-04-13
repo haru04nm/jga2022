@@ -635,12 +635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31a1567d6e07e04293195a5a2fd3cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonSummary: {fileID: 357954788}
---- !u!1 &357954788 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5197504800206461895, guid: 833987d8aa49a964f80e36f23b62c394, type: 3}
-  m_PrefabInstance: {fileID: 5197504800427896611}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &458595561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,6 +718,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1964431040936758, guid: ae95d385019def448981b67e58f4dcc2, type: 3}
   m_PrefabInstance: {fileID: 1270312756}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &871130260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871130259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06dc56964a656440a8c3ffda0db9a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &871130261
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -918,7 +924,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2034014920760338656, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.81
+      value: -4.69
       objectReference: {fileID: 0}
     - target: {fileID: 2034014920760338656, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
       propertyPath: m_LocalPosition.y
