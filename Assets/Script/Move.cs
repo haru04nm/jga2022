@@ -17,9 +17,6 @@ public class Move : MonoBehaviour
     GameObject body;
     RaycastHit hit;
 
-    [SerializeField]
-    Stage_Clear flag;
-
     const int LayerMask = ~(1 << 6);
 
     public bool LeftFlg
@@ -55,17 +52,9 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (flag.IsClearFlag)
-        {
-            animator.speed = 0;
-            return;
-        }
-
         rbody.velocity = new Vector3(_moveInputValue.x * speed, rbody.velocity.y, 0);
 
         animator.SetFloat("Move", rbody.velocity.magnitude);
-
-        
 
         if (jumpFlag)
         {
@@ -92,9 +81,6 @@ public class Move : MonoBehaviour
     */
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (flag.IsClearFlag) return;
-
-
         // MoveƒAƒNƒVƒ‡ƒ“‚Ì“ü—ÍŽæ“¾
         _moveInputValue = context.ReadValue<Vector2>();
 
