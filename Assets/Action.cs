@@ -195,6 +195,17 @@ public partial class @Action : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""52866578-3e3d-4f88-a944-4678ba124a0c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6ad0cd04-8810-402c-a5e5-bf04d19d25ae"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
