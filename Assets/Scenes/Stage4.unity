@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2034014920760338656, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.99
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 2034014920760338656, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
       propertyPath: m_LocalRotation.w
@@ -838,7 +838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorNum: 0
   Switch1: {fileID: 1221760916}
-  Switch2: {fileID: 1221760916}
+  Switch2: {fileID: 944309064}
 --- !u!65 &1221760918
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1718,3 +1718,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c257840e4447a1b4c9d1d213c71ab3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door1: {fileID: 0}

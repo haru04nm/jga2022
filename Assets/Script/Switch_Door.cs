@@ -7,6 +7,9 @@ public class Switch_Door : MonoBehaviour
     public static bool redFlag;
     public static bool blueFlag;
 
+    [SerializeField]
+    GameObject door1;
+    [SerializeField]
 
     private void Start()
     {
@@ -35,6 +38,10 @@ public class Switch_Door : MonoBehaviour
             blueFlag = true;
         }
 
+        if(redFlag)
+        {
+
+        }
         
 
     }

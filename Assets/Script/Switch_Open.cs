@@ -24,14 +24,11 @@ public class Switch_Open : MonoBehaviour
         if (Switch_Door.redFlag)
         {
             Switch1.gameObject.SetActive(true);
-            Debug.Log("!!");
         }
         else
         {
             Switch1.gameObject.SetActive(false);
-            Debug.Log("??");
         }
-
         if (Switch_Door.blueFlag)
         {
             Switch2.gameObject.SetActive(true);
