@@ -59,7 +59,7 @@ public class ElevatorMove : MonoBehaviour
     {
         //child= transform.GetChild(0).gameObject;
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele")
         //if (child.GetComponent<BoxCollider>().isTrigger)
         {
             isHitFlag = true;
