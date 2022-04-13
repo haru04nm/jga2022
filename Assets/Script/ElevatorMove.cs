@@ -57,6 +57,10 @@ public class ElevatorMove : MonoBehaviour
                     DownMove();
                 }
             }
+            else
+            {
+                isHitFlag = false;
+            }
         }
     }
 
