@@ -9,8 +9,12 @@ public class Switch_Door : MonoBehaviour
 
     [SerializeField]
     GameObject door1;
+
     [SerializeField]
     GameObject door2;
+
+    //[SerializeField]
+    //GameObject door3;
 
     private void Start()
     {
@@ -41,7 +45,13 @@ public class Switch_Door : MonoBehaviour
 
 
 
-        if(redFlag)
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (redFlag)
         {
             door1.gameObject.SetActive(true);
         }
@@ -52,13 +62,16 @@ public class Switch_Door : MonoBehaviour
         if (blueFlag)
         {
             door2.gameObject.SetActive(true);
+            //door3.gameObject.SetActive(true);
+
         }
         else
         {
             door2.gameObject.SetActive(false);
+            //door3.gameObject.SetActive(false);
+
         }
 
-
     }
-
+    // スイッチ押したら他のスイッチ押すまで押せなくする
 }
