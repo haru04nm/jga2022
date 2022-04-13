@@ -55,7 +55,7 @@ public class ElevatorMove : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider collision)
     {
         //child= transform.GetChild(0).gameObject;
 
