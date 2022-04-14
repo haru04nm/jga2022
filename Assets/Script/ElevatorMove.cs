@@ -19,16 +19,16 @@ public class ElevatorMove : MonoBehaviour
 
     Time time;
 
+    [SerializeField]
     GameObject tobira;
 
+    [SerializeField]
     GameObject saka;
 
     //GameObject child;
 
     private void Start()
-    {
-        tobira = GameObject.Find("èoì¸å˚").gameObject;
-        saka = GameObject.Find("ç‚").gameObject;
+    { 
         saka.SetActive(true);
         tobira.SetActive(false);
     }

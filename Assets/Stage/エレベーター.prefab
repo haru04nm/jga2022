@@ -448,6 +448,8 @@ MonoBehaviour:
   - 11.3
   - 22
   stageAreaNum: 3
+  tobira: {fileID: 5896522803736393087}
+  saka: {fileID: 5896522804406042127}
 --- !u!65 &5896522804246168861
 BoxCollider:
   m_ObjectHideFlags: 0
