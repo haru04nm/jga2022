@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Switch_Door : MonoBehaviour
 {
-    public static bool redFlag;
-    public static bool blueFlag;
+    static bool redFlag;
+    static bool blueFlag;
 
     [SerializeField]
     GameObject door1;
@@ -20,54 +20,18 @@ public class Switch_Door : MonoBehaviour
     {
         blueFlag = false;
         redFlag = true;
+        switchActive = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        switchActive = true;
 
+        redFlag = !redFlag;
+        blueFlag = !blueFlag;
 
-        if (redFlag)
-        {
-            redFlag = false;
-            switchActive = true;
-        }
-        else
-        {
-            redFlag = true;
-            switchActive = false;
-        }
-
-        if (blueFlag)
-        {
-            blueFlag = false;
-            switchActive = true;
-        }
-        else
-        {
-            blueFlag = true;
-            switchActive = false;
-        }
-
-    }
-
-    private void FixedUpdate()
-    {
-        if (redFlag)
-        {
-            door1.gameObject.SetActive(true);
-        }
-        else
-        {
-            door1.gameObject.SetActive(false);
-        }
-        if (blueFlag)
-        {
-            door2.gameObject.SetActive(true);
-        }
-        else
-        {
-            door2.gameObject.SetActive(false);
-        }
+        door1.gameObject.SetActive(redFlag);
+        door2.gameObject.SetActive(blueFlag);
     }
 
     public bool IsSwitchActive
