@@ -420,7 +420,7 @@ Transform:
   m_GameObject: {fileID: 5896522804246168848}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -21.50768, y: -0.45, z: -0.09005737}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 5896522804627257237}
   - {fileID: 5896522803405798226}
@@ -444,9 +444,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaY:
-  - -0.45
-  - 11.3
-  - 22
+  - -0.4
+  - 9
+  - 19
   stageAreaNum: 3
   tobira: {fileID: 5896522803736393087}
   saka: {fileID: 5896522804406042127}
@@ -489,13 +489,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5896522804406042127}
-  m_LocalRotation: {x: -0, y: -0, z: 0.15874414, w: 0.98731977}
-  m_LocalPosition: {x: 0.58, y: 1.23, z: 0}
-  m_LocalScale: {x: 4, y: 0.1, z: 4}
+  m_LocalRotation: {x: 0.0010907862, y: -0.0011135576, z: 0.14402723, w: 0.9895726}
+  m_LocalPosition: {x: 0.5099996, y: 1.17, z: 0.010000001}
+  m_LocalScale: {x: 5, y: 0.1, z: 4}
   m_Children: []
   m_Father: {fileID: 5896522804246168863}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 18.268}
+  m_LocalEulerAnglesHint: {x: 0.142, y: -0.108, z: 16.562}
 --- !u!33 &5896522804406042123
 MeshFilter:
   m_ObjectHideFlags: 0
