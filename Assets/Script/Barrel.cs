@@ -9,6 +9,10 @@ public class Barrel : MonoBehaviour
 
     float count;
 
+    float speed=1.2f;
+
+    Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +21,8 @@ public class Barrel : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
+    { 
+        rb= this.gameObject.GetComponent<Rigidbody>();
         count += Time.deltaTime;
 
         if(oldPosX != transform.position.x && count >= 1.0f)
@@ -28,7 +33,10 @@ public class Barrel : MonoBehaviour
         }
 
         oldPosX = transform.position.x;
+
         
+        rb.velocity = new Vector3(rb.velocity.x*speed, rb.velocity.y, rb.velocity.z);
+
     }
 
     //コントローラー振動
@@ -52,5 +60,11 @@ public class Barrel : MonoBehaviour
     {
         StartCoroutine(LoopVibration(t, l, r));
         StopVibration();
+    }
+
+    void Clamp(float value)
+    {
+        
+        float clamp = Mathf.Clamp(value, 1, 10);
     }
 }
