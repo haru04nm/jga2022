@@ -9,7 +9,8 @@ public class Barrel : MonoBehaviour
 
     float count;
 
-    float speed=1.2f;
+    
+    float speed=3.5f;
 
     Rigidbody rb;
 
@@ -35,7 +36,8 @@ public class Barrel : MonoBehaviour
         oldPosX = transform.position.x;
 
         
-        rb.velocity = new Vector3(rb.velocity.x*speed, rb.velocity.y, rb.velocity.z);
+
+        rb.velocity = new Vector3(Mathf.Clamp((rb.velocity.x * speed),-speed,speed),rb.velocity.y, rb.velocity.z);
 
     }
 
@@ -62,9 +64,4 @@ public class Barrel : MonoBehaviour
         StopVibration();
     }
 
-    void Clamp(float value)
-    {
-        
-        float clamp = Mathf.Clamp(value, 1, 10);
-    }
 }

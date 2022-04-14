@@ -25,6 +25,8 @@ public class ElevatorMove : MonoBehaviour
     [SerializeField]
     GameObject saka;
 
+    const float limtTime=2f;
+
     //GameObject child;
 
     private void Start()
@@ -39,7 +41,7 @@ public class ElevatorMove : MonoBehaviour
         {
             deletTime += Time.deltaTime;
 
-            if (deletTime>=2.5f)
+            if (deletTime>=limtTime)
             {
                 tobira.SetActive(true);
 
