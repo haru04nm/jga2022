@@ -21,7 +21,12 @@ public class Switch_Door : MonoBehaviour
         blueFlag = false;
         redFlag = true;
         switchActive = false;
+        door1.gameObject.SetActive(redFlag);
+        door2.gameObject.SetActive(blueFlag);
+
     }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
