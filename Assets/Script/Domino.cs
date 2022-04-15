@@ -21,6 +21,7 @@ public class Domino : MonoBehaviour
     }
     */
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject == barrel)
@@ -28,3 +29,5 @@ public class Domino : MonoBehaviour
 
         }
     }
+    */
+}
