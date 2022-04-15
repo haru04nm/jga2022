@@ -407,7 +407,7 @@ public partial class @Action : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""38f3c907-6c84-4dde-b335-398098f6bf81"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
