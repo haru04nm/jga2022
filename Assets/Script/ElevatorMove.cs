@@ -25,7 +25,7 @@ public class ElevatorMove : MonoBehaviour
     [SerializeField]
     GameObject saka;
 
-    const float limtTime=2f;
+    float limtTime;
 
     //GameObject child;
 
@@ -68,12 +68,16 @@ public class ElevatorMove : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        //child= transform.GetChild(0).gameObject;
-
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele")
-        //if (child.GetComponent<BoxCollider>().isTrigger)
         {
             isHitFlag = true;
+
+            limtTime = 2.5f;
+
+            if (collision.gameObject.tag == "Player" )
+            {
+                limtTime = 1.0f;
+            }
         }
     }
 
@@ -114,57 +118,4 @@ public class ElevatorMove : MonoBehaviour
             saka.SetActive(true);
         }
     }
-
-
-    /*
-    private bool EVflag;
-    private float floar;
-    // Start is called before the first frame update
-    void Start()
-    {
-        floar = 1f;
-        EVflag = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (transform.position.y < 10.0f && floar == 1f && EVflag == true)
-        {
-            transform.Translate(0, 0.1f, 0);
-
-        }
-
-
-        if (transform.position.y > 1.5f && floar == 2f && EVflag == true)
-        {
-            transform.Translate(0, -0.1f, 0);
-        }
-
-
-
-
-    }
-    private void OnTriggerEnter(Collider other)//エレベーターの中に入ったら
-    {
-
-        EVflag = true;
-
-
-    }
-    private void OnTriggerExit(Collider other)//エレベーターから出たら
-    {
-        if (floar == 1f && EVflag == true)
-        {
-            floar = 2f;
-            EVflag = false;
-        }
-        if (floar == 2f && EVflag == true)
-        {
-            floar = 1f;
-            EVflag = false;
-        }
-    }
-    */
-
 }

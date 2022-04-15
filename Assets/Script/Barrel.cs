@@ -30,15 +30,11 @@ public class Barrel : MonoBehaviour
         {
             //コントローラー振動
             StartVibration(0.1f, 0.7f, 1f);
-            count=0.0f;
+            count=0.0f; 
+            rb.velocity = new Vector3(Mathf.Clamp((rb.velocity.x * speed),-speed,speed),rb.velocity.y, rb.velocity.z);
         }
 
         oldPosX = transform.position.x;
-
-        
-
-        rb.velocity = new Vector3(Mathf.Clamp((rb.velocity.x * speed),-speed,speed),rb.velocity.y, rb.velocity.z);
-
     }
 
     //コントローラー振動
