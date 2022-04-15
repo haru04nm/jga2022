@@ -36,37 +36,37 @@ public class LineMove : MonoBehaviour
         return (dir);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
 
         // ‰EŒü‚¢‚Ä‚¢‚é‚Æ‚«
-        if ((upFlag && angleCount <= 500 && angleCount >= -200) || (minFlag && upFlag))
+        if ((upFlag && angleCount <= 50 && angleCount >= -20) || (minFlag && upFlag))
         {
             angleCount++;
             // RotateAround(’†S‚ÌêŠ,Ž²,‰ñ“]Šp“x)
-            this.transform.RotateAround(center.transform.position, Vector3.forward, angle * Time.deltaTime);
+            this.transform.RotateAround(center.transform.position, Vector3.forward, angle * 0.025f);
         }
-        if ((downFlag && angleCount >= -200 && angleCount <= 500) || (maxFlag && downFlag))
+        if ((downFlag && angleCount >= -20 && angleCount <= 50) || (maxFlag && downFlag))
         {
             angleCount--;
-            this.transform.RotateAround(center.transform.position, Vector3.back, angle * Time.deltaTime);
+            this.transform.RotateAround(center.transform.position, Vector3.back, angle * 0.025f);
         }
 
         // ¶Œü‚¢‚Ä‚¢‚é‚Æ‚«
-        if ((upLFlag && angleCount <= 500 && angleCount >= -200) || (minFlag && upLFlag))
+        if ((upLFlag && angleCount <= 50 && angleCount >= -20) || (minFlag && upLFlag))
         {
             angleCount++;
             // RotateAround(’†S‚ÌêŠ,Ž²,‰ñ“]Šp“x)
-            this.transform.RotateAround(center.transform.position, Vector3.back, angle * Time.deltaTime);
+            this.transform.RotateAround(center.transform.position, Vector3.back, angle * 0.025f);
         }
-        if ((DownLFlag && angleCount >= -200 && angleCount <= 500) || (maxFlag && DownLFlag))
+        if ((DownLFlag && angleCount >= -20 && angleCount <= 50) || (maxFlag && DownLFlag))
         {
             angleCount--;
-            this.transform.RotateAround(center.transform.position, Vector3.forward, angle * Time.deltaTime);
+            this.transform.RotateAround(center.transform.position, Vector3.forward, angle * 0.025f);
         }
 
 
-        if (angleCount >= 300)
+        if (angleCount >= 30)
         {
             maxFlag = true;
         }
@@ -74,7 +74,7 @@ public class LineMove : MonoBehaviour
         {
             maxFlag = false;
         }
-        if(angleCount<=-200)
+        if(angleCount<=-20)
         {
             minFlag = true;
         }
