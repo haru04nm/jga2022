@@ -22,7 +22,8 @@ public class Stage_Clear : MonoBehaviour
             player.GetComponent<PlayerInput>().actions.FindActionMap("Player").Disable();
 
             // ÉNÉäÉAUIï\é¶
-            Select.Instance.ActiveClear();
+            //Select.Instance.ActiveClear();
+            UIClear.Instance.Active();
 
             foreach (var confetti in confettiList)
             {

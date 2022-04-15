@@ -7,43 +7,26 @@ using UnityEngine.SceneManagement;
 public class Select : MonoBehaviour
 {
     [SerializeField]
-    GameObject clearPanel;
+    GameObject panel;
     [SerializeField]
-    GameObject firstClearSelect;
-
-    [SerializeField]
-    GameObject pausePanel;
-    [SerializeField]
-    GameObject firstPauseSelect;
-
+    GameObject firstSelect;
 
     GameObject player;
 
     string nextSceneName;
 
-    static Select instance;
-
-    public static Select Instance
-    {
-        get { return instance; }
-    }
-
+    /*
     readonly List<string> NotFadeScene = new List<string>
     {
         //"StageSelect",
     };
+    */
 
     private void Awake()
     {
-        instance = this;
-    }
-
-    private void Start()
-    {
         nextSceneName = "";
         player = GameObject.FindGameObjectWithTag("Player");
-        DeactiveClear();
-        DeactivePause();
+        Deactive();
     }
 
     private void FixedUpdate()
@@ -57,13 +40,14 @@ public class Select : MonoBehaviour
 
     public void Button(string sceneName)
     {
-        FadeOut.IsFadeOut = NotFadeScene.IndexOf(sceneName) == -1;
+        //FadeOut.IsFadeOut = NotFadeScene.IndexOf(sceneName) == -1;
+        FadeOut.IsFadeOut = true;
         nextSceneName = sceneName;
     }
 
-    public void game()
+    public void Game()
     {
-        DeactivePause();
+        Deactive();
     }
 
     public void Quit()
@@ -75,35 +59,24 @@ public class Select : MonoBehaviour
 #endif
     }
 
-    public void ActiveClear()
+    public void Active()
     {
-        EventSystem.current.SetSelectedGameObject(firstClearSelect);
-        clearPanel.SetActive(true);
-    }
-    public void DeactiveClear()
-    {
-        clearPanel.SetActive(false);
-    }
+        EventSystem.current.SetSelectedGameObject(firstSelect);
+        panel.SetActive(true);
 
-    public void ActivePause()
-    {
-        EventSystem.current.SetSelectedGameObject(firstPauseSelect);
-        pausePanel.SetActive(true);
-        player.GetComponent<PlayerInput>().actions.FindActionMap("Player").Disable();
-
-    }
-
-    public void DeactivePause()
-    {
-        pausePanel.SetActive(false);
-        player.GetComponent<PlayerInput>().actions.FindActionMap("Player").Enable();
-    }
-
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
+        if(player)
         {
-            ActivePause();
+            player.GetComponent<PlayerInput>().actions.FindActionMap("Player").Disable();
+        }
+
+    }
+
+    public void Deactive()
+    {
+        panel.SetActive(false);
+        if (player)
+        {
+            player.GetComponent<PlayerInput>().actions.FindActionMap("Player").Enable();
         }
     }
 }
