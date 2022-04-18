@@ -5,14 +5,16 @@ using UnityEngine;
 public class Barrel_Collision : MonoBehaviour
 {
     [SerializeField]
-    GameObject other_barrel;
+    GameObject other_barrele;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject == other_barrel)
+        if(collision.gameObject == other_barrele)
         {
+            
+
             Destroy(this.gameObject);
-            Destroy(other_barrel);
+            Destroy(other_barrele);
         }
     }
 }
