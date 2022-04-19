@@ -31,7 +31,7 @@ public class ElevatorMove : MonoBehaviour
 
     private void Start()
     { 
-        saka.SetActive(true);
+        saka.SetActive(false);
         tobira.SetActive(false);
     }
 
@@ -47,6 +47,8 @@ public class ElevatorMove : MonoBehaviour
                 tobira.SetActive(true);
 
                 saka.SetActive(false);
+
+                //下から上に
                 if (areaY[0] - areaY[1] < 0)
                 {
                     if (nextAreaNum > oldAreaNum)
@@ -62,6 +64,7 @@ public class ElevatorMove : MonoBehaviour
                     }
                 }
 
+                //上から下に
                 if (areaY[0] - areaY[1] > 0)
                 {
                     if (nextAreaNum < oldAreaNum)
@@ -97,12 +100,16 @@ public class ElevatorMove : MonoBehaviour
 
     void UpMove()
     {
+        //移動
         transform.Translate(0, 0.1f, 0);
         
+        //目的地に着いたら止まる
         if (this.transform.position.y>=areaY[nextAreaNum-1])
         {
             oldAreaNum = nextAreaNum;
             nextAreaNum++;
+
+            //もしnextAreaNumがstageAreaNumを超えたら戻す
             if (nextAreaNum > stageAreaNum)
             {
                 nextAreaNum -= 2;
@@ -116,12 +123,16 @@ public class ElevatorMove : MonoBehaviour
 
     void DownMove()
     { 
+        //移動
         transform.Translate(0, -0.1f, 0);
 
+        //目的地に着いたら止まる
         if (this.transform.position.y<=areaY[nextAreaNum-1])
         {
             oldAreaNum = nextAreaNum;
             nextAreaNum--;
+
+            //もしnextAreaNumが0を超えたら戻す
             if (nextAreaNum == 0)
             {
                 nextAreaNum += 2;
