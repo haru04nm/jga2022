@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElevatorMove : MonoBehaviour
+public class BeltConveorMove : MonoBehaviour
 {
     int nextAreaNum = 1;
     int oldAreaNum;
 
     [SerializeField]
-    float[] areaY;
+    float[] areaX;
 
     [SerializeField]
-    int stageAreaNum;
+    int areaNum;
 
-    bool isHitFlag = false;
+    bool isHitFlag=false;
 
     float deletTime;
 
@@ -27,10 +27,8 @@ public class ElevatorMove : MonoBehaviour
 
     float limtTime;
 
-    //GameObject child;
-
     private void Start()
-    { 
+    {
         saka.SetActive(true);
         tobira.SetActive(false);
     }
@@ -40,44 +38,30 @@ public class ElevatorMove : MonoBehaviour
         if (isHitFlag)
         {
             deletTime += Time.deltaTime;
-            isHitFlag = false;
 
             if (deletTime >= limtTime)
             {
                 tobira.SetActive(true);
 
                 saka.SetActive(false);
-                if (areaY[0] - areaY[1] < 0)
-                {
-                    if (nextAreaNum > oldAreaNum)
-                    {
-                        //上り関数
-                        UpMove();
-                    }
 
-                    if (nextAreaNum < oldAreaNum)
-                    {
-                        //下り関数
-                        DownMove();
-                    }
+                if (nextAreaNum > oldAreaNum)
+                {
+                    //目的に行く関数
+                    UpMove();
                 }
 
-                if (areaY[0] - areaY[1] > 0)
+                if (nextAreaNum < oldAreaNum)
                 {
-                    if (nextAreaNum < oldAreaNum)
-                    {
-                        //上り関数
-                        UpMove();
-                    } 
-                    
-                    if (nextAreaNum > oldAreaNum)
-                    {
-                        //下り関数
-                        DownMove();
-                    }
-                } 
-            } 
-        }       
+                    //初期位置に戻って行く関数
+                    DownMove();
+                }
+            }
+            else
+            {
+                isHitFlag = false;
+            }
+        }
     }
 
     private void OnTriggerStay(Collider collision)
@@ -88,7 +72,7 @@ public class ElevatorMove : MonoBehaviour
 
             limtTime = 2.5f;
 
-            if (collision.gameObject.tag == "Player" )
+            if (collision.gameObject.tag == "Player")
             {
                 limtTime = 1.0f;
             }
@@ -98,12 +82,12 @@ public class ElevatorMove : MonoBehaviour
     void UpMove()
     {
         transform.Translate(0, 0.1f, 0);
-        
-        if (this.transform.position.y>=areaY[nextAreaNum-1])
+
+        if (this.transform.position.y >= areaX[nextAreaNum - 1])
         {
             oldAreaNum = nextAreaNum;
             nextAreaNum++;
-            if (nextAreaNum > stageAreaNum)
+            if (nextAreaNum > areaNum)
             {
                 nextAreaNum -= 2;
             }
@@ -111,14 +95,14 @@ public class ElevatorMove : MonoBehaviour
             deletTime = 0.0f;
             tobira.SetActive(false);
             saka.SetActive(true);
-        }        
+        }
     }
 
     void DownMove()
-    { 
+    {
         transform.Translate(0, -0.1f, 0);
 
-        if (this.transform.position.y<=areaY[nextAreaNum-1])
+        if (this.transform.position.y <= areaX[nextAreaNum - 1])
         {
             oldAreaNum = nextAreaNum;
             nextAreaNum--;
