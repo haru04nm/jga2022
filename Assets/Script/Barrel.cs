@@ -9,6 +9,11 @@ public class Barrel : MonoBehaviour
 
     float count;
 
+    [SerializeField]
+    GameObject spotLight;
+
+    [SerializeField]
+    Transform mainLight;
     
     float speed=3.5f;
 
@@ -26,12 +31,22 @@ public class Barrel : MonoBehaviour
         rb= this.gameObject.GetComponent<Rigidbody>();
         count += Time.deltaTime;
 
+        //spotLight　OFF
+        spotLight.SetActive(false);
+
+        mainLight.transform.rotation = new Quaternion(30, -30,0,0);
+
         if(oldPosX != transform.position.x && count >= 1.0f)
         {
             //コントローラー振動
             StartVibration(0.1f, 0.7f, 1f);
             count=0.0f; 
             rb.velocity = new Vector3(Mathf.Clamp((rb.velocity.x * speed),-speed,speed),rb.velocity.y, rb.velocity.z);
+
+            //spotLight　ON
+            spotLight.SetActive(true);
+
+            mainLight.transform.rotation = new Quaternion(180, 30, 0, 0);
         }
 
         oldPosX = transform.position.x;
