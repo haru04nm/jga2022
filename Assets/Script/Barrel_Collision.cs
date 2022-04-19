@@ -6,6 +6,8 @@ public class Barrel_Collision : MonoBehaviour
 {
     [SerializeField]
     GameObject other_barrele;
+    [SerializeField]
+    GameObject wall_break;
 
     GameObject explode;
     private void Start()
@@ -22,6 +24,14 @@ public class Barrel_Collision : MonoBehaviour
 
             Destroy(this.gameObject);
             Destroy(other_barrele);
+        }
+        else if (collision.gameObject == wall_break)
+        {
+            explode.gameObject.transform.parent = null;
+            Expload.exploadFlag = true;
+
+            Destroy(this.gameObject);
+            Destroy(wall_break);
         }
     }
 }
