@@ -5,33 +5,30 @@ using UnityEngine;
 public class Barrel_Collision : MonoBehaviour
 {
     [SerializeField]
-    GameObject other_barrele;
-    [SerializeField]
-    GameObject wall_break;
-
     GameObject explode;
+
     private void Start()
     {
-        explode = GameObject.Find("explode").gameObject;
+        explode.GetComponent<Exploder>().enabled = false;
+        explode.GetComponent<ParticleComponent>().enabled = false;
+        explode.GetComponent<PseudoVolumetricComponent>().enabled = false;
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject == other_barrele)
+        if(collision.gameObject.tag == "Barrele")
         {
             explode.gameObject.transform.parent = null;
-            Expload.exploadFlag = true;
+
+            explode.GetComponent<Exploder>().enabled = true;
+            explode.GetComponent<ParticleComponent>().enabled = true;
+            explode.GetComponent<PseudoVolumetricComponent>().enabled = true;
+
 
             Destroy(this.gameObject);
-            Destroy(other_barrele);
+            Destroy(collision.gameObject);
         }
-        else if (collision.gameObject == wall_break)
-        {
-            explode.gameObject.transform.parent = null;
-            Expload.exploadFlag = true;
-
-            Destroy(this.gameObject);
-            Destroy(wall_break);
-        }
+        
     }
 }

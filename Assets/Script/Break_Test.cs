@@ -19,6 +19,8 @@ public class Break_Test : MonoBehaviour
     {
         if (collision.gameObject.tag == "Barrele")
         {
+            
+
             explode.gameObject.transform.parent = null;
 
             explode.GetComponent<Exploder>().enabled = true;
@@ -27,7 +29,6 @@ public class Break_Test : MonoBehaviour
 
 
             Destroy(this.gameObject);
-
             Destroy(collision.gameObject);
 
         }
