@@ -49,7 +49,7 @@ public class ElevatorMove : MonoBehaviour
                 saka.SetActive(false);
 
                 //â∫Ç©ÇÁè„Ç…
-                if (areaY[0] - areaY[1] < 0)
+                if (areaY[0] < areaY[1])
                 {
                     if (nextAreaNum > oldAreaNum)
                     {
@@ -65,7 +65,7 @@ public class ElevatorMove : MonoBehaviour
                 }
 
                 //è„Ç©ÇÁâ∫Ç…
-                if (areaY[0] - areaY[1] > 0)
+                if (areaY[0] > areaY[1])
                 {
                     if (nextAreaNum < oldAreaNum)
                     {

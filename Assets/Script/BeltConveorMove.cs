@@ -31,18 +31,17 @@ public class BeltConveorMove : MonoBehaviour
     {
         for (int x=0; x<2; x++)
         {
-            saka[x].SetActive(false);
-            
+            SetActiveSakaTobira(true, true, false, false); 
         }
 
         if (areaX[0] < areaX[1])
         {
-            tobira[0].SetActive(false);
+            SetActiveSakaTobira(true, false, false, false);
         }
         
         if (areaX[0] > areaX[1])
         {
-            tobira[1].SetActive(false);
+            SetActiveSakaTobira(false, true, false, false);
         }
     }
 
@@ -55,14 +54,7 @@ public class BeltConveorMove : MonoBehaviour
 
             if (deletTime >= limtTime)
             {
-                for (int i=0;i<2;i++)
-                {
-                    tobira[i].SetActive(true);
-
-                    saka[i].SetActive(false);
-                }
-
-                
+                SetActiveSakaTobira(true, true, false, false);
 
                 //右から左に
                 if (areaX[0] < areaX[1])
@@ -94,10 +86,7 @@ public class BeltConveorMove : MonoBehaviour
                         //左に行く関数
                         LeftMove();
                     }
-                }
-
-               
-                
+                }  
             }
         }
     }
@@ -120,8 +109,7 @@ public class BeltConveorMove : MonoBehaviour
     void RightMove()
     {
         //移動
-        transform.Translate(0.1f, 0,  0);
-
+        transform.Translate(0.1f, 0, 0);
 
         //目的地に着いたら止まる
         if (this.transform.position.x >= areaX[nextAreaNum - 1])
@@ -129,15 +117,21 @@ public class BeltConveorMove : MonoBehaviour
             oldAreaNum = nextAreaNum;
             nextAreaNum++;
 
+            SetActiveSakaTobira(true, false, true, false);
+
             //もしnextAreaNumがstageAreaNumを超えたら戻す
             if (nextAreaNum > areaNum)
             {
-                nextAreaNum -= 2;
+                nextAreaNum -= areaNum-1;
+
+                if (areaX[0] > areaX[1])
+                {
+                    SetActiveSakaTobira(false,true,false,true);
+                }
             }
+
             isHitFlag = false;
             deletTime = 0.0f;
-            tobira[0].SetActive(false);
-            saka[0].SetActive(true);
         }
     }
 
@@ -152,15 +146,30 @@ public class BeltConveorMove : MonoBehaviour
             oldAreaNum = nextAreaNum;
             nextAreaNum--;
 
+            SetActiveSakaTobira(false, true, false, true);
+
             //もしnextAreaNumが0を超えたら戻す
             if (nextAreaNum == 0)
             {
-                nextAreaNum += 2;
+                nextAreaNum += areaNum-1;
+
+                if (areaX[0] < areaX[1])
+                {
+                    SetActiveSakaTobira(true, false, true, false);
+                }
             }
+
             isHitFlag = false;
             deletTime = 0.0f;
-            tobira[1].SetActive(false);
-            saka[1].SetActive(true);
         }
+    }
+
+
+    void SetActiveSakaTobira(bool a,bool b,bool c,bool d)
+    {
+        tobira[0].SetActive(a);
+        tobira[1].SetActive(b);
+        saka[0].SetActive(c);
+        saka[1].SetActive(d);
     }
 }
