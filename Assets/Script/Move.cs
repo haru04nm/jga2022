@@ -6,7 +6,10 @@ using UnityEngine.InputSystem;
 public class Move : MonoBehaviour
 {
     float speed = 10f;
-    float jumppower = 10f;
+
+    [SerializeField]
+    float jumppower;
+
     bool leftFlag = false;
     bool jumpFlag = false;
     bool groundFlag = false;
