@@ -242,8 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaX: []
   areaNum: 0
-  tobira: []
-  saka: []
+  leftOrRightDoor: []
 --- !u!65 &7172278488083358003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -460,7 +459,7 @@ GameObject:
   - component: {fileID: 7172278488379983673}
   - component: {fileID: 7172278488379983674}
   m_Layer: 0
-  m_Name: "\u53F3\u4E0B\u304C\u308A\u5742"
+  m_Name: "\u53F3\u5742"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,7 +554,7 @@ GameObject:
   - component: {fileID: 7172278488458236870}
   - component: {fileID: 7172278488458236871}
   m_Layer: 0
-  m_Name: "\u5DE6\u4E0B\u304C\u308A\u5742"
+  m_Name: "\u5DE6\u5742"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

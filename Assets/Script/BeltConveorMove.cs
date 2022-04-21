@@ -13,35 +13,49 @@ public class BeltConveorMove : MonoBehaviour
     [SerializeField]
     int areaNum;
 
+    [SerializeField]
+    string[] leftOrRightDoor; 
+
     bool isHitFlag=false;
 
     float deletTime;
 
-    Time time;
-
-    [SerializeField]
     GameObject[] tobira;
 
-    [SerializeField]
     GameObject[] saka;
 
     float limtTime;
 
     private void Start()
     {
-        for (int x=0; x<2; x++)
+        tobira= new GameObject[2];
+        saka = new GameObject[2];
+
+        tobira[0] = GameObject.Find("左出入口").gameObject;
+        tobira[1] = GameObject.Find("右出入口").gameObject;
+        saka[0] = GameObject.Find("左坂").gameObject;
+        saka[1] = GameObject.Find("右坂").gameObject;
+
+        for (int x = 0; x < 2; x++)
         {
-            SetActiveSakaTobira(true, true, false, false); 
+            SetActiveSakaTobira(true, true, false, false);
         }
 
         if (areaX[0] < areaX[1])
         {
-            SetActiveSakaTobira(true, false, false, false);
+            SetActiveSakaTobira(true, false, false, false); 
+            oldAreaNum = -areaNum;
         }
-        
+
         if (areaX[0] > areaX[1])
         {
             SetActiveSakaTobira(false, true, false, false);
+            oldAreaNum = areaNum;
+        }
+
+        if (leftOrRightDoor.Length!=areaNum)
+        {
+            Debug.LogError("数合わせんかい!!");
         }
     }
 
@@ -117,17 +131,20 @@ public class BeltConveorMove : MonoBehaviour
             oldAreaNum = nextAreaNum;
             nextAreaNum++;
 
-            SetActiveSakaTobira(true, false, true, false);
-
             //もしnextAreaNumがstageAreaNumを超えたら戻す
             if (nextAreaNum > areaNum)
             {
-                nextAreaNum -= areaNum-1;
+                nextAreaNum -= 2;
+            }
 
-                if (areaX[0] > areaX[1])
-                {
-                    SetActiveSakaTobira(false,true,false,true);
-                }
+            if (leftOrRightDoor[nextAreaNum-1] == ("左"))
+            {
+                SetActiveSakaTobira(false, true, false, true);
+            }
+
+            if (leftOrRightDoor[nextAreaNum - 1] == ("右"))
+            {
+                SetActiveSakaTobira(true, false, true, false);
             }
 
             isHitFlag = false;
@@ -146,17 +163,20 @@ public class BeltConveorMove : MonoBehaviour
             oldAreaNum = nextAreaNum;
             nextAreaNum--;
 
-            SetActiveSakaTobira(false, true, false, true);
-
             //もしnextAreaNumが0を超えたら戻す
             if (nextAreaNum == 0)
             {
-                nextAreaNum += areaNum-1;
+                nextAreaNum += 2;
+            }
 
-                if (areaX[0] < areaX[1])
-                {
-                    SetActiveSakaTobira(true, false, true, false);
-                }
+            if (leftOrRightDoor[nextAreaNum - 1] ==("左"))
+            {
+                SetActiveSakaTobira(false, true, false, true);
+            }
+            
+            if (leftOrRightDoor[nextAreaNum - 1] ==("右"))
+            {
+                SetActiveSakaTobira(true, false, true, false);
             }
 
             isHitFlag = false;
