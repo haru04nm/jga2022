@@ -43,13 +43,13 @@ public class BeltConveorMove : MonoBehaviour
 
         if (areaX[0] < areaX[1])
         {
-            SetActiveSakaTobira(true, false, false, false); 
+            SetActiveSakaTobira(false, false, false, false); 
             oldAreaNum = -areaNum;
         }
 
         if (areaX[0] > areaX[1])
         {
-            SetActiveSakaTobira(false, true, false, false);
+            SetActiveSakaTobira(false, false, false, false);
             oldAreaNum = areaNum;
         }
 
