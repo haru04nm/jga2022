@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class ElevatorMove : MonoBehaviour
 {
-    int nextAreaNum = 1;
-    int oldAreaNum;
-
     [SerializeField]
     float[] areaY;
 
     [SerializeField]
     int stageAreaNum;
-
-    bool isHitFlag = false;
-
-    float deletTime;
-
-    Time time;
 
     [SerializeField]
     GameObject tobira;
@@ -25,14 +16,20 @@ public class ElevatorMove : MonoBehaviour
     [SerializeField]
     GameObject saka;
 
+    int nextAreaNum = 1;
+
+    int oldAreaNum;
+
+    float deletTime;
+
     float limtTime;
 
-    //GameObject child;
-
+    bool isHitFlag = false;
+    
     private void Start()
-    { 
-        saka.SetActive(false);
-        tobira.SetActive(false);
+    {
+        //1.tobira[0],2.saka[0];
+        SetActiveSakaTobira(false, false);
     }
 
     private void FixedUpdate()
@@ -44,9 +41,8 @@ public class ElevatorMove : MonoBehaviour
 
             if (deletTime >= limtTime)
             {
-                tobira.SetActive(true);
-
-                saka.SetActive(false);
+                //1.tobira[0],2.saka[0];
+                SetActiveSakaTobira(true, false);
 
                 //â∫Ç©ÇÁè„Ç…
                 if (areaY[0] < areaY[1])
@@ -99,7 +95,7 @@ public class ElevatorMove : MonoBehaviour
     }
 
     void UpMove()
-    {
+    { 
         //à⁄ìÆ
         transform.Translate(0, 0.1f, 0);
         
@@ -114,15 +110,17 @@ public class ElevatorMove : MonoBehaviour
             {
                 nextAreaNum -= 2;
             }
+
             isHitFlag = false;
             deletTime = 0.0f;
-            tobira.SetActive(false);
-            saka.SetActive(true);
+
+            //1.tobira[0],2.saka[0];
+            SetActiveSakaTobira(false, true);
         }        
     }
 
     void DownMove()
-    { 
+    {
         //à⁄ìÆ
         transform.Translate(0, -0.1f, 0);
 
@@ -137,10 +135,18 @@ public class ElevatorMove : MonoBehaviour
             {
                 nextAreaNum += 2;
             }
+
             isHitFlag = false;
             deletTime = 0.0f;
-            tobira.SetActive(false);
-            saka.SetActive(true);
+
+            //1.tobira[0],2.saka[0];
+            SetActiveSakaTobira(false, true);
         }
+    }
+
+    void SetActiveSakaTobira(bool a,bool b)
+    {
+        tobira.SetActive(a);
+        saka.SetActive(b);
     }
 }

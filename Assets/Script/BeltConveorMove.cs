@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class BeltConveorMove : MonoBehaviour
 {
-    int nextAreaNum = 1;
-    int oldAreaNum;
-
+    
     [SerializeField]
     float[] areaX;
 
@@ -14,17 +12,21 @@ public class BeltConveorMove : MonoBehaviour
     int areaNum;
 
     [SerializeField]
-    string[] leftOrRightDoor; 
-
-    bool isHitFlag=false;
-
-    float deletTime;
+    string[] leftOrRightDoor;
 
     GameObject[] tobira;
 
     GameObject[] saka;
 
+    int nextAreaNum = 1;
+
+    int oldAreaNum;
+
+    float deletTime;
+
     float limtTime;
+    
+    bool isHitFlag=false;
 
     private void Start()
     {
@@ -38,17 +40,20 @@ public class BeltConveorMove : MonoBehaviour
 
         for (int x = 0; x < 2; x++)
         {
+            //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
             SetActiveSakaTobira(true, true, false, false);
         }
 
         if (areaX[0] < areaX[1])
         {
+            //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
             SetActiveSakaTobira(false, false, false, false); 
             oldAreaNum = -areaNum;
         }
 
         if (areaX[0] > areaX[1])
         {
+            //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
             SetActiveSakaTobira(false, false, false, false);
             oldAreaNum = areaNum;
         }
@@ -68,6 +73,7 @@ public class BeltConveorMove : MonoBehaviour
 
             if (deletTime >= limtTime)
             {
+                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
                 SetActiveSakaTobira(true, true, false, false);
 
                 //âEÇ©ÇÁç∂Ç…
@@ -139,11 +145,13 @@ public class BeltConveorMove : MonoBehaviour
 
             if (leftOrRightDoor[nextAreaNum-1] == ("ç∂"))
             {
+                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
                 SetActiveSakaTobira(false, true, false, true);
             }
 
             if (leftOrRightDoor[nextAreaNum - 1] == ("âE"))
             {
+                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
                 SetActiveSakaTobira(true, false, true, false);
             }
 
@@ -171,11 +179,13 @@ public class BeltConveorMove : MonoBehaviour
 
             if (leftOrRightDoor[nextAreaNum - 1] ==("ç∂"))
             {
+                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
                 SetActiveSakaTobira(false, true, false, true);
             }
             
             if (leftOrRightDoor[nextAreaNum - 1] ==("âE"))
             {
+                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
                 SetActiveSakaTobira(true, false, true, false);
             }
 
@@ -183,7 +193,6 @@ public class BeltConveorMove : MonoBehaviour
             deletTime = 0.0f;
         }
     }
-
 
     void SetActiveSakaTobira(bool a,bool b,bool c,bool d)
     {
