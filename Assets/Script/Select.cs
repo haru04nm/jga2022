@@ -15,7 +15,7 @@ public class Select : MonoBehaviour
 
     string nextSceneName;
 
-    /*
+    /*   変えない場合、名前を入れる！！
     readonly List<string> NotFadeScene = new List<string>
     {
         //"StageSelect",
