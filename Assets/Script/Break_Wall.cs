@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class Break_Wall : MonoBehaviour
 {
-    [SerializeField]
-    GameObject targetObjectName;
-
-
-
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject == targetObjectName)
+        if(collision.gameObject.tag == "Barrele")
         {
-
             Expload.exploadFlag = true;
             Destroy(this.gameObject);
 
-            Destroy(targetObjectName);
+            Destroy(collision.gameObject);
 
         }
     }
