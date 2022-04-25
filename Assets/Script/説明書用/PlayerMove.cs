@@ -13,12 +13,20 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rbody = GetComponent<Rigidbody>();
+        animator = transform.Find("Mesh Object").gameObject.GetComponent<Animator>();
+        body = GameObject.Find("Body").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    private void FixedUpdate()
+    {
+        rbody.velocity = new Vector3(2,0,0);
+
+        animator.SetFloat("Move", rbody.velocity.magnitude);
     }
 }
