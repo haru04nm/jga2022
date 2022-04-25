@@ -9,6 +9,7 @@ public class Throw_Rope : MonoBehaviour
     private float spring = 10.0f;
     private float distance;
 
+
     public static bool pushFlag = false;
     bool lineFlag = false;
     public static bool moveObjectFlag = false;
@@ -47,13 +48,15 @@ public class Throw_Rope : MonoBehaviour
         rbody = this.GetComponent<Rigidbody>();
         Aim = transform.Find("AimLine").gameObject;
         hitObject = null;
-
     }
 
     private void Update()
     {
 
         Vector3 dir = Aim.GetComponent<LineMove>().GetDirection().normalized;
+
+
+
 
 
         if (Physics.Raycast(head.transform.position, dir, out hit, 9f))
@@ -83,7 +86,9 @@ public class Throw_Rope : MonoBehaviour
         if (lineFlag)
         {
             this.lineRenderer.SetPosition(0, RightHand.transform.position);
+            this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
         }
+
 
         if (rightShoulderFlag == false && hitObject)
         {
@@ -129,8 +134,8 @@ public class Throw_Rope : MonoBehaviour
                     this.lineRenderer = this.gameObject.AddComponent<LineRenderer>();
                     this.lineRenderer.startWidth = 0.3f;
                     this.lineRenderer.endWidth = 0.3f;
-                    GetComponent<LineRenderer>().material.color = new Color32(148, 78, 48, 1);
-                    this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
+                    this.GetComponent<LineRenderer>().material.color = new Color32(148, 78, 48, 1);
+                    //this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
                 }
             }
 

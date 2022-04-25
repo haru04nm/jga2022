@@ -50,7 +50,7 @@ public class Barrel : MonoBehaviour
 
             //spotLightÅ@ON
             spotLight.SetActive(true);
-            spotLight.transform.position = new Vector3(transform.position.x, spotLight.transform.position.y, spotLight.transform.position.z);
+            spotLight.transform.position = new Vector3(transform.position.x, /*this.transform.position.y+*/spotLight.transform.position.y, spotLight.transform.position.z);
 
             mainLight.transform.rotation = new Quaternion(180, 30, 0, 0);
         }
