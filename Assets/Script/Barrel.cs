@@ -9,6 +9,8 @@ public class Barrel : MonoBehaviour
 
     float count;
 
+    float posY;
+
     [SerializeField]
     GameObject spotLight;
 
@@ -19,17 +21,13 @@ public class Barrel : MonoBehaviour
 
     Rigidbody rb;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     { 
         rb= this.gameObject.GetComponent<Rigidbody>();
         count += Time.deltaTime;
+
+       
 
         //spotLight　OFF
         //spotLight.SetActive(false);
@@ -38,19 +36,20 @@ public class Barrel : MonoBehaviour
 
         if(oldPosX != transform.position.x)
         {
+            posY = this.transform.position.y + 5;
 
             if (count >= 1.0f)
             {
                 //コントローラー振動
-                StartVibration(0.1f, 0.7f, 1f);
+                StartVibration(0.5f, 0.5f, 1f);
                 count=0.0f; 
             }
             
-            rb.velocity = new Vector3(Mathf.Clamp((rb.velocity.x * speed),-speed,speed),rb.velocity.y, rb.velocity.z);
+            //rb.velocity = new Vector3(Mathf.Clamp((rb.velocity.x * speed),-speed,speed),rb.velocity.y, rb.velocity.z);
 
             //spotLight　ON
             spotLight.SetActive(true);
-            spotLight.transform.position = new Vector3(transform.position.x, /*this.transform.position.y+*/spotLight.transform.position.y, spotLight.transform.position.z);
+            spotLight.transform.position = new Vector3(transform.position.x,posY , spotLight.transform.position.z);
 
             mainLight.transform.rotation = new Quaternion(180, 30, 0, 0);
         }

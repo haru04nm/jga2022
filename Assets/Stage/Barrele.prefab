@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 6035204567131846661}
   - component: {fileID: 6035204567131846660}
   - component: {fileID: 8817367367670164900}
-  - component: {fileID: -4234634790784011864}
   m_Layer: 12
   m_Name: Barrele
   m_TagString: Barrele
@@ -160,16 +159,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spotLight: {fileID: 0}
   mainLight: {fileID: 0}
---- !u!114 &-4234634790784011864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6036969954189686945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7edbc9893223f214cb6983beaf33afa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explode: {fileID: 0}
