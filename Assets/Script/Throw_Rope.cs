@@ -35,7 +35,6 @@ public class Throw_Rope : MonoBehaviour
     GameObject hitObject;
 
     GameObject beforeHit;
-    //private Action _action;
 
     [SerializeField]
     Stage_Clear flag;
@@ -56,9 +55,6 @@ public class Throw_Rope : MonoBehaviour
         Vector3 dir = Aim.GetComponent<LineMove>().GetDirection().normalized;
 
 
-
-
-
         if (Physics.Raycast(head.transform.position, dir, out hit, 9f))
         {
             Debug.DrawRay(head.transform.position, dir * hit.distance, Color.yellow);
@@ -77,12 +73,11 @@ public class Throw_Rope : MonoBehaviour
                     hitKinematic = hitObject.GetComponent<Rigidbody>().isKinematic;
 
                     hitObject.GetComponent<Rigidbody>().isKinematic = false;
-
                 }
             }
         }
 
-        // ボタンを押されている間だけラインレンダラーの始点を更新し続ける
+        // ボタンが押されている間、ラインレンダラーを更新し続ける
         if (lineFlag)
         {
             this.lineRenderer.SetPosition(0, RightHand.transform.position);
@@ -96,13 +91,13 @@ public class Throw_Rope : MonoBehaviour
 
             pushFlag = false;
             Aim.SetActive(true);
+
             if(hitObject.GetComponent<Rigidbody>() != null)
             {
                 hitObject.GetComponent<Rigidbody>().isKinematic = hitKinematic;
-
             }
-            hitObject = null;
-            beforeHit = null;
+
+            
         }
 
     }
@@ -144,6 +139,8 @@ public class Throw_Rope : MonoBehaviour
         else
         {
             lineFlag = false;
+            hitObject = null;
+            beforeHit = null;
             moveObjectFlag = false;
             Destroy(this.springJoint);
             Destroy(this.lineRenderer);
@@ -170,6 +167,5 @@ public class Throw_Rope : MonoBehaviour
             animator.SetBool("ThrowFlag", false);
         }
     }
-    
 
 }
