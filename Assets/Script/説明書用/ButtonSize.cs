@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonSize : MonoBehaviour
 {
+    public GameObject Image;
+
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Image を非表示
+        Image.SetActive(false);
+
         var size = GetComponent<RectTransform>();
 
         /*
@@ -23,6 +29,7 @@ public class ButtonSize : MonoBehaviour
             size.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 5);
 
             //Image を表示
+            Image.SetActive(true);
         }
         else if(別が選択されたら)
 
@@ -31,6 +38,7 @@ public class ButtonSize : MonoBehaviour
             size.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 3);
 
             //Image を非表示
+            Image.SetActive(false);
         }
         */
     }
