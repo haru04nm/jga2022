@@ -232,6 +232,10 @@ PrefabInstance:
       propertyPath: flag
       value: 
       objectReference: {fileID: 2516339585790572551, guid: 647b1d2d809aa7d47801722adb420926, type: 3}
+    - target: {fileID: 1183945713921256461, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
+      propertyPath: jumppower
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1620471811593971289, guid: 6caed98528eaae74d9f36371f8fc7328, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1615,8 +1619,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c257840e4447a1b4c9d1d213c71ab3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door1: {fileID: 711389304}
-  door2: {fileID: 59713585}
+  door:
+  - {fileID: 711389304}
+  - {fileID: 59713585}
+  doorNum: 2
+  thornNum: 0
 --- !u!65 &1600230671
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2144,7 +2151,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DontMoveFloor
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -8764701422363589767, guid: 02a7462ffb7f78c44a44fa5fb2fb7218, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 02a7462ffb7f78c44a44fa5fb2fb7218, type: 3}
 --- !u!1001 &3488363013576994830
 PrefabInstance:
@@ -2264,6 +2272,22 @@ PrefabInstance:
       objectReference: {fileID: 711389304}
     - target: {fileID: 6988712525672164599, guid: 1d6f8327b5d592d428d57e2fa0057846, type: 3}
       propertyPath: door2
+      value: 
+      objectReference: {fileID: 59713585}
+    - target: {fileID: 6988712525672164599, guid: 1d6f8327b5d592d428d57e2fa0057846, type: 3}
+      propertyPath: doorNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988712525672164599, guid: 1d6f8327b5d592d428d57e2fa0057846, type: 3}
+      propertyPath: door.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988712525672164599, guid: 1d6f8327b5d592d428d57e2fa0057846, type: 3}
+      propertyPath: door.Array.data[0]
+      value: 
+      objectReference: {fileID: 711389304}
+    - target: {fileID: 6988712525672164599, guid: 1d6f8327b5d592d428d57e2fa0057846, type: 3}
+      propertyPath: door.Array.data[1]
       value: 
       objectReference: {fileID: 59713585}
     m_RemovedComponents: []
