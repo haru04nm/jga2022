@@ -9,14 +9,12 @@ public class Move : MonoBehaviour
 
     [SerializeField]
     float jumppower;
-
     float oldPosX;
-    //float nowPosX;
 
     bool leftFlag = false;
     bool jumpFlag = false;
     bool groundFlag = false;
-    bool landigFlag; 
+    bool landingFlag;
 
     Rigidbody rbody;
     private Animator animator;
@@ -77,10 +75,9 @@ public class Move : MonoBehaviour
         animator.SetFloat("Move", rbody.velocity.magnitude);
 
 
-
         if (oldPosX != this.transform.position.x)
         {
-            audioSource.PlayOneShot(run);
+            //audioSource.PlayOneShot(run);
         }
 
         if (jumpFlag)
@@ -88,19 +85,25 @@ public class Move : MonoBehaviour
             jumpFlag = false;
             rbody.AddForce(new Vector3(0, jumppower), ForceMode.Impulse);
             animator.SetBool("JumpFlg", true);
+
+            landingFlag = true;
         }
 
         if (groundFlag)
         {
             animator.SetBool("JumpFlg", false);
-            landigFlag = true;
+
+            if (landingFlag)
+            {
+                //âπÇèoÇ∑
+                audioSource.PlayOneShot(landing);
+
+                landingFlag = false;
+            }
+
         }
 
-        if(landigFlag)
-        {
-            audioSource.PlayOneShot(landing);
-            landigFlag = false;
-        }
+        
     }
     /*
     private void OnTriggerStay(Collider other)
