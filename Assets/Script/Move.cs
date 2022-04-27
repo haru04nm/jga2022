@@ -20,6 +20,10 @@ public class Move : MonoBehaviour
     GameObject body;
     RaycastHit hit;
 
+    public AudioClip run;
+    AudioSource audioSource;
+
+
     const int LayerMask = ~(1 << 6);
 
     public bool LeftFlg
@@ -32,6 +36,7 @@ public class Move : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         animator = transform.Find("Mesh Object").gameObject.GetComponent<Animator>();
         body = GameObject.Find("Body").gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
