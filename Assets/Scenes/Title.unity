@@ -1229,6 +1229,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u64CD\u4F5C\u8AAC\u660E"
       objectReference: {fileID: 0}
+    - target: {fileID: 6838518524621981591, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e99af28dd253abd429e5eee29a088ad3, type: 3}
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
       value: 1
@@ -1430,6 +1434,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u30B9\u30BF\u30FC\u30C8"
       objectReference: {fileID: 0}
+    - target: {fileID: 6838518524621981591, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e99af28dd253abd429e5eee29a088ad3, type: 3}
     - target: {fileID: 6937387065186122797, guid: 0ac60c7122ec6f349987a73b470d3629, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
       value: 1
