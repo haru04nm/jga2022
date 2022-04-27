@@ -3369,6 +3369,18 @@ PrefabInstance:
       propertyPath: tobira.Array.data[1]
       value: 
       objectReference: {fileID: 2117647302}
+    - target: {fileID: 7172278488083358002, guid: b7271b6a1b4210c489fc49bd7269488b, type: 3}
+      propertyPath: leftOrRightDoor.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172278488083358002, guid: b7271b6a1b4210c489fc49bd7269488b, type: 3}
+      propertyPath: leftOrRightDoor.Array.data[0]
+      value: "\u53F3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172278488083358002, guid: b7271b6a1b4210c489fc49bd7269488b, type: 3}
+      propertyPath: leftOrRightDoor.Array.data[1]
+      value: "\u53F3"
+      objectReference: {fileID: 0}
     - target: {fileID: 7172278488083358012, guid: b7271b6a1b4210c489fc49bd7269488b, type: 3}
       propertyPath: m_RootOrder
       value: 2

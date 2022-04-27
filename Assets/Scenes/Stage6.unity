@@ -1078,6 +1078,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5895743006807956273, guid: b719f899abc23e341908cbe2d58954a3, type: 3}
+      propertyPath: barreleNum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5895743006807956279, guid: b719f899abc23e341908cbe2d58954a3, type: 3}
       propertyPath: m_Name
       value: Light
