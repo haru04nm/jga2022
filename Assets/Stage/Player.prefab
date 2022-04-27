@@ -218,7 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b022fb94e3dda7e489c2f982fbf617a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flag: {fileID: 2516339585790572551, guid: 647b1d2d809aa7d47801722adb420926, type: 3}
+  jumppower: 10
+  run: {fileID: 0}
 --- !u!114 &3534720906070958869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +317,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 852080dd-0629-48e8-8c1f-fedf9a9271a7
     m_ActionName: Player/Fire[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 865b779f-eb02-49c3-8784-ca47c4fe3bf8
+    m_ActionName: UI/Move[/XInputControllerWindows/leftStick,/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 469f18a6-e274-4eb5-ad9c-f03ec4a78edd
+    m_ActionName: UI/Submit[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e339b6d2-e4cd-4603-929c-d2addc353e2c
+    m_ActionName: UI/Close[/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

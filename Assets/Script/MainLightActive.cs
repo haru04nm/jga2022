@@ -19,7 +19,7 @@ public class MainLightActive : MonoBehaviour
 
         barrele[0] = GameObject.Find("Barrele").GetComponent<Barrel>();
 
-        if (barreleNum != 0)
+        if (barreleNum != 1)
         {
             for (int i=1;i<barreleNum;i++)
             {

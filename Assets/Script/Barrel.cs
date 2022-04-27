@@ -18,7 +18,7 @@ public class Barrel : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    { 
+    {
         //spotLightÅ@OFF
         spotLight.SetActive(false);
 
@@ -28,7 +28,7 @@ public class Barrel : MonoBehaviour
         {
             //spotLightÅ@ON
             spotLight.SetActive(true);
-            spotLight.transform.position = new Vector3(transform.position.x,spotLight.transform.position.y,spotLight.transform.position.z);
+            spotLight.transform.position = new Vector3(transform.position.x,transform.position.y+5,spotLight.transform.position.z);
 
             lightFlag = true;
         }

@@ -5,15 +5,13 @@ using UnityEngine;
 public class ElevatorMove : MonoBehaviour
 {
     [SerializeField]
-    float[] areaY;
-
-    [SerializeField]
     int stageAreaNum;
 
     [SerializeField]
+    float[] areaY;
+
     GameObject tobira;
 
-    [SerializeField]
     GameObject saka;
 
     int nextAreaNum = 1;
@@ -28,7 +26,10 @@ public class ElevatorMove : MonoBehaviour
     
     private void Start()
     {
-        //1.tobira[0],2.saka[0];
+        tobira = GameObject.Find("èoì¸å˚").gameObject;
+        saka= GameObject.Find("ç‚").gameObject;
+
+        //1.tobira,2.saka;
         SetActiveSakaTobira(false, false);
     }
 
