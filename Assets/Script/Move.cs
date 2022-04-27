@@ -10,9 +10,13 @@ public class Move : MonoBehaviour
     [SerializeField]
     float jumppower;
 
+    float oldPosX;
+    //float nowPosX;
+
     bool leftFlag = false;
     bool jumpFlag = false;
     bool groundFlag = false;
+    bool landigFlag; 
 
     Rigidbody rbody;
     private Animator animator;
@@ -20,7 +24,12 @@ public class Move : MonoBehaviour
     GameObject body;
     RaycastHit hit;
 
-    public AudioClip run;
+    [SerializeField]
+    AudioClip run;
+
+    [SerializeField]
+    AudioClip landing;
+
     AudioSource audioSource;
 
 
@@ -55,6 +64,9 @@ public class Move : MonoBehaviour
         }
         */
 
+        oldPosX = this.gameObject.transform.position.x;
+
+
     }
 
 
@@ -63,6 +75,13 @@ public class Move : MonoBehaviour
         rbody.velocity = new Vector3(_moveInputValue.x * speed, rbody.velocity.y, 0);
 
         animator.SetFloat("Move", rbody.velocity.magnitude);
+
+
+
+        if (oldPosX != this.transform.position.x)
+        {
+            audioSource.PlayOneShot(run);
+        }
 
         if (jumpFlag)
         {
@@ -74,6 +93,13 @@ public class Move : MonoBehaviour
         if (groundFlag)
         {
             animator.SetBool("JumpFlg", false);
+            landigFlag = true;
+        }
+
+        if(landigFlag)
+        {
+            audioSource.PlayOneShot(landing);
+            landigFlag = false;
         }
     }
     /*
@@ -94,12 +120,12 @@ public class Move : MonoBehaviour
 
         if (_moveInputValue.sqrMagnitude == 0.0f) return;
 
+
         bool postFlg = leftFlag;
         leftFlag = false;
         if (_moveInputValue.x < 0)
         {
             leftFlag = true;
-            
         }
 
         if(postFlg != leftFlag)
