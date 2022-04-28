@@ -36,10 +36,15 @@ public class Throw_Rope : MonoBehaviour
 
     GameObject beforeHit;
 
-    GameObject sphere;
+    //GameObject sphere;
 
     [SerializeField]
     Stage_Clear flag;
+
+    [SerializeField]
+    AudioClip throwSound;
+
+    AudioSource audioSource;
 
     bool hitKinematic;
 
@@ -48,8 +53,9 @@ public class Throw_Rope : MonoBehaviour
         animator = transform.Find("Mesh Object").gameObject.GetComponent<Animator>();
         rbody = this.GetComponent<Rigidbody>();
         Aim = transform.Find("AimLine").gameObject;
-        sphere = GameObject.Find("Sphere").gameObject;
+        //sphere = GameObject.Find("Sphere").gameObject;
         hitObject = null;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -68,6 +74,7 @@ public class Throw_Rope : MonoBehaviour
                 anchorTarget = dir * hit.distance;
                 distance = Vector3.Distance(head.transform.position, hit.point);    // ‹——£ŒvŽZ
                 Aim.SetActive(false);
+                audioSource.PlayOneShot(throwSound);
 
                 hitObject = hit.collider.gameObject;
 
@@ -134,8 +141,8 @@ public class Throw_Rope : MonoBehaviour
                     //this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
                 }
 
-                sphere.SetActive(true);
-                sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
+                //sphere.SetActive(true);
+                //sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
             }
         }
         else
