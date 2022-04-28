@@ -15,6 +15,7 @@ public class Move : MonoBehaviour
     bool leftFlag = false;
     bool jumpFlag = false;
     bool groundFlag = false;
+    bool jumpSoundFlag;
 
     Rigidbody rbody;
     private Animator animator;
@@ -27,6 +28,9 @@ public class Move : MonoBehaviour
 
     [SerializeField]
     AudioClip landing;
+
+    [SerializeField]
+    AudioClip jump;
 
     AudioSource audioSource;
 
@@ -95,12 +99,19 @@ public class Move : MonoBehaviour
             rbody.AddForce(new Vector3(0, jumppower), ForceMode.Impulse);
             animator.SetBool("JumpFlg", true);
 
+            jumpSoundFlag = true;
         }
 
         if (groundFlag)
         {
             animator.SetBool("JumpFlg", false);
 
+            if(jumpSoundFlag)
+            {
+                audioSource.PlayOneShot(jump);
+
+                jumpSoundFlag = false;
+            }
             // íÖínÇµÇΩèuä‘Ç…SEñ¬ÇÁÇ∑
             if (rbody.velocity.y < 0 )
             {

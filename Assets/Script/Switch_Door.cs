@@ -22,9 +22,15 @@ public class Switch_Door : MonoBehaviour
 
     bool switchActive;
 
+    AudioSource audioSource;
+
+    [SerializeField]
+    AudioClip switchSound;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         blueFlag = false;
         redFlag = true;
         switchActive = false;
@@ -61,6 +67,9 @@ public class Switch_Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        audioSource.PlayOneShot(switchSound);
+
+
         switchActive = true;
 
         redFlag = !redFlag;
