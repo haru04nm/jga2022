@@ -78,12 +78,18 @@ public class Switch_Door : MonoBehaviour
                     door[i].gameObject.SetActive(blueFlag);
                 }
             }
-        }
 
-        foreach (var i in thorn)
+            
+        }  
+        
+        if (thornNum != 0)
         {
-            i.SetActive(false);
+            foreach (var i in thorn)
+            {
+                i.SetActive(false);
+            }
         }
+        
     }
 
     public bool IsSwitchActive

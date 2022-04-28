@@ -35,13 +35,16 @@ public class MainLightActive : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        int count = 0;
         for (int i=0;i<barreleNum;i++)
         {
             if (barrele[i].GetLightFlag)
             {
                 mainLight.SetActive(false);
+                count++;
             }
-            else
+            
+            if(count == 0)
             {
                 mainLight.SetActive(true);
             }
