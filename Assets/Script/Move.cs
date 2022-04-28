@@ -10,11 +10,11 @@ public class Move : MonoBehaviour
     [SerializeField]
     float jumppower;
     float oldPosX;
+    float runSound;
 
     bool leftFlag = false;
     bool jumpFlag = false;
     bool groundFlag = false;
-    bool landingFlag;
 
     Rigidbody rbody;
     private Animator animator;
@@ -49,7 +49,6 @@ public class Move : MonoBehaviour
     private void Update()
     {
         //RaycastHit hit;
-        groundFlag = Physics.Raycast(transform.position, Vector3.down, 0.3f, LayerMask);
 
 
         /*
@@ -62,7 +61,7 @@ public class Move : MonoBehaviour
         }
         */
 
-        oldPosX = this.gameObject.transform.position.x;
+        //oldPosX = this.gameObject.transform.position.x;
 
 
     }
@@ -70,40 +69,46 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 下方向にレイをとばす
+        groundFlag = Physics.Raycast(transform.position, Vector3.down, 0.3f, LayerMask);
+
+
         rbody.velocity = new Vector3(_moveInputValue.x * speed, rbody.velocity.y, 0);
 
         animator.SetFloat("Move", rbody.velocity.magnitude);
 
 
-        if (oldPosX != this.transform.position.x)
+        if (rbody.velocity.x < 0 || rbody.velocity.x > 0)
         {
-            //audioSource.PlayOneShot(run);
+            runSound += Time.deltaTime;
+            if (runSound >= 0.4 && groundFlag)
+            {
+                audioSource.PlayOneShot(run);
+                runSound = 0;
+            }
         }
 
+        
         if (jumpFlag)
         {
             jumpFlag = false;
             rbody.AddForce(new Vector3(0, jumppower), ForceMode.Impulse);
             animator.SetBool("JumpFlg", true);
 
-            landingFlag = true;
         }
 
         if (groundFlag)
         {
             animator.SetBool("JumpFlg", false);
 
-            if (landingFlag)
+            // 着地した瞬間にSE鳴らす
+            if (rbody.velocity.y < 0 )
             {
-                //音を出す
+                // 音を出す
                 audioSource.PlayOneShot(landing);
-
-                landingFlag = false;
             }
 
         }
-
-        
     }
     /*
     private void OnTriggerStay(Collider other)
@@ -131,6 +136,7 @@ public class Move : MonoBehaviour
             leftFlag = true;
         }
 
+        // 入力された方向に向きを変える
         if(postFlg != leftFlag)
         {
             transform.rotation = Quaternion.Euler(0, leftFlag ? -90 : 90, 0);
@@ -143,7 +149,7 @@ public class Move : MonoBehaviour
         {
             jumpFlag = true;
             //pushFlag = true;
-            groundFlag = false;
+            //groundFlag = false;
         }
     }
 }
