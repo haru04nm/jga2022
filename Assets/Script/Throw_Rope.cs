@@ -36,7 +36,7 @@ public class Throw_Rope : MonoBehaviour
 
     GameObject beforeHit;
 
-    //GameObject sphere;
+    GameObject sphere;
 
     [SerializeField]
     Stage_Clear flag;
@@ -53,7 +53,7 @@ public class Throw_Rope : MonoBehaviour
         animator = transform.Find("Mesh Object").gameObject.GetComponent<Animator>();
         rbody = this.GetComponent<Rigidbody>();
         Aim = transform.Find("AimLine").gameObject;
-        //sphere = GameObject.Find("Sphere").gameObject;
+        sphere = GameObject.Find("ÉçÅ[ÉvÇÃÇ©Ç¨í‹").gameObject;
         hitObject = null;
         audioSource = GetComponent<AudioSource>();
     }
@@ -97,7 +97,7 @@ public class Throw_Rope : MonoBehaviour
 
         if (rightShoulderFlag == false && hitObject)
         {
-            //animator.SetBool("ThrowFlag", false);
+            animator.SetBool("ThrowFlag", false);
 
             pushFlag = false;
             Aim.SetActive(true);
@@ -141,8 +141,8 @@ public class Throw_Rope : MonoBehaviour
                     //this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
                 }
 
-                //sphere.SetActive(true);
-                //sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
+                sphere.SetActive(true);
+                sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
             }
         }
         else
