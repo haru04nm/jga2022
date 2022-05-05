@@ -12,13 +12,28 @@ public class Stage_Clear : MonoBehaviour
     [SerializeField]
     List<GameObject> confettiList;
 
+    [SerializeField]
+    AudioClip clearSound;
+
+    AudioSource audioSource;
+
     public static bool clearFlag;
+
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject == player)
         {
             clearFlag = true;
+
+            // クリアしたときにSE流す
+            audioSource.PlayOneShot(clearSound);
+
             player.GetComponent<PlayerInput>().actions.FindActionMap("Player").Disable();
 
             // クリアUI表示
