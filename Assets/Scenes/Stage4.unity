@@ -766,6 +766,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395577167031002525, guid: 4558acfa0c2a2bf4cb7666006f2cad3b, type: 3}
+      propertyPath: explode
+      value: 
+      objectReference: {fileID: 707619647}
+    - target: {fileID: 5395577167031002525, guid: 4558acfa0c2a2bf4cb7666006f2cad3b, type: 3}
       propertyPath: targetObjectName
       value: 
       objectReference: {fileID: 1906740645}
@@ -1256,6 +1260,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2374c7c0190130a4da6acfa063f81c72, type: 3}
+--- !u!1 &707619647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2130341664336185696, guid: 6779dc015c69cc646a85dae3ff257f03, type: 3}
+  m_PrefabInstance: {fileID: 2020880028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &711389304 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6941716070298073412, guid: 44a883eae6569f24d98363ae457ce327, type: 3}
@@ -1688,6 +1697,7 @@ MonoBehaviour:
   - {fileID: 59713585}
   doorNum: 2
   thornNum: 0
+  switchSound: {fileID: 0}
 --- !u!65 &1600230671
 BoxCollider:
   m_ObjectHideFlags: 0

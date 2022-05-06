@@ -711,7 +711,7 @@ PrefabInstance:
     - target: {fileID: 5395577167031002525, guid: 4558acfa0c2a2bf4cb7666006f2cad3b, type: 3}
       propertyPath: explode
       value: 
-      objectReference: {fileID: 1300382594}
+      objectReference: {fileID: 1966033706}
     - target: {fileID: 5395577167031002525, guid: 4558acfa0c2a2bf4cb7666006f2cad3b, type: 3}
       propertyPath: targetObjectName
       value: 
@@ -1714,6 +1714,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e69cd3e29f70e44a97502781a5a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1966033706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2130341664336185696, guid: 6779dc015c69cc646a85dae3ff257f03, type: 3}
+  m_PrefabInstance: {fileID: 236206167}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2104089811
 PrefabInstance:
   m_ObjectHideFlags: 0
