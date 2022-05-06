@@ -85,6 +85,7 @@ public class Move : MonoBehaviour
         if (rbody.velocity.x < 0 || rbody.velocity.x > 0)
         {
             runSound += Time.deltaTime;
+            // ˆê’èŽžŠÔ‚²‚Æ‚É‘«‰¹‚ð–Â‚ç‚·
             if (runSound >= 0.4 && groundFlag)
             {
                 audioSource.PlayOneShot(run);
