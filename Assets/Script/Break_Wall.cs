@@ -11,8 +11,9 @@ public class Break_Wall : MonoBehaviour
     {
         if(collision.gameObject.tag == "Barrele")
         {
-            Expload.exploadFlag = true;
             explode.gameObject.transform.parent = null;
+            Expload.exploadFlag = true;
+            
             Destroy(this.gameObject);
 
             Destroy(collision.gameObject);
