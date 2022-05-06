@@ -50,7 +50,7 @@ public class MainLightActive : MonoBehaviour
             }
         }
         
-        if (breakWall==null)
+        if (breakWall== null)
         {
             mainLight.SetActive(true);
         }

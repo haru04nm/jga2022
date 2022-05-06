@@ -15,7 +15,6 @@ public class Throw_Rope : MonoBehaviour
     public static bool moveObjectFlag = false;
     private bool rightShoulderFlag;
 
-
     [SerializeField]
     GameObject head;
 
@@ -56,6 +55,7 @@ public class Throw_Rope : MonoBehaviour
         sphere = GameObject.Find("ÉçÅ[ÉvÇÃÇ©Ç¨í‹").gameObject;
         hitObject = null;
         audioSource = GetComponent<AudioSource>();
+        sphere.SetActive(false);
     }
 
     private void Update()
@@ -143,6 +143,11 @@ public class Throw_Rope : MonoBehaviour
 
                 sphere.SetActive(true);
                 sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
+
+                if (hitObject.gameObject.layer == 12)
+                {
+                    sphere.transform.position = new Vector3(hitObject.transform.position.x, hitObject.transform.position.y, hitObject.transform.position.z);
+                }
             }
         }
         else
@@ -154,6 +159,7 @@ public class Throw_Rope : MonoBehaviour
             Destroy(this.springJoint);
             Destroy(this.lineRenderer);
             this.springJoint = null;
+            sphere.SetActive(false);
         }
     }
 
