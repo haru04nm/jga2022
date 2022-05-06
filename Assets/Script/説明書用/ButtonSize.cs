@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ButtonSize : MonoBehaviour
 {
+    private GameObject returnButton;
+
     //現在選択中のボタン
     private GameObject currentButton;
 
@@ -20,7 +22,8 @@ public class ButtonSize : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        buttonSize[0] = GameObject.Find("return").GetComponent<RectTransform>();
+        returnButton = GameObject.Find("return");
+        buttonSize[0] = returnButton.GetComponent<RectTransform>();
 
         buttonSize[0].SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 150);
         buttonSize[0].SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 30);
@@ -38,12 +41,15 @@ public class ButtonSize : MonoBehaviour
         //現在選択されているボタンを取得し、buttonに代入
         currentButton = EventSystem.current.currentSelectedGameObject;
 
-        currentButtonSize = currentButton.GetComponent<RectTransform>();
+        if(currentButton != returnButton)
+        {
+            currentButtonSize = currentButton.GetComponent<RectTransform>();
 
-        currentButton.GetComponentInChildren<Text>().enabled = false;
+            currentButton.GetComponentInChildren<Text>().enabled = false;
 
-        //ボタンのサイズ変更
-        currentButtonSize.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 170);
-        currentButtonSize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 85);
+            //ボタンのサイズ変更
+            currentButtonSize.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 170);
+            currentButtonSize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 85);
+        }
     }
 }
