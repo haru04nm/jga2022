@@ -13,6 +13,8 @@ public class PlayerMove : MonoBehaviour
 
     bool turnFlag;
 
+    bool roundFlag;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,29 +27,38 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (this.transform.position.x >= -14f && this.transform.position.x <= 14f)
+        /*
+        if(playerMoveFlag)
         {
-            move = turnFlag ? -moveNum : moveNum;
+            ‰º‹L‚Ìˆ—
+        }
 
-            transform.rotation = Quaternion.Euler(0, turnFlag ? -90 : 90, 0);
+        if(this.transform.position.x <= -14f)
+        {
+            playerMoveFlag = false;
+        }
+        */
 
-            rbody.velocity = new Vector3(move, 0, 0);
+        move = turnFlag ? -moveNum : moveNum;
 
-            animator.SetFloat("Move", rbody.velocity.magnitude);
+        transform.rotation = Quaternion.Euler(0, turnFlag ? -90 : 90, 0);
 
-            if (!turnFlag)
+        rbody.velocity = new Vector3(move, 0, 0);
+
+        animator.SetFloat("Move", rbody.velocity.magnitude);
+
+        if (!turnFlag)
+        {
+            if (this.transform.position.x >= 13f)
             {
-                if (this.transform.position.x >= 13f)
-                {
-                    turnFlag = true;
-                }
+                turnFlag = true;
             }
-            else 
+        }
+        else 
+        {
+            if (this.transform.position.x <= -13f)
             {
-                if (this.transform.position.x <= -13f)
-                {
-                    turnFlag = false;
-                }
+                turnFlag = false;
             }
         }
     }
