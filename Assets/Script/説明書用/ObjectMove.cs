@@ -8,38 +8,39 @@ public class ObjectMove : MonoBehaviour
 
     public static bool playerMoveFlag;
     public static bool barrelMoveFlag;
+    public static bool randomFlag;
 
     // Start is called before the first frame update
     void Start()
     {
         playerMoveFlag = false;
         barrelMoveFlag = false;
-
-        randomNum = Random.Range(0, 2);
+        randomFlag = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //randomNum = Random.Range(0, 2);
-
-        Debug.Log(randomNum);
-        Debug.Log("playerMoveFlag : " + playerMoveFlag);
-        Debug.Log("barrelMoveFlag : " + barrelMoveFlag);
-
-        if (randomNum == 0 && !playerMoveFlag && !barrelMoveFlag)
+        if (!randomFlag)
         {
-            playerMoveFlag = true;
-            barrelMoveFlag = false;
-        }
-        else if(randomNum == 1 && !playerMoveFlag && !barrelMoveFlag)
-        {
-            playerMoveFlag = false;
-            barrelMoveFlag = true;
+            randomNum = Random.Range(0, 2);
+
+            if (randomNum == 0 && !playerMoveFlag && !barrelMoveFlag)
+            {
+                playerMoveFlag = true;
+                barrelMoveFlag = false;
+            }
+            else if (randomNum == 1 && !playerMoveFlag && !barrelMoveFlag)
+            {
+                playerMoveFlag = false;
+                barrelMoveFlag = true;
+            }
+
+            randomFlag = true;
+
         }
     }
 
-    /*
     public bool IsPlayerMoveFlag
     {
         get
@@ -65,5 +66,17 @@ public class ObjectMove : MonoBehaviour
             barrelMoveFlag = value;
         }
     }
-    */
+
+    public bool IsRandomFlag
+    {
+        get
+        {
+            return randomFlag;
+        }
+
+        set
+        {
+            randomFlag = value;
+        }
+    }
 }
