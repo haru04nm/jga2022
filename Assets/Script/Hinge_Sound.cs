@@ -23,12 +23,16 @@ public class Hinge_Sound : MonoBehaviour
     private void FixedUpdate()
     {
         
-        hingeSoundTime += Time.deltaTime;
-
-        if ((rbody.velocity.x > 0.2f && hingeSoundTime >= 0.2) || (rbody.velocity.x < -0.2f && hingeSoundTime >= 0.2))
+        if(this.gameObject.GetComponent<Rigidbody>() != null)
         {
-            audioSource.PlayOneShot(hinge);
-            hingeSoundTime = 0;
+            hingeSoundTime += Time.deltaTime;
+
+            if ((rbody.velocity.x > 0.2f && hingeSoundTime >= 0.2) || (rbody.velocity.x < -0.2f && hingeSoundTime >= 0.2))
+            {
+                audioSource.PlayOneShot(hinge);
+                hingeSoundTime = 0;
+            }
+
         }
     }
 }
