@@ -24,6 +24,8 @@ public class Select : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log("nextSceneName:" + nextSceneName + "    FadeOut.IsFadeOut:"+ FadeOut.IsFadeOut);
+
         if (nextSceneName != "" && !FadeOut.IsFadeOut)
         {
             Stage_Clear.clearFlag = false;
