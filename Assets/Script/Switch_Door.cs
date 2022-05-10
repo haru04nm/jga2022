@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class Switch_Door : MonoBehaviour
 {
-    static bool redFlag;
-    static bool blueFlag;
-
-    static bool thornFlag;
-
-    [SerializeField]
-    GameObject[] door;
-
-    [SerializeField]
-    int doorNum;
-
     GameObject[] thorn;
 
     [SerializeField]
@@ -22,6 +11,11 @@ public class Switch_Door : MonoBehaviour
 
     bool switchActive;
 
+    bool plshFlag;
+
+    bool thornFlag;
+
+    //‰¹
     AudioSource audioSource;
 
     [SerializeField]
@@ -31,24 +25,10 @@ public class Switch_Door : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        blueFlag = false;
-        redFlag = true;
         switchActive = false;
         thornFlag = true;
-
-        if (doorNum!=0)
-        {
-            for (int i=0;i<doorNum;i++)
-            {
-                door[i].gameObject.SetActive(redFlag);
-
-                if (i%2==1)
-                {
-                    door[i].gameObject.SetActive(blueFlag);
-                }
-            }
-        }
-
+        plshFlag = false;
+   
         if (thornNum!=0)
         {
             thorn = new GameObject[thornNum];
@@ -69,28 +49,11 @@ public class Switch_Door : MonoBehaviour
     {
         audioSource.PlayOneShot(switchSound);
 
-
         switchActive = true;
 
-        redFlag = !redFlag;
-        blueFlag = !blueFlag;
+        plshFlag = true;
+
         thornFlag = !thornFlag;
-
-        if (doorNum != 0)
-        {
-            for (int i = 0; i < doorNum; i++)
-            {
-                door[i].gameObject.SetActive(redFlag);
-
-                if (i % 2 == 1)
-                {
-                    door[i].gameObject.SetActive(blueFlag);
-                }
-            }
-
-            
-        }  
-        
         if (thornNum != 0)
         {
             foreach (var i in thorn)
@@ -98,9 +61,7 @@ public class Switch_Door : MonoBehaviour
                 i.SetActive(false);
             }
         }
-        
     }
-
     public bool IsSwitchActive
     {
         get
@@ -112,5 +73,17 @@ public class Switch_Door : MonoBehaviour
             switchActive = value;
         }
     }
-    
+
+    public bool IsPushFlag
+    {
+        get
+        {
+            return plshFlag;
+        }
+
+        set
+        {
+            plshFlag = value;
+        }
+    }
 }

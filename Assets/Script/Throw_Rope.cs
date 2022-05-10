@@ -146,7 +146,7 @@ public class Throw_Rope : MonoBehaviour
 
                 if (hitObject.gameObject.layer == 12)
                 {
-                    sphere.transform.position = new Vector3(hitObject.transform.position.x, hitObject.transform.position.y, hitObject.transform.position.z);
+                    sphere.transform.position = new Vector3(hitObject.transform.position.x, hitObject.transform.position.y,gameObject.transform.position.z);
                 }
             }
         }
