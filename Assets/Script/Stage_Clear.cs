@@ -10,9 +10,6 @@ public class Stage_Clear : MonoBehaviour
     GameObject player;
 
     [SerializeField]
-    List<GameObject> confettiList;
-
-    [SerializeField]
     AudioClip clearSound;
 
     AudioSource audioSource;
@@ -43,11 +40,6 @@ public class Stage_Clear : MonoBehaviour
             // ÉNÉäÉAUIï\é¶
             //Select.Instance.ActiveClear();
             UIClear.Instance.Active();
-
-            foreach (var confetti in confettiList)
-            {
-                confetti.SetActive(true);
-            }
 
             //éÜêÅê·ON
             kami.SetActive(true);

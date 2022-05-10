@@ -143,11 +143,6 @@ public class Throw_Rope : MonoBehaviour
 
                 sphere.SetActive(true);
                 sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
-
-                if (hitObject.gameObject.layer == 12)
-                {
-                    sphere.transform.position = new Vector3(hitObject.transform.position.x, hitObject.transform.position.y,gameObject.transform.position.z);
-                }
             }
         }
         else
@@ -160,6 +155,11 @@ public class Throw_Rope : MonoBehaviour
             Destroy(this.lineRenderer);
             this.springJoint = null;
             sphere.SetActive(false);
+        }
+        
+        if (hitObject && hitObject.gameObject.layer == 12)
+        {
+            sphere.transform.position = new Vector3(hitObject.transform.position.x, hitObject.transform.position.y,gameObject.transform.position.z);
         }
     }
 

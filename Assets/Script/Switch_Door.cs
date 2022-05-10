@@ -47,6 +47,7 @@ public class Switch_Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("!");
         audioSource.PlayOneShot(switchSound);
 
         switchActive = true;
