@@ -19,10 +19,14 @@ public class Stage_Clear : MonoBehaviour
 
     public static bool clearFlag;
 
+    GameObject kami;
+
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        kami = GameObject.Find("Ž†á").gameObject;
+        kami.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,6 +48,9 @@ public class Stage_Clear : MonoBehaviour
             {
                 confetti.SetActive(true);
             }
+
+            //Ž†áON
+            kami.SetActive(true);
         }
     }
 
