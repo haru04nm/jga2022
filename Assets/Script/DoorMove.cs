@@ -27,14 +27,13 @@ public class DoorMove : MonoBehaviour
                 translate = -0.05f;
             }
 
-            else if (transform.position.z<=0)
+            if (transform.position.z<=0)
             {
                 goalPos=4.0f;
                 translate = 0.05f;
             }
 
-            kDoorMove(goalPos, translate);
-            button.IsPushFlag = false;
+            kDoorMove(goalPos, translate);  
         }
     }
 
@@ -44,6 +43,7 @@ public class DoorMove : MonoBehaviour
 
         if (transform.position.z==g)
         {
+            button.IsPushFlag = false;
             return;
         }
     }
