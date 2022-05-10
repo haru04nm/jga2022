@@ -6,8 +6,6 @@ public class FadeOut : MonoBehaviour
 {
     AudioSource audioSource;
 
-    public bool IsFade;
-
     public double FadeOutSeconds = 1.0f;
 
     public static bool IsFadeOut;
