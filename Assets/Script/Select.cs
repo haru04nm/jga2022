@@ -24,8 +24,6 @@ public class Select : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("nextSceneName:" + nextSceneName + "    FadeOut.IsFadeOut:"+ FadeOut.IsFadeOut);
-
         if (nextSceneName != "" && !FadeOut.IsFadeOut)
         {
             Stage_Clear.clearFlag = false;
@@ -35,6 +33,11 @@ public class Select : MonoBehaviour
 
     public void Button(string sceneName)
     {
+        if(player)
+        {
+            player.GetComponent<PlayerInput>().actions.FindActionMap("UI").Disable();
+        }
+
         FadeOut.IsFadeOut = true;
         nextSceneName = sceneName;
     }
@@ -61,8 +64,8 @@ public class Select : MonoBehaviour
         if(player)
         {
             player.GetComponent<PlayerInput>().actions.FindActionMap("Player").Disable();
+            player.GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
         }
-
     }
 
     public void Deactive()
