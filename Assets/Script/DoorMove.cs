@@ -6,10 +6,10 @@ public class DoorMove : MonoBehaviour
 {
     Switch_Door button;
 
-    float goalPos=0;
+    //float goalPos=0;
 
-    float translate = 0;
-    float totalPos = 0.0f;
+    //float translate = 0;
+    //float totalPos = 0.0f;
 
     const float ActivePosZ = 0.0f;
     const float DeactivePosZ = 4.0f;
