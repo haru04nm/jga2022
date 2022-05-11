@@ -9,11 +9,11 @@ public class ElevatorMove : MonoBehaviour
 
     [SerializeField]
     float[] areaY;
-
+    
     GameObject tobira;
 
     GameObject saka;
-
+    
     int nextAreaNum = 1;
 
     int oldAreaNum;
@@ -23,12 +23,12 @@ public class ElevatorMove : MonoBehaviour
     float limtTime;
 
     bool isHitFlag = false;
-    
+
     private void Start()
     {
         tobira = GameObject.Find("èoì¸å˚").gameObject;
         saka= GameObject.Find("ç‚").gameObject;
-
+        
         //1.tobira,2.saka;
         SetActiveSakaTobira(false, false);
     }
@@ -48,6 +48,7 @@ public class ElevatorMove : MonoBehaviour
                 //â∫Ç©ÇÁè„Ç…
                 if (areaY[0] < areaY[1])
                 {
+
                     if (nextAreaNum > oldAreaNum)
                     {
                         //è„ÇËä÷êî
@@ -86,7 +87,10 @@ public class ElevatorMove : MonoBehaviour
         {
             isHitFlag = true;
 
-            limtTime = 2.5f;
+            if (collision.gameObject.tag == "Barrele")
+            {
+                limtTime = 2.5f;
+            }
 
             if (collision.gameObject.tag == "Player" )
             {
