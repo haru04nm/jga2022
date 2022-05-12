@@ -88,6 +88,7 @@ public class Move : MonoBehaviour
             // àÍíËéûä‘Ç≤Ç∆Ç…ë´âπÇñ¬ÇÁÇ∑
             if (runSound >= 0.4 && groundFlag)
             {
+                
                 audioSource.PlayOneShot(run);
                 runSound = 0;
             }
@@ -114,10 +115,11 @@ public class Move : MonoBehaviour
                 jumpSoundFlag = false;
             }
             // íÖínÇµÇΩèuä‘Ç…SEñ¬ÇÁÇ∑
-            if (rbody.velocity.y < 0 )
+            if (rbody.velocity.y > 5)
             {
                 // âπÇèoÇ∑
                 audioSource.PlayOneShot(landing);
+                Debug.Log("!!");
             }
 
         }
