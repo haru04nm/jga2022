@@ -28,6 +28,7 @@ public class Break_Test : MonoBehaviour
 
             if (collision.gameObject.tag == "Barrele")
             {
+                collision.gameObject.GetComponent<Barrel>().IsLightFlag = false;
                 Destroy(collision.gameObject);
             }
         }

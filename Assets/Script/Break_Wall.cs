@@ -16,6 +16,7 @@ public class Break_Wall : MonoBehaviour
             
             Destroy(this.gameObject);
 
+            collision.gameObject.GetComponent<Barrel>().IsLightFlag = false;
             Destroy(collision.gameObject);
 
         }

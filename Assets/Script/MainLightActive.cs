@@ -9,7 +9,13 @@ public class MainLightActive : MonoBehaviour
 
     Barrel[] barrele;
 
-    GameObject mainLight;
+    List<int> moveBarreleIndex = new List<int>();
+
+    Light mainLight;
+    float lightStart;
+    float lightGoal;
+    float lightTime;
+    const float OperationTime = 0.2f;
 
     GameObject breakWall;
     // Start is called before the first frame update
@@ -27,7 +33,12 @@ public class MainLightActive : MonoBehaviour
             }
         }
 
-        mainLight = GameObject.Find("Directional Light").gameObject;
+        moveBarreleIndex.Clear();
+
+        mainLight = GameObject.Find("Directional Light").GetComponent<Light>();
+        lightStart = 0;
+        lightGoal = 0;
+        lightTime = 0;
 
         breakWall = GameObject.Find("Wall_break").gameObject;
     }
@@ -35,24 +46,74 @@ public class MainLightActive : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        int count = 0;
+        int count = moveBarreleIndex.Count;
+
         for (int i=0;i<barreleNum;i++)
         {
-            if (barrele[i].GetLightFlag)
+
+            //•Ç‚ª‰ó‚ê‚Ä‚È‚¢{’M‚ª“®‚¢‚Ä‚¢‚é‚Æ‚«
+            if (breakWall != null && barrele[i].IsLightFlag)
             {
-                mainLight.SetActive(false);
-                count++;
+                //ˆê‚Â‚Å‚à“®‚¢‚Ä‚¢‚È‚©‚Á‚½‚ç
+                if (!moveBarreleIndex.Contains(i))
+                {
+                    //{1‚·‚é
+                    moveBarreleIndex.Add(i);
+
+                    //‚à‚µ“®‚¢‚Ä‚¢‚é“zˆê‚Â‚Å‚à‚ ‚ê‚Î’iXˆÃ‚­‚·‚é
+                    if (moveBarreleIndex.Count == 1)
+                    {
+                        if (lightTime == 0.0f)
+                        {
+                            lightTime = OperationTime;
+                        }
+                        else
+                        {
+                            lightTime = OperationTime - lightTime;
+                        }
+
+                        lightStart = 1.0f;
+                        lightGoal = 0.0f;
+                    }
+                }
             }
-            
-            if(count == 0)
+
+            //ƒŠƒXƒg‚Ì’†g‚ª‚ ‚ê‚Î
+            else if(moveBarreleIndex.Contains(i))
             {
-                mainLight.SetActive(true);
+                //‚¯‚µ‚Ä‚¢‚­
+                moveBarreleIndex.Remove(i);
             }
         }
-        
-        if (breakWall== null)
+
+
+        //“®‚¢‚Ä‚¢‚é‚â‚Â‚à–³‚¯‚ê‚Î’iX–¾‚é‚­‚·‚é
+        if(count > 0 && moveBarreleIndex.Count == 0)
         {
-            mainLight.SetActive(true);
+            if (lightTime == 0.0f)
+            {
+                lightTime = OperationTime;
+            }
+            else
+            {
+                lightTime = OperationTime - lightTime;
+            }
+
+            lightStart = 0.0f;
+            lightGoal = 1.0f;
+        }
+
+
+        if (lightTime > 0)
+        {
+            lightTime -= Time.deltaTime;
+            if(lightTime < 0.0f)
+            {
+                lightTime = 0.0f;
+            }
+
+            //üŒ`•âŠ®‚µ–¾‚é‚­‚µ‚½‚èˆÃ‚­‚µ‚½‚è‚·‚é
+            mainLight.intensity = Mathf.Lerp(lightStart, lightGoal, (OperationTime - lightTime) / OperationTime);
         }
     }
 }
