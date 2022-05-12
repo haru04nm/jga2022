@@ -15,6 +15,7 @@ public class Move : MonoBehaviour
     bool leftFlag = false;
     bool jumpFlag = false;
     bool groundFlag = false;
+    bool oldGroundFlag = false;
     bool jumpSoundFlag;
 
     Rigidbody rbody;
@@ -49,27 +50,6 @@ public class Move : MonoBehaviour
         body = GameObject.Find("Body").gameObject;
         audioSource = GetComponent<AudioSource>();
     }
-
-    private void Update()
-    {
-        //RaycastHit hit;
-
-
-        /*
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f, LayerMask))
-        {
-            groundFlag = true;
-            //Debug.Log("!! " + hit.collider.name);
-            //Debug.DrawRay(transform.position, Vector3.down, Color.yellow);
-
-        }
-        */
-
-        //oldPosX = this.gameObject.transform.position.x;
-
-
-    }
-
 
     private void FixedUpdate()
     {
@@ -114,27 +94,18 @@ public class Move : MonoBehaviour
 
                 jumpSoundFlag = false;
             }
+
             // 着地した瞬間にSE鳴らす
-            if (rbody.velocity.y > 5)
+            if (oldGroundFlag!=groundFlag)
             {
                 // 音を出す
                 audioSource.PlayOneShot(landing);
                 Debug.Log("!!");
             }
-
         }
+        oldGroundFlag = groundFlag;
     }
-    /*
-    private void OnTriggerStay(Collider other)
-    {
-        groundFlag = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        groundFlag = false;
-    }
-    */
+    
     public void OnMove(InputAction.CallbackContext context)
     {
         // Moveアクションの入力取得
