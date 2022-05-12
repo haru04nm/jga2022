@@ -20,6 +20,7 @@ public class Switch_Door : MonoBehaviour
 
     [SerializeField]
     AudioClip switchSound;
+   
 
     private void Start()
     {

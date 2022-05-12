@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Domino_Sound : MonoBehaviour
 {
+    float soundNum;
+
     AudioSource audioSource;
 
     [SerializeField]
@@ -16,6 +18,12 @@ public class Domino_Sound : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        audioSource.PlayOneShot(dominoSound);
+        if(soundNum >= 1)
+        {
+            audioSource.PlayOneShot(dominoSound);
+
+        }
+
+        soundNum++;
     }
 }

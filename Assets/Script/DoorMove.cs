@@ -6,6 +6,11 @@ public class DoorMove : MonoBehaviour
 {
     Switch_Door button;
 
+    AudioSource audioSource;
+
+    [SerializeField]
+    AudioClip doorSound;
+
     //float goalPos=0;
 
     //float translate = 0;
@@ -22,6 +27,7 @@ public class DoorMove : MonoBehaviour
     void Start()
     {
         button = GameObject.Find("switch3").GetComponent<Switch_Door>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -43,6 +49,8 @@ public class DoorMove : MonoBehaviour
         {
             if (button.IsPushFlag)
             {
+                audioSource.PlayOneShot(doorSound);
+
                 time = OperationTime;
                 startZ = this.transform.position.z;
                 if (this.transform.position.z == ActivePosZ)
