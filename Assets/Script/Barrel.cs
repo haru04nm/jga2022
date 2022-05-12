@@ -24,7 +24,6 @@ public class Barrel : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         spotLight = this.transform.GetChild(1).gameObject;
         audioSource = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame

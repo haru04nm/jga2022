@@ -12,7 +12,6 @@ public class Break_Test : MonoBehaviour
         explode.GetComponent<Exploder>().enabled = false;
         explode.GetComponent<ParticleComponent>().enabled = false;
         explode.GetComponent<PseudoVolumetricComponent>().enabled = false;
-
     }
 
     private void OnCollisionEnter(Collision collision)

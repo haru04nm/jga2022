@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Select : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Select : MonoBehaviour
     GameObject player;
 
     string nextSceneName;
+
+    float waitTime = 0f;
 
     private void Awake()
     {
@@ -58,13 +61,16 @@ public class Select : MonoBehaviour
 
     public void Active()
     {
+        waitTime = 0f;
+
         EventSystem.current.SetSelectedGameObject(firstSelect);
         panel.SetActive(true);
 
         if(player)
         {
             player.GetComponent<PlayerInput>().actions.FindActionMap("Player").Disable();
-            player.GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
+
+            StartCoroutine("UI");
         }
     }
 
@@ -75,5 +81,12 @@ public class Select : MonoBehaviour
         {
             player.GetComponent<PlayerInput>().actions.FindActionMap("Player").Enable();
         }
+    }
+
+    IEnumerator UI()
+    {
+        yield return new WaitForSeconds(10);
+        player.GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
+        yield break;
     }
 }
