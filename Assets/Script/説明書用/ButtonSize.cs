@@ -14,6 +14,7 @@ public class ButtonSize : MonoBehaviour
     RectTransform[] buttonSize;
     RectTransform currentButtonSize;
 
+
     void Start()
     {
         buttonSize = new RectTransform[11]; 
