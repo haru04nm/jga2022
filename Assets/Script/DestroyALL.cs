@@ -4,29 +4,84 @@ using UnityEngine;
 
 public class DestroyALL : MonoBehaviour
 {
+    [SerializeField]
+    int barreleIndex;
+
+    [SerializeField]
+    int thornIndex;
+    
     GameObject other;
 
-    Break_Test taru;
+    Break_Test[] taru;
+
+    GameObject[] toge;
+
+    GameObject[] explode;
 
     private void Start()
     {
-        taru = GameObject.Find("Barrele").GetComponent<Break_Test>();
-    }
+        taru = new Break_Test[barreleIndex];
+        explode = new GameObject[barreleIndex];
+
+        if (barreleIndex != 0)
+        { 
+            for (int i=0;i<barreleIndex;i++)
+            {
+                taru[i] = GameObject.Find("Barrele").GetComponent<Break_Test>();
+
+                if (i != 0)
+                {
+                    taru[i] = GameObject.Find("Barrele (" + i + ")").GetComponent<Break_Test>();
+
+                }
+
+                explode[i] = taru[i].transform.Find("explode").gameObject;
+                explode[i].GetComponent<Exploder>().enabled = false;
+                explode[i].GetComponent<ParticleComponent>().enabled = false;
+                explode[i].GetComponent<PseudoVolumetricComponent>().enabled = false;
+            }
+        }
+
+        if (thornIndex != 0)
+        {
+            toge = new GameObject[thornIndex];
+
+            toge[0] = GameObject.Find("Toge").gameObject;
+
+            for (int i = 1; i < thornIndex; i++)
+            {
+                toge[i] = GameObject.Find("Toge (" + i + ")").gameObject;
+            }
+        }    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (taru.IsDestroyFlag)
+        for (int i = 0; i < barreleIndex;i++)
         {
-            taru.IsDestroyFlag = false;
-            other = taru.GetOther;
-
-            if (other.gameObject.tag == "Barrele")
+            if (taru[i].IsDestroyFlag)
             {
-                other.gameObject.GetComponent<Barrel>().IsLightFlag = false; 
-            }
+                taru[i].IsDestroyFlag = false;
+                other = taru[i].GetOther;
 
-            Destroy(other.gameObject);
+                explode[i].gameObject.transform.parent = null;
+
+                explode[i].GetComponent<Exploder>().enabled = true;
+                explode[i].GetComponent<ParticleComponent>().enabled = true;
+                explode[i].GetComponent<PseudoVolumetricComponent>().enabled = true;
+
+                if (other.gameObject.tag == "Barrele")
+                {
+                    other.gameObject.GetComponent<Barrel>().IsLightFlag = false; 
+                }
+
+                if (other.gameObject.tag != "Trap")
+                {
+                    Destroy(other.gameObject);
+                }
+
+                Destroy(taru[i].gameObject);
+            }
         }
     }
 }

@@ -20,14 +20,15 @@ public class Break_Test : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "trap" || collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "Trap" || collision.gameObject.tag == "Wall")
         {
+            /*
             explode.gameObject.transform.parent = null;
 
             explode.GetComponent<Exploder>().enabled = true;
             explode.GetComponent<ParticleComponent>().enabled = true;
             explode.GetComponent<PseudoVolumetricComponent>().enabled = true;
+            */
 
             destroyFlag = true;
 

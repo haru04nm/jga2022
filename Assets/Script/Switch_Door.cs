@@ -34,9 +34,11 @@ public class Switch_Door : MonoBehaviour
         {
             thorn = new GameObject[thornNum];
 
-            for (int i=0;i<thornNum;i++)
+            thorn[0] = GameObject.Find("Toge").gameObject;
+
+            for (int i=1;i<thornNum;i++)
             {
-                thorn[i] = GameObject.Find("Toge ("+(i+1)+")").gameObject;
+                thorn[i] = GameObject.Find("Toge ("+i+")").gameObject;
             }
         
             foreach(var i in thorn)

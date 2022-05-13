@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Elevator
   - Barrele
-  - trap
   - Wall
+  - Trap
   layers:
   - Default
   - TransparentFX
