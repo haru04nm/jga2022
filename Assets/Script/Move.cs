@@ -100,7 +100,6 @@ public class Move : MonoBehaviour
             {
                 // âπÇèoÇ∑
                 audioSource.PlayOneShot(landing);
-                Debug.Log("!!");
             }
         }
         oldGroundFlag = groundFlag;
