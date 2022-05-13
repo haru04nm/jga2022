@@ -52,7 +52,8 @@ public class DestroyALL : MonoBehaviour
             {
                 toge[i] = GameObject.Find("Toge (" + i + ")").gameObject;
             }
-        }    }
+        }  
+    }
 
     // Update is called once per frame
     void FixedUpdate()
