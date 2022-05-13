@@ -14,8 +14,13 @@ public class LineMove : MonoBehaviour
 
     int angleCount;
     float angle = 60;
+
     bool upFlag;
     bool downFlag;
+    bool downLFlag;
+    bool upLFlag;
+    bool maxFlag;
+    bool minFlag;
     
 
     
@@ -38,35 +43,51 @@ public class LineMove : MonoBehaviour
     {
 
         // 右向いているとき
-        if (upFlag && angleCount <= 50 && angleCount >= -20 && move.LeftFlg == false)
+        if (upFlag && angleCount <= 50 && angleCount >= -20 || minFlag && upFlag)
         {
             angleCount++;
             // RotateAround(中心の場所,軸,回転角度)
             this.transform.RotateAround(center.transform.position, Vector3.forward, angle * 0.025f);
             
         }
-        if (downFlag && angleCount >= -20 && angleCount <= 50 && move.LeftFlg == false)
+        if (downFlag && angleCount >= -20 && angleCount <= 50 || maxFlag&& downFlag)
         {
             angleCount--;
             this.transform.RotateAround(center.transform.position, Vector3.back, angle * 0.025f);
         }
 
         // 左向いているとき
-        if (upFlag && angleCount <= 50 && angleCount >= -20 && move.LeftFlg)
+        if (upLFlag && angleCount <= 50 && angleCount >= -20  || minFlag && upLFlag)
         {
             angleCount++;
             // RotateAround(中心の場所,軸,回転角度)
             this.transform.RotateAround(center.transform.position, Vector3.back, angle * 0.025f);
         }
-        if (downFlag && angleCount >= -20 && angleCount <= 50 && move.LeftFlg)
+        if (downLFlag && angleCount >= -20 && angleCount <= 50 || maxFlag && downLFlag)
         {
             angleCount--;
             this.transform.RotateAround(center.transform.position, Vector3.forward, angle * 0.025f);
         }
 
+        Debug.Log(angleCount);
         
+        if(angleCount >= 30)
+        {
+            maxFlag = true;
+        }
+        else
+        {
+            maxFlag = false;
+        }
 
-        
+        if(angleCount <= -20)
+        {
+            minFlag = true;
+        }
+        else
+        {
+            minFlag = false;
+        }
 
 
     }
@@ -84,20 +105,43 @@ public class LineMove : MonoBehaviour
 
         // angleCountが指定の範囲の場合のみキー入力を受け付ける
 
-        if (_moveInputValue.y > 0)
+        if(move.LeftFlg == false)
         {
-            upFlag = true;
+            if (_moveInputValue.y > 0)
+            {
+                upFlag = true;
+            }
+        }
+        if (move.LeftFlg == false)
+        {
+            if (_moveInputValue.y < 0)
+            {
+                downFlag = true;
+            }
+        }
+        if(move.LeftFlg)
+        {
+            if(_moveInputValue.y > 0)
+            {
+                upLFlag = true;
+            }
         }
 
-        if(_moveInputValue.y < 0)
+        if(move.LeftFlg)
         {
-            downFlag = true;
+            if (_moveInputValue.y < 0)
+            {
+                downLFlag = true;
+            }
         }
+        
 
         if (_moveInputValue.y==0)
         {
             upFlag = false;
             downFlag = false;
+            upLFlag = false;
+            downLFlag = false;
         }
     }
 
