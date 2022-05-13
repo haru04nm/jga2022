@@ -106,7 +106,7 @@ public class LineMove : MonoBehaviour
         */
 
 
-        Debug.Log(angleCount);
+
         
     }
 
