@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Break_Test : MonoBehaviour
 {
-    [SerializeField]
     GameObject explode;
+
+    GameObject other;
+
+    bool destroyFlag = false;
 
     private void Start()
     {
+        explode = GameObject.Find("explode").gameObject;
         explode.GetComponent<Exploder>().enabled = false;
         explode.GetComponent<ParticleComponent>().enabled = false;
         explode.GetComponent<PseudoVolumetricComponent>().enabled = false;
@@ -16,7 +20,8 @@ public class Break_Test : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "trap")
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "trap" || collision.gameObject.tag == "Wall")
         {
             explode.gameObject.transform.parent = null;
 
@@ -24,13 +29,30 @@ public class Break_Test : MonoBehaviour
             explode.GetComponent<ParticleComponent>().enabled = true;
             explode.GetComponent<PseudoVolumetricComponent>().enabled = true;
 
-            Destroy(this.gameObject);
+            destroyFlag = true;
 
-            if (collision.gameObject.tag == "Barrele")
-            {
-                collision.gameObject.GetComponent<Barrel>().IsLightFlag = false;
-                Destroy(collision.gameObject);
-            }
+            other = collision.gameObject;
+        }
+    }
+
+    public bool IsDestroyFlag
+    {
+        get
+        {
+            return destroyFlag;
+        }
+
+        set
+        {
+            destroyFlag = value;
+        }
+    }
+
+    public GameObject GetOther
+    {
+        get
+        {
+            return other;
         }
     }
 }

@@ -94,7 +94,6 @@ public class Throw_Rope : MonoBehaviour
             this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
         }
 
-
         if (rightShoulderFlag == false && hitObject)
         {
             animator.SetBool("ThrowFlag", false);
