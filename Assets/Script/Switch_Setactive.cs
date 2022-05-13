@@ -9,7 +9,6 @@ public class Switch_SetActive : MonoBehaviour
 
     void Start()
     {
-        //ahoakane hinnnyuutekamunyuu kusogorira
     }
 
     void FixedUpdate()
