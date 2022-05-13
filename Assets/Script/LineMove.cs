@@ -13,7 +13,8 @@ public class LineMove : MonoBehaviour
     Move move;
 
     int angleCount;
-    float angle = 60;
+    //float angle = 60;
+    const float Angle = 105;
 
     bool upFlag;
     bool downFlag;
@@ -41,7 +42,23 @@ public class LineMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        float ang = 0.0f;
+        if (upFlag && angleCount < 50)
+        {
+            angleCount++;
+            ang = Angle / 70;
+        }
+        if (downFlag && angleCount > -20)
+        {
+            angleCount--;
+            ang = -Angle / 70;
+        }
+        if(ang != 0.0f)
+        {
+            this.transform.RotateAround(center.transform.position, move.LeftFlg ? Vector3.back : Vector3.forward, ang);
+        }
 
+        /*
         // 右向いているとき
         if (upFlag && angleCount <= 50 && angleCount >= -20 || minFlag && upFlag)
         {
@@ -69,8 +86,6 @@ public class LineMove : MonoBehaviour
             this.transform.RotateAround(center.transform.position, Vector3.forward, angle * 0.025f);
         }
 
-        Debug.Log(angleCount);
-        
         if(angleCount >= 30)
         {
             maxFlag = true;
@@ -88,8 +103,11 @@ public class LineMove : MonoBehaviour
         {
             minFlag = false;
         }
+        */
 
 
+        Debug.Log(angleCount);
+        
     }
 
     public void OnLineMove(InputAction.CallbackContext context)
@@ -105,6 +123,17 @@ public class LineMove : MonoBehaviour
 
         // angleCountが指定の範囲の場合のみキー入力を受け付ける
 
+        upFlag = false;
+        downFlag = false;
+        if (_moveInputValue.y > 0)
+        {
+            upFlag = true;
+        }
+        else if (_moveInputValue.y < 0)
+        {
+            downFlag = true;
+        }
+        /*
         if(move.LeftFlg == false)
         {
             if (_moveInputValue.y > 0)
@@ -134,7 +163,6 @@ public class LineMove : MonoBehaviour
                 downLFlag = true;
             }
         }
-        
 
         if (_moveInputValue.y==0)
         {
@@ -143,6 +171,7 @@ public class LineMove : MonoBehaviour
             upLFlag = false;
             downLFlag = false;
         }
+        */
     }
 
 
