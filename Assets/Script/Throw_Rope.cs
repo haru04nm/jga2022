@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Throw_Rope : MonoBehaviour
 {
-    private float spring = 10.0f;
+    private float spring = 20.0f;
     private float distance;
 
 
@@ -14,7 +14,7 @@ public class Throw_Rope : MonoBehaviour
     bool lineFlag = false;
     public static bool moveObjectFlag = false;
     private bool rightShoulderFlag;
-    public static bool breakFlag;
+
 
     [SerializeField]
     GameObject head;
@@ -53,7 +53,7 @@ public class Throw_Rope : MonoBehaviour
         animator = transform.Find("Mesh Object").gameObject.GetComponent<Animator>();
         rbody = this.GetComponent<Rigidbody>();
         Aim = transform.Find("AimLine").gameObject;
-        sphere = GameObject.Find("ロープのかぎ爪").gameObject;
+        sphere = GameObject.Find("ロープのかぎ爪");
         hitObject = null;
         audioSource = GetComponent<AudioSource>();
         sphere.SetActive(false);
@@ -97,7 +97,7 @@ public class Throw_Rope : MonoBehaviour
 
         if (rightShoulderFlag == false && hitObject)
         {
-            animator.SetBool("ThrowFlag", false);
+            //animator.SetBool("ThrowFlag", false);
 
             pushFlag = false;
             Aim.SetActive(true);
@@ -186,15 +186,14 @@ public class Throw_Rope : MonoBehaviour
         }
         else
         {
-            sphere.SetActive(false);           
-        }
-
-        if(breakFlag)
-        {
+            lineFlag = false;
+            Aim.SetActive(true);
+            sphere.SetActive(false);
             Destroy(this.springJoint);
             Destroy(this.lineRenderer);
-            
         }
+
+        
     }
 
     
@@ -208,12 +207,12 @@ public class Throw_Rope : MonoBehaviour
             beforeHit = hitObject;
 
             rightShoulderFlag = true;
-            animator.SetBool("ThrowFlag", true);
+            //animator.SetBool("ThrowFlag", true);
         }
         if (context.phase == InputActionPhase.Canceled)
         {
             rightShoulderFlag = false;
-            animator.SetBool("ThrowFlag", false);
+            //animator.SetBool("ThrowFlag", false);
         }
     }
 

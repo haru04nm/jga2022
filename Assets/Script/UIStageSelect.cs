@@ -9,10 +9,5 @@ public class UIStageSelect : MonoBehaviour
     {
         GetComponent<Select>().Active();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

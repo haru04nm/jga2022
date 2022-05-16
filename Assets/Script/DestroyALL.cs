@@ -68,7 +68,6 @@ public class DestroyALL : MonoBehaviour
                 explode[i].gameObject.transform.parent = null;
 
 
-                Throw_Rope.breakFlag = true;
                 explode[i].GetComponent<Exploder>().enabled = true;
                 explode[i].GetComponent<ParticleComponent>().enabled = true;
                 explode[i].GetComponent<PseudoVolumetricComponent>().enabled = true;
