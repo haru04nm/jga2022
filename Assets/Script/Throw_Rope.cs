@@ -189,11 +189,11 @@ public class Throw_Rope : MonoBehaviour
             sphere.SetActive(false);           
         }
 
-        if(hitObject ==null && breakFlag)
+        if(breakFlag)
         {
             Destroy(this.springJoint);
             Destroy(this.lineRenderer);
-            //sphere.SetActive(false);
+            
         }
     }
 
