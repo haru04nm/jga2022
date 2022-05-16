@@ -88,7 +88,7 @@ public class Throw_Rope : MonoBehaviour
         }
 
         // ボタンが押されている間、ラインレンダラーを更新し続ける
-        if (lineFlag)
+        if (lineFlag && hitObject != null)
         {
             this.lineRenderer.SetPosition(0, RightHand.transform.position);
             this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
@@ -116,6 +116,7 @@ public class Throw_Rope : MonoBehaviour
         {
             lineFlag = true;
             moveObjectFlag = true;
+            sphere.SetActive(true);
 
             if (this.springJoint == null)
             {
@@ -127,8 +128,12 @@ public class Throw_Rope : MonoBehaviour
                     this.springJoint.spring = this.spring;
                     this.springJoint.enableCollision = true;
                     this.springJoint.maxDistance = distance;
-                    this.springJoint.connectedBody = hitObject.GetComponent<Rigidbody>();
-                    this.springJoint.connectedAnchor = hitObject.transform.InverseTransformPoint(head.transform.position + anchorTarget);
+
+                    if (hitObject != null)
+                    {
+                        this.springJoint.connectedBody = hitObject.GetComponent<Rigidbody>();
+                        this.springJoint.connectedAnchor = hitObject.transform.InverseTransformPoint(head.transform.position + anchorTarget);
+                    }
                 }
 
                 // ラインレンダラーの設定
@@ -140,8 +145,23 @@ public class Throw_Rope : MonoBehaviour
                     //this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
                 }
 
-                sphere.SetActive(true);
-                sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
+                if (hitObject != null)
+                {
+                    sphere.SetActive(false);
+                    sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
+                }
+            }
+
+            else if(this.springJoint != null && hitObject == null)
+            {
+                lineFlag = false;
+                hitObject = null;
+                beforeHit = null;
+                moveObjectFlag = false;
+                Destroy(this.springJoint);
+                Destroy(this.lineRenderer);
+                this.springJoint = null;
+                sphere.SetActive(false);
             }
         }
         else

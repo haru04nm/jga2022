@@ -50,7 +50,6 @@ public class MainLightActive : MonoBehaviour
 
         for (int i=0;i<barreleNum;i++)
         {
-
             //•Ç‚ª‰ó‚ê‚Ä‚È‚¢{’M‚ª“®‚¢‚Ä‚¢‚é‚Æ‚«
             if (breakWall != null && barrele[i].IsLightFlag)
             {
