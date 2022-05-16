@@ -14,6 +14,7 @@ public class Throw_Rope : MonoBehaviour
     bool lineFlag = false;
     public static bool moveObjectFlag = false;
     private bool rightShoulderFlag;
+    public static bool breakFlag;
 
     [SerializeField]
     GameObject head;
@@ -142,16 +143,18 @@ public class Throw_Rope : MonoBehaviour
                     this.lineRenderer.startWidth = 0.3f;
                     this.lineRenderer.endWidth = 0.3f;
                     this.GetComponent<LineRenderer>().material.color = new Color32(148, 78, 48, 1);
-                    //this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
                 }
 
+                /*
                 if (hitObject != null)
                 {
                     sphere.SetActive(false);
                     sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
                 }
+                */
             }
 
+            /*
             else if(this.springJoint != null && hitObject == null)
             {
                 lineFlag = false;
@@ -163,6 +166,7 @@ public class Throw_Rope : MonoBehaviour
                 this.springJoint = null;
                 sphere.SetActive(false);
             }
+            */
         }
         else
         {
@@ -176,9 +180,20 @@ public class Throw_Rope : MonoBehaviour
             sphere.SetActive(false);
         }
         
-        if (hitObject && hitObject.gameObject.layer == 12)
+        if (hitObject != null)
         {
-            sphere.transform.position = new Vector3(hitObject.transform.position.x, hitObject.transform.position.y,gameObject.transform.position.z);
+            sphere.transform.position = hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);/*new Vector3(hitObject.transform.position.x, hitObject.transform.position.y,gameObject.transform.position.z);*/
+        }
+        else
+        {
+            sphere.SetActive(false);           
+        }
+
+        if(hitObject ==null && breakFlag)
+        {
+            Destroy(this.springJoint);
+            Destroy(this.lineRenderer);
+            //sphere.SetActive(false);
         }
     }
 
