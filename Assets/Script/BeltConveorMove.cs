@@ -113,7 +113,7 @@ public class BeltConveorMove : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "Tama")
         {
             isHitFlag = true;
 

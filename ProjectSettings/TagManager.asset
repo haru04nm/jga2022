@@ -8,6 +8,7 @@ TagManager:
   - Barrele
   - Wall
   - Trap
+  - Tama
   layers:
   - Default
   - TransparentFX

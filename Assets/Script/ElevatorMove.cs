@@ -83,14 +83,11 @@ public class ElevatorMove : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag =="Tama")
         {
             isHitFlag = true;
 
-            if (collision.gameObject.tag == "Barrele")
-            {
-                limtTime = 2.5f;
-            }
+            limtTime = 2.5f;
 
             if (collision.gameObject.tag == "Player" )
             {
