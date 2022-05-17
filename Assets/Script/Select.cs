@@ -16,7 +16,6 @@ public class Select : MonoBehaviour
 
     string nextSceneName;
 
-    float waitTime = 0f;
 
     private void Awake()
     {
@@ -61,7 +60,7 @@ public class Select : MonoBehaviour
 
     public void Active()
     {
-        waitTime = 0f;
+        
 
         EventSystem.current.SetSelectedGameObject(firstSelect);
         panel.SetActive(true);
