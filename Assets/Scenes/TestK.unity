@@ -1436,7 +1436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2484624418160144619, guid: 35e48efd7a162e84aaddb09b2f93776d, type: 3}
       propertyPath: barreleIndex
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2484624418160144621, guid: 35e48efd7a162e84aaddb09b2f93776d, type: 3}
       propertyPath: m_Name

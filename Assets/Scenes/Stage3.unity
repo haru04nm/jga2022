@@ -1993,11 +1993,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5896522804246168862, guid: 1b17ba0c0f3307c4299c46f89d74af9e, type: 3}
       propertyPath: areaY.Array.data[0]
-      value: 10.5
+      value: 10.7
       objectReference: {fileID: 0}
     - target: {fileID: 5896522804246168862, guid: 1b17ba0c0f3307c4299c46f89d74af9e, type: 3}
       propertyPath: areaY.Array.data[1]
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5896522804246168863, guid: 1b17ba0c0f3307c4299c46f89d74af9e, type: 3}
       propertyPath: m_RootOrder
@@ -2009,7 +2009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5896522804246168863, guid: 1b17ba0c0f3307c4299c46f89d74af9e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.5
+      value: 10.7
       objectReference: {fileID: 0}
     - target: {fileID: 5896522804246168863, guid: 1b17ba0c0f3307c4299c46f89d74af9e, type: 3}
       propertyPath: m_LocalPosition.z
