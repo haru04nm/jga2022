@@ -126,6 +126,11 @@ public class BeltConveorMove : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider collision)
+    {
+        deletTime = 0.0f;
+    }
+
     void RightMove()
     {
         //ˆÚ“®

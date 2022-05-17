@@ -96,6 +96,11 @@ public class ElevatorMove : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider collision)
+    {
+        deletTime = 0.0f;
+    }
+
     void UpMove()
     { 
         //ˆÚ“®
