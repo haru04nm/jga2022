@@ -18,6 +18,8 @@ public class DestroyALL : MonoBehaviour
 
     GameObject[] explode;
 
+    bool explodeSound;
+
     private void Start()
     {
         taru = new Break_Test[barreleIndex];
@@ -71,6 +73,8 @@ public class DestroyALL : MonoBehaviour
                 explode[i].GetComponent<Exploder>().enabled = true;
                 explode[i].GetComponent<ParticleComponent>().enabled = true;
                 explode[i].GetComponent<PseudoVolumetricComponent>().enabled = true;
+
+                Expload.exploadFlag = true;
 
                 if (other.gameObject.tag == "Barrele")
                 {

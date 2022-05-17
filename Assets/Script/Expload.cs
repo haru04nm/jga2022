@@ -24,9 +24,13 @@ public class Expload : MonoBehaviour
         if (exploadFlag)
         {
             audioSource.PlayOneShot(expload);
+
+            /*
             GetComponent<Exploder>().enabled = true;
             GetComponent<ParticleComponent>().enabled = true;
             GetComponent<PseudoVolumetricComponent>().enabled = true;
+            */
+
             exploadFlag = false;
         }
 
