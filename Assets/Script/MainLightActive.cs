@@ -17,7 +17,7 @@ public class MainLightActive : MonoBehaviour
     float lightTime;
     const float OperationTime = 0.2f;
 
-    GameObject breakWall;
+    int barreleIndex=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,27 +39,31 @@ public class MainLightActive : MonoBehaviour
         lightStart = 0;
         lightGoal = 0;
         lightTime = 0;
-
-        breakWall = GameObject.Find("Wall_break").gameObject;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         int count = moveBarreleIndex.Count;
+        barreleIndex = barreleNum;
 
         for (int i=0;i<barreleNum;i++)
         {
-            //ï«Ç™âÛÇÍÇƒÇ»Ç¢Å{íMÇ™ìÆÇ¢ÇƒÇ¢ÇÈÇ∆Ç´
-            if (breakWall != null && barrele[i].IsLightFlag)
+            if (barrele[i] == null)
             {
-                //àÍÇ¬Ç≈Ç‡ìÆÇ¢ÇƒÇ¢Ç»Ç©Ç¡ÇΩÇÁ
+                barreleIndex =- 1;
+            }
+
+            //íMÇ™ìÆÇ¢ÇƒÇ¢ÇÈÇ∆Ç´
+            if (barrele[i].IsLightFlag)
+            {
+                //ñ¢ìoò^ÇæÇ¡ÇΩÇÁ
                 if (!moveBarreleIndex.Contains(i))
                 {
-                    //Å{1Ç∑ÇÈ
+                    //ìoò^Ç∑ÇÈ
                     moveBarreleIndex.Add(i);
 
-                    //Ç‡ÇµìÆÇ¢ÇƒÇ¢ÇÈìzàÍÇ¬Ç≈Ç‡Ç†ÇÍÇŒíiÅXà√Ç≠Ç∑ÇÈ
+                    //ñæÇÈÇ¢èÛë‘Ç©ÇÁìÆÇ´èoÇµÇΩÇÁíiÅXà√Ç≠Ç∑ÇÈ
                     if (moveBarreleIndex.Count == 1)
                     {
                         if (lightTime == 0.0f)
@@ -77,16 +81,16 @@ public class MainLightActive : MonoBehaviour
                 }
             }
 
-            //ÉäÉXÉgÇÃíÜêgÇ™Ç†ÇÍÇŒ
+            //ìoò^ÇµÇƒÇ¢ÇÈíMÇ™Ç†ÇÍÇŒ
             else if(moveBarreleIndex.Contains(i))
             {
-                //ÇØÇµÇƒÇ¢Ç≠
+                //è¡Ç∑
                 moveBarreleIndex.Remove(i);
             }
         }
 
 
-        //ìÆÇ¢ÇƒÇ¢ÇÈÇ‚Ç¬Ç‡ñ≥ÇØÇÍÇŒíiÅXñæÇÈÇ≠Ç∑ÇÈ
+        //ìÆÇ¢ÇƒÇ¢ÇÈíMÇ™ñ≥ÇØÇÍÇŒíiÅXñæÇÈÇ≠Ç∑ÇÈ
         if(count > 0 && moveBarreleIndex.Count == 0)
         {
             if (lightTime == 0.0f)
@@ -111,7 +115,7 @@ public class MainLightActive : MonoBehaviour
                 lightTime = 0.0f;
             }
 
-            //ê¸å`ï‚äÆÇµñæÇÈÇ≠ÇµÇΩÇËà√Ç≠ÇµÇΩÇËÇ∑ÇÈ
+            //ê¸å`ï‚äÆÇµñæÇÈÇ≠ÇµÇΩÇËà√Ç≠Ç∑ÇÈ
             mainLight.intensity = Mathf.Lerp(lightStart, lightGoal, (OperationTime - lightTime) / OperationTime);
         }
     }

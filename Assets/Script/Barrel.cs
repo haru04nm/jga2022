@@ -69,4 +69,9 @@ public class Barrel : MonoBehaviour
             lightFlag = value;
         }
     }
+
+    private void OnDestroy()
+    {
+        lightFlag = false;
+    }
 }
