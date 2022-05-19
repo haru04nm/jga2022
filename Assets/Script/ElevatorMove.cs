@@ -9,6 +9,8 @@ public class ElevatorMove : MonoBehaviour
 
     [SerializeField]
     float[] areaY;
+
+    Rigidbody rb;
     
     GameObject tobira;
 
@@ -26,6 +28,7 @@ public class ElevatorMove : MonoBehaviour
 
     private void Start()
     {
+        rb = GameObject.Find("エレベーター").GetComponent<Rigidbody>();
         tobira = GameObject.Find("出入口").gameObject;
         saka= GameObject.Find("坂").gameObject;
         
@@ -102,9 +105,10 @@ public class ElevatorMove : MonoBehaviour
     }
 
     void UpMove()
-    { 
+    {
         //移動
-        transform.Translate(0, 0.1f, 0);
+        //transform.Translate(0, 0.1f, 0);
+        //rb.velocity = new Vector3();
         
         //目的地に着いたら止まる
         if (this.transform.position.y>=areaY[nextAreaNum-1])
@@ -129,7 +133,7 @@ public class ElevatorMove : MonoBehaviour
     void DownMove()
     {
         //移動
-        transform.Translate(0, -0.1f, 0);
+        //transform.Translate(0, -0.1f, 0);
 
         //目的地に着いたら止まる
         if (this.transform.position.y<=areaY[nextAreaNum-1])
