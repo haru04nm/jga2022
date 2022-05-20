@@ -93,6 +93,8 @@ public class Throw_Rope : MonoBehaviour
         {
             this.lineRenderer.SetPosition(0, RightHand.transform.position);
             this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
+
+            Debug.Log(springJoint.currentForce);
         }
 
         if (rightShoulderFlag == false && hitObject)
@@ -120,6 +122,9 @@ public class Throw_Rope : MonoBehaviour
 
             if (this.springJoint == null)
             {
+                animator.SetBool("ThrowFlag", true);
+
+
                 // スプリングジョイントの設定
                 {
                     this.springJoint = this.gameObject.AddComponent<SpringJoint>();
@@ -152,6 +157,8 @@ public class Throw_Rope : MonoBehaviour
         }
         else
         {
+            animator.SetBool("ThrowFlag", false);
+
             lineFlag = false;
             hitObject = null;
             beforeHit = null;
@@ -189,12 +196,10 @@ public class Throw_Rope : MonoBehaviour
             beforeHit = hitObject;
 
             rightShoulderFlag = true;
-            //animator.SetBool("ThrowFlag", true);
         }
         if (context.phase == InputActionPhase.Canceled)
         {
             rightShoulderFlag = false;
-            //animator.SetBool("ThrowFlag", false);
         }
     }
 
@@ -202,6 +207,8 @@ public class Throw_Rope : MonoBehaviour
     private void OnJointBreak(float breakForce)
     {
         sphere.SetActive(false);
+
+        // Rigidbodyがついている場合のみKinematicのtrue,falseを決める
         if(hitObject.GetComponent<Rigidbody>() ==true)
         {
             hitObject.GetComponent<Rigidbody>().isKinematic = hitKinematic;
