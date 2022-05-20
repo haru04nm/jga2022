@@ -93,6 +93,8 @@ public class Throw_Rope : MonoBehaviour
         {
             this.lineRenderer.SetPosition(0, RightHand.transform.position);
             this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
+
+            //Debug.Log(springJoint.currentForce);
         }
 
         if (rightShoulderFlag == false && hitObject)
@@ -129,6 +131,7 @@ public class Throw_Rope : MonoBehaviour
                     this.springJoint.spring = this.spring;
                     this.springJoint.enableCollision = true;
                     this.springJoint.maxDistance = distance;
+                    this.springJoint.breakForce = 150;
 
                     if (hitObject != null)
                     {
@@ -145,28 +148,10 @@ public class Throw_Rope : MonoBehaviour
                     this.GetComponent<LineRenderer>().material.color = new Color32(148, 78, 48, 1);
                 }
 
-                /*
-                if (hitObject != null)
-                {
-                    sphere.SetActive(false);
-                    sphere.transform.position=hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
-                }
-                */
+                
             }
 
-            /*
-            else if(this.springJoint != null && hitObject == null)
-            {
-                lineFlag = false;
-                hitObject = null;
-                beforeHit = null;
-                moveObjectFlag = false;
-                Destroy(this.springJoint);
-                Destroy(this.lineRenderer);
-                this.springJoint = null;
-                sphere.SetActive(false);
-            }
-            */
+            
         }
         else
         {
@@ -182,7 +167,7 @@ public class Throw_Rope : MonoBehaviour
         
         if (hitObject != null)
         {
-            sphere.transform.position = hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);/*new Vector3(hitObject.transform.position.x, hitObject.transform.position.y,gameObject.transform.position.z);*/
+            sphere.transform.position = hitObject.transform.TransformPoint(this.springJoint.connectedAnchor);
         }
         else
         {
@@ -216,4 +201,15 @@ public class Throw_Rope : MonoBehaviour
         }
     }
 
+
+    private void OnJointBreak(float breakForce)
+    {
+        sphere.SetActive(false);
+        //hitObject.GetComponent<Rigidbody>().isKinematic = hitKinematic;
+        hitObject = null;
+        lineFlag = false;
+        Aim.SetActive(true);
+
+        Destroy(this.lineRenderer);
+    }
 }
