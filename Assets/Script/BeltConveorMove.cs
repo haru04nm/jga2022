@@ -18,6 +18,8 @@ public class BeltConveorMove : MonoBehaviour
 
     GameObject[] saka;
 
+    Rigidbody rb;
+
     int nextAreaNum = 1;
 
     int oldAreaNum;
@@ -37,6 +39,7 @@ public class BeltConveorMove : MonoBehaviour
         tobira[1] = GameObject.Find("右出入口").gameObject;
         saka[0] = GameObject.Find("左坂").gameObject;
         saka[1] = GameObject.Find("右坂").gameObject;
+        rb = GameObject.Find("Belt Conveyor").GetComponent<Rigidbody>();
 
         for (int x = 0; x < 2; x++)
         {
@@ -75,6 +78,8 @@ public class BeltConveorMove : MonoBehaviour
             {
                 //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
                 SetActiveSakaTobira(true, true, false, false);
+
+                rb.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionX;
 
                 //右から左に
                 if (areaX[0] < areaX[1])
@@ -126,11 +131,17 @@ public class BeltConveorMove : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerExit(Collider collision)
     {
-        deletTime = 0.0f;
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "Tama")
+        {
+            deletTime = 0.0f;
+        }
     }
+    */
 
+    /*
     void RightMove()
     {
         //移動
@@ -198,6 +209,95 @@ public class BeltConveorMove : MonoBehaviour
             deletTime = 0.0f;
         }
     }
+    */
+
+    
+    void RightMove()
+    {
+        //Debug.Log(areaY[nextAreaNum]);
+        if (this.transform.position.x + float.Epsilon < areaX[nextAreaNum])
+        {
+            rb.velocity = new Vector3(8f,0, 0);
+        }
+        else
+        {
+            Vector3 pos = this.transform.position;
+            pos.x = areaX[nextAreaNum];
+            this.transform.position = pos;
+
+            oldAreaNum = nextAreaNum;
+            nextAreaNum++;
+
+            //もしnextAreaNumがareaY.Lengthを超えたら戻す
+            if (nextAreaNum == areaX.Length)
+            {
+                nextAreaNum = areaX.Length - 2;
+            }
+
+            isHitFlag = false;
+            deletTime = 0.0f;
+
+            rb.velocity = new Vector3(0, 0, 0);
+            rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionX;
+            //rb.GetComponent<Rigidbody>().isKinematic = true;
+
+            if (leftOrRightDoor[nextAreaNum] == ("左"))
+            {
+                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
+                SetActiveSakaTobira(false, true, false, true);
+            }
+
+            if (leftOrRightDoor[nextAreaNum] == ("右"))
+            {
+                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
+                SetActiveSakaTobira(true, false, true, false);
+            }
+        }
+    }
+
+    void LeftMove()
+    {
+        //移動
+        if (this.transform.position.x - float.Epsilon > areaX[nextAreaNum])
+        {
+            rb.velocity = new Vector3(-8f,0,0);
+        }
+        else
+        {
+            Vector3 pos = this.transform.position;
+            pos.x = areaX[nextAreaNum];
+            this.transform.position = pos;
+
+            oldAreaNum = nextAreaNum;
+            nextAreaNum--;
+
+            //もしnextAreaNumがー１を超えたら戻す
+            if (nextAreaNum == -1)
+            {
+                nextAreaNum = 1;
+            }
+
+            isHitFlag = false;
+            deletTime = 0.0f;
+
+            rb.velocity = new Vector3(0, 0, 0);
+            rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionX;
+            //rb.GetComponent<Rigidbody>().isKinematic = true;
+
+            if (leftOrRightDoor[nextAreaNum] == ("左"))
+            {
+                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
+                SetActiveSakaTobira(false, true, false, true);
+            }
+
+            if (leftOrRightDoor[nextAreaNum] == ("右"))
+            {
+                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
+                SetActiveSakaTobira(true, false, true, false);
+            }
+        }
+    }
+    
 
     void SetActiveSakaTobira(bool a,bool b,bool c,bool d)
     {

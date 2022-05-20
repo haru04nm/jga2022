@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 7172278488083358012}
   - component: {fileID: 7172278488083358002}
   - component: {fileID: 7172278488083358003}
+  - component: {fileID: 191411287}
   m_Layer: 0
   m_Name: Belt Conveyor
   m_TagString: Untagged
@@ -240,9 +241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432b70820acf11c4fb563a6bcab79179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaX: []
-  areaNum: 0
-  leftOrRightDoor: []
+  areaX:
+  - -21
+  - -10
+  areaNum: 2
+  leftOrRightDoor:
+  - "\u53F3"
+  - "\u53F3"
 --- !u!65 &7172278488083358003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -256,6 +261,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 7, z: 4}
   m_Center: {x: 0, y: 3.5, z: 0}
+--- !u!54 &191411287
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172278488083358013}
+  serializedVersion: 2
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 124
+  m_CollisionDetection: 0
 --- !u!1 &7172278488107781090
 GameObject:
   m_ObjectHideFlags: 0

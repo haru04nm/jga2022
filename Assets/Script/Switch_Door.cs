@@ -6,7 +6,6 @@ public class Switch_Door : MonoBehaviour
 {
     GameObject[] thorn;
 
-    [SerializeField]
     int thornNum;
 
     bool switchActive;
@@ -24,6 +23,8 @@ public class Switch_Door : MonoBehaviour
 
     private void Start()
     {
+        thornNum = GameObject.Find("OtherIndex").GetComponent<OtherIndex>().IsTogeIndex;
+
         audioSource = GetComponent<AudioSource>();
 
         switchActive = false;

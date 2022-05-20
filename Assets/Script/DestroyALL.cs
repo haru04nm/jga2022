@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class DestroyALL : MonoBehaviour
 {
-    [SerializeField]
-    int barreleIndex;
-
-    [SerializeField]
-    int thornIndex;
-    
     GameObject other;
 
     Break_Test[] taru;
@@ -18,10 +12,16 @@ public class DestroyALL : MonoBehaviour
 
     GameObject[] explode;
 
-    bool explodeSound;
+    int barreleIndex;
+
+    int thornIndex;
 
     private void Start()
     {
+        barreleIndex = GameObject.Find("OtherIndex").GetComponent<OtherIndex>().IsBarreleIndex;
+        thornIndex = GameObject.Find("OtherIndex").GetComponent<OtherIndex>().IsTogeIndex;
+
+
         taru = new Break_Test[barreleIndex];
         explode = new GameObject[barreleIndex];
 

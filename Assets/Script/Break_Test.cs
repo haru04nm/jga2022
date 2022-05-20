@@ -20,6 +20,7 @@ public class Break_Test : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        destroyFlag = false;
         if (collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "Trap" || collision.gameObject.tag == "Wall")
         {
             /*

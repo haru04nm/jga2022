@@ -18,7 +18,6 @@ public class Stage_Clear : MonoBehaviour
 
     GameObject kami;
 
-
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();

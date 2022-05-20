@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MainLightActive : MonoBehaviour
 {
-    [SerializeField]
-    int barreleNum;
-
     Barrel[] barrele;
 
     List<int> moveBarreleIndex = new List<int>();
@@ -17,11 +14,15 @@ public class MainLightActive : MonoBehaviour
     float lightTime;
     const float OperationTime = 0.2f;
 
-    int barreleIndex=0;
+    int barreleNum;
+
+    int barreleIndex =0;
     // Start is called before the first frame update
     void Start()
     {
-        barrele=new Barrel[barreleNum];
+        barreleNum = GameObject.Find("OtherIndex").GetComponent<OtherIndex>().IsBarreleIndex;
+
+        barrele =new Barrel[barreleNum];
 
         barrele[0] = GameObject.Find("Barrele").GetComponent<Barrel>();
 

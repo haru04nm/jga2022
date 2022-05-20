@@ -41,17 +41,19 @@ public class ElevatorMove : MonoBehaviour
         if (isHitFlag)
         {
             deletTime += Time.deltaTime;
-            isHitFlag = false;
+            //isHitFlag = false;
 
             if (deletTime >= limtTime)
             {
                 //1.tobira[0],2.saka[0];
                 SetActiveSakaTobira(true, false);
 
+                rb.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
+                //rb.GetComponent<Rigidbody>().isKinematic = false;
+
                 //下から上に
                 if (areaY[0] < areaY[1])
                 {
-
                     if (nextAreaNum > oldAreaNum)
                     {
                         //上り関数
@@ -72,22 +74,24 @@ public class ElevatorMove : MonoBehaviour
                     {
                         //上り関数
                         UpMove();
-                    } 
-                    
+                    }
+
                     if (nextAreaNum > oldAreaNum)
                     {
                         //下り関数
                         DownMove();
                     }
-                } 
-            } 
+                }
+            }
         }       
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag =="Tama")
         {
+            Debug.Log("!!!" + collision.gameObject.name);
+            deletTime = 0.0f;
             isHitFlag = true;
 
             limtTime = 2.5f;
@@ -99,56 +103,78 @@ public class ElevatorMove : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerExit(Collider collision)
     {
-        deletTime = 0.0f;
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "Tama")
+        {
+            //deletTime = 0.0f;
+        }
     }
-
+    */
+    
     void UpMove()
     {
-        //移動
-        //transform.Translate(0, 0.1f, 0);
-        //rb.velocity = new Vector3();
-        
-        //目的地に着いたら止まる
-        if (this.transform.position.y>=areaY[nextAreaNum-1])
+        //Debug.Log(areaY[nextAreaNum]);
+        if (this.transform.position.y + float.Epsilon < areaY[nextAreaNum])
         {
+            rb.velocity = new Vector3(0, 8f, 0);
+        }
+        else
+        {
+            Vector3 pos = this.transform.position;
+            pos.y = areaY[nextAreaNum];
+            this.transform.position = pos;
+
             oldAreaNum = nextAreaNum;
             nextAreaNum++;
 
-            //もしnextAreaNumがstageAreaNumを超えたら戻す
-            if (nextAreaNum > stageAreaNum)
+            //もしnextAreaNumがareaY.Lengthを超えたら戻す
+            if (nextAreaNum == areaY.Length)
             {
-                nextAreaNum -= 2;
+                nextAreaNum = areaY.Length - 2;
             }
 
             isHitFlag = false;
             deletTime = 0.0f;
 
+            rb.velocity = new Vector3(0, 0, 0);
+            rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
+            //rb.GetComponent<Rigidbody>().isKinematic = true;
+
             //1.tobira[0],2.saka[0];
             SetActiveSakaTobira(false, true);
-        }        
+        }
     }
 
     void DownMove()
     {
         //移動
-        //transform.Translate(0, -0.1f, 0);
-
-        //目的地に着いたら止まる
-        if (this.transform.position.y<=areaY[nextAreaNum-1])
+        if (this.transform.position.y - float.Epsilon > areaY[nextAreaNum])
         {
+            rb.velocity = new Vector3(0, -4f, 0);
+        }
+        else
+        {
+            Vector3 pos = this.transform.position;
+            pos.y = areaY[nextAreaNum];
+            this.transform.position = pos;
+
             oldAreaNum = nextAreaNum;
             nextAreaNum--;
 
-            //もしnextAreaNumが0を超えたら戻す
-            if (nextAreaNum == 0)
+            //もしnextAreaNumがー１を超えたら戻す
+            if (nextAreaNum == -1)
             {
-                nextAreaNum += 2;
+                nextAreaNum = 1;
             }
 
             isHitFlag = false;
             deletTime = 0.0f;
+
+            rb.velocity = new Vector3(0, 0, 0);
+            rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
+            //rb.GetComponent<Rigidbody>().isKinematic = true;
 
             //1.tobira[0],2.saka[0];
             SetActiveSakaTobira(false, true);
@@ -160,4 +186,5 @@ public class ElevatorMove : MonoBehaviour
         tobira.SetActive(a);
         saka.SetActive(b);
     }
+    
 }
