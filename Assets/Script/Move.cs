@@ -65,7 +65,7 @@ public class Move : MonoBehaviour
         if (rbody.velocity.x < 0 || rbody.velocity.x > 0)
         {
             runSound += Time.deltaTime;
-            // ˆê’èŽžŠÔ‚²‚Æ‚É‘«‰¹‚ð–Â‚ç‚·
+            // ˆê’èŠÔŠu‚²‚Æ‚É‘«‰¹‚ð–Â‚ç‚·
             if (runSound >= 0.4 && groundFlag)
             {
                 
@@ -133,8 +133,6 @@ public class Move : MonoBehaviour
         if (context.phase == InputActionPhase.Started && groundFlag/* && !pushFlag*/)
         {
             jumpFlag = true;
-            //pushFlag = true;
-            //groundFlag = false;
         }
     }
 }

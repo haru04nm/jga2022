@@ -8,6 +8,7 @@ public class Throw_Rope : MonoBehaviour
 {
     private float spring = 10.0f;
     private float distance;
+    float waitTime;
 
 
     public static bool pushFlag = false;
@@ -67,33 +68,43 @@ public class Throw_Rope : MonoBehaviour
 
         if (Physics.Raycast(head.transform.position, dir, out hit, 9f))
         {
-            
-
 
             Debug.DrawRay(head.transform.position, dir * hit.distance, Color.yellow);
 
             if (rightShoulderFlag && hitObject == null)
             {
-                pushFlag = true;
-                anchorTarget = dir * hit.distance;
-                distance = Vector3.Distance(head.transform.position, hit.point);    // 距離計算
-                Aim.SetActive(false);
+                waitTime += Time.deltaTime;
+
+                if(waitTime >= 0.25)
+                {
+                    pushFlag = true;
+                    anchorTarget = dir * hit.distance;
+                    distance = Vector3.Distance(head.transform.position, hit.point);    // 距離計算
+                    Aim.SetActive(false);
+
+                    // 投げるSE再生
+                    audioSource.PlayOneShot(throwSound);
+
+                    hitObject = hit.collider.gameObject;
+
+                    // Rigidbodyがついているオブジェクトに投げた時の処理
+                    if (hitObject.GetComponent<Rigidbody>() != null)
+                    {
+                        hitKinematic = hitObject.GetComponent<Rigidbody>().isKinematic;
+
+                        hitObject.GetComponent<Rigidbody>().isKinematic = false;
+                    }
+
+                    waitTime = 0;
+
+                }
 
                 // 投げるアニメーション
                 animator.SetBool("ThrowFlag", true);
+                animator.SetBool("FastThrowFlag", true);
 
-                // 投げるSE再生
-                audioSource.PlayOneShot(throwSound);
 
-                hitObject = hit.collider.gameObject;
-
-                // Rigidbodyがついているオブジェクトに投げた時の処理
-                if (hitObject.GetComponent<Rigidbody>() != null)
-                {
-                    hitKinematic = hitObject.GetComponent<Rigidbody>().isKinematic;
-
-                    hitObject.GetComponent<Rigidbody>().isKinematic = false;
-                }
+               
             }
         }
 
@@ -108,7 +119,10 @@ public class Throw_Rope : MonoBehaviour
 
         if (rightShoulderFlag == false && hitObject)
         {
+            // アニメーション関連
             animator.SetBool("ThrowFlag", false);
+            animator.SetBool("FastThrowFlag", false);
+
 
             pushFlag = false;
             Aim.SetActive(true);
@@ -168,7 +182,10 @@ public class Throw_Rope : MonoBehaviour
         }
         else
         {
+            // アニメーション関連
             animator.SetBool("ThrowFlag", false);
+            animator.SetBool("FastThrowFlag", false);
+
 
             lineFlag = false;
             hitObject = null;
@@ -228,7 +245,11 @@ public class Throw_Rope : MonoBehaviour
         hitObject = null;
         lineFlag = false;
         Aim.SetActive(true);
+
+        // アニメーション関連
         animator.SetBool("ThrowFlag", false);
+        animator.SetBool("FastThrowFlag", false);
+
 
 
         Destroy(this.lineRenderer);
