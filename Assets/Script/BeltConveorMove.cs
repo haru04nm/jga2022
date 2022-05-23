@@ -113,10 +113,11 @@ public class BeltConveorMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "Tama")
         {
+            deletTime = 0.0f;
             isHitFlag = true;
 
             limtTime = 2.5f;
@@ -154,7 +155,6 @@ public class BeltConveorMove : MonoBehaviour
 
             rb.velocity = new Vector3(0, 0, 0);
             rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionX;
-            //rb.GetComponent<Rigidbody>().isKinematic = true;
 
             if (leftOrRightDoor[nextAreaNum] == ("ç∂"))
             {
@@ -197,7 +197,6 @@ public class BeltConveorMove : MonoBehaviour
 
             rb.velocity = new Vector3(0, 0, 0);
             rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionX;
-            //rb.GetComponent<Rigidbody>().isKinematic = true;
 
             if (leftOrRightDoor[nextAreaNum] == ("ç∂"))
             {

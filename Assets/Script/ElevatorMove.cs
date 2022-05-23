@@ -32,8 +32,6 @@ public class ElevatorMove : MonoBehaviour
         tobira = GameObject.Find("èoì¸å˚").gameObject;
         saka= GameObject.Find("ç‚").gameObject;
 
-        //if (this.transform.position.y==)
-        
         //1.tobira,2.saka;
         SetActiveSakaTobira(false, false);
     }
@@ -90,7 +88,6 @@ public class ElevatorMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag =="Tama")
         {
-            Debug.Log("!!!" + collision.gameObject.name);
             deletTime = 0.0f;
             isHitFlag = true;
 
@@ -105,7 +102,6 @@ public class ElevatorMove : MonoBehaviour
     
     void UpMove()
     {
-        //Debug.Log(areaY[nextAreaNum]);
         if (this.transform.position.y + float.Epsilon < areaY[nextAreaNum])
         {
             rb.velocity = new Vector3(0, 8f, 0);
