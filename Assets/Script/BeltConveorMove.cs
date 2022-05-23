@@ -50,15 +50,13 @@ public class BeltConveorMove : MonoBehaviour
         if (areaX[0] < areaX[1])
         {
             //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
-            SetActiveSakaTobira(false, false, false, false); 
-            oldAreaNum = -areaNum;
+            SetActiveSakaTobira(false, false, false, false);
         }
 
         if (areaX[0] > areaX[1])
         {
             //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
             SetActiveSakaTobira(false, false, false, false);
-            oldAreaNum = areaNum;
         }
 
         if (leftOrRightDoor.Length!=areaNum)
@@ -72,7 +70,6 @@ public class BeltConveorMove : MonoBehaviour
         if (isHitFlag)
         {
             deletTime += Time.deltaTime;
-            isHitFlag = false;
 
             if (deletTime >= limtTime)
             {
@@ -130,91 +127,9 @@ public class BeltConveorMove : MonoBehaviour
             }
         }
     }
-
-    /*
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "Tama")
-        {
-            deletTime = 0.0f;
-        }
-    }
-    */
-
-    /*
-    void RightMove()
-    {
-        //移動
-        transform.Translate(0.1f, 0, 0);
-
-        //目的地に着いたら止まる
-        if (this.transform.position.x >= areaX[nextAreaNum - 1])
-        {
-            oldAreaNum = nextAreaNum;
-            nextAreaNum++;
-
-            //もしnextAreaNumがstageAreaNumを超えたら戻す
-            if (nextAreaNum > areaNum)
-            {
-                nextAreaNum -= 2;
-            }
-
-            if (leftOrRightDoor[nextAreaNum-1] == ("左"))
-            {
-                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
-                SetActiveSakaTobira(false, true, false, true);
-            }
-
-            if (leftOrRightDoor[nextAreaNum - 1] == ("右"))
-            {
-                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
-                SetActiveSakaTobira(true, false, true, false);
-            }
-
-            isHitFlag = false;
-            deletTime = 0.0f;
-        }
-    }
-
-    void LeftMove()
-    {
-        //移動
-        transform.Translate(-0.1f, 0,  0);
-
-        //目的地に着いたら止まる
-        if (this.transform.position.x <= areaX[nextAreaNum - 1])
-        {
-            oldAreaNum = nextAreaNum;
-            nextAreaNum--;
-
-            //もしnextAreaNumが0を超えたら戻す
-            if (nextAreaNum == 0)
-            {
-                nextAreaNum += 2;
-            }
-
-            if (leftOrRightDoor[nextAreaNum - 1] ==("左"))
-            {
-                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
-                SetActiveSakaTobira(false, true, false, true);
-            }
-            
-            if (leftOrRightDoor[nextAreaNum - 1] ==("右"))
-            {
-                //1.tobira[0],2.tobira[1],3.saka[0],4.saka[1];
-                SetActiveSakaTobira(true, false, true, false);
-            }
-
-            isHitFlag = false;
-            deletTime = 0.0f;
-        }
-    }
-    */
-
     
     void RightMove()
     {
-        //Debug.Log(areaY[nextAreaNum]);
         if (this.transform.position.x + float.Epsilon < areaX[nextAreaNum])
         {
             rb.velocity = new Vector3(8f,0, 0);
@@ -298,7 +213,6 @@ public class BeltConveorMove : MonoBehaviour
         }
     }
     
-
     void SetActiveSakaTobira(bool a,bool b,bool c,bool d)
     {
         tobira[0].SetActive(a);

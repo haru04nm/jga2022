@@ -31,6 +31,8 @@ public class ElevatorMove : MonoBehaviour
         rb = GameObject.Find("エレベーター").GetComponent<Rigidbody>();
         tobira = GameObject.Find("出入口").gameObject;
         saka= GameObject.Find("坂").gameObject;
+
+        //if (this.transform.position.y==)
         
         //1.tobira,2.saka;
         SetActiveSakaTobira(false, false);
@@ -41,7 +43,6 @@ public class ElevatorMove : MonoBehaviour
         if (isHitFlag)
         {
             deletTime += Time.deltaTime;
-            //isHitFlag = false;
 
             if (deletTime >= limtTime)
             {
@@ -49,7 +50,6 @@ public class ElevatorMove : MonoBehaviour
                 SetActiveSakaTobira(true, false);
 
                 rb.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
-                //rb.GetComponent<Rigidbody>().isKinematic = false;
 
                 //下から上に
                 if (areaY[0] < areaY[1])
@@ -102,16 +102,6 @@ public class ElevatorMove : MonoBehaviour
             }
         }
     }
-
-    /*
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag == "Tama")
-        {
-            //deletTime = 0.0f;
-        }
-    }
-    */
     
     void UpMove()
     {
@@ -140,7 +130,6 @@ public class ElevatorMove : MonoBehaviour
 
             rb.velocity = new Vector3(0, 0, 0);
             rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
-            //rb.GetComponent<Rigidbody>().isKinematic = true;
 
             //1.tobira[0],2.saka[0];
             SetActiveSakaTobira(false, true);
@@ -174,7 +163,6 @@ public class ElevatorMove : MonoBehaviour
 
             rb.velocity = new Vector3(0, 0, 0);
             rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
-            //rb.GetComponent<Rigidbody>().isKinematic = true;
 
             //1.tobira[0],2.saka[0];
             SetActiveSakaTobira(false, true);
@@ -186,5 +174,4 @@ public class ElevatorMove : MonoBehaviour
         tobira.SetActive(a);
         saka.SetActive(b);
     }
-    
 }
