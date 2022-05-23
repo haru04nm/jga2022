@@ -67,6 +67,9 @@ public class Throw_Rope : MonoBehaviour
 
         if (Physics.Raycast(head.transform.position, dir, out hit, 9f))
         {
+            
+
+
             Debug.DrawRay(head.transform.position, dir * hit.distance, Color.yellow);
 
             if (rightShoulderFlag && hitObject == null)
@@ -75,10 +78,16 @@ public class Throw_Rope : MonoBehaviour
                 anchorTarget = dir * hit.distance;
                 distance = Vector3.Distance(head.transform.position, hit.point);    // 距離計算
                 Aim.SetActive(false);
+
+                // 投げるアニメーション
+                animator.SetBool("ThrowFlag", true);
+
+                // 投げるSE再生
                 audioSource.PlayOneShot(throwSound);
 
                 hitObject = hit.collider.gameObject;
 
+                // Rigidbodyがついているオブジェクトに投げた時の処理
                 if (hitObject.GetComponent<Rigidbody>() != null)
                 {
                     hitKinematic = hitObject.GetComponent<Rigidbody>().isKinematic;
@@ -94,12 +103,12 @@ public class Throw_Rope : MonoBehaviour
             this.lineRenderer.SetPosition(0, RightHand.transform.position);
             this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
 
-            Debug.Log(springJoint.currentForce);
+            //Debug.Log(springJoint.currentForce);
         }
 
         if (rightShoulderFlag == false && hitObject)
         {
-            //animator.SetBool("ThrowFlag", false);
+            animator.SetBool("ThrowFlag", false);
 
             pushFlag = false;
             Aim.SetActive(true);
@@ -120,9 +129,11 @@ public class Throw_Rope : MonoBehaviour
             moveObjectFlag = true;
             sphere.SetActive(true);
 
+
+
             if (this.springJoint == null)
             {
-                animator.SetBool("ThrowFlag", true);
+
 
 
                 // スプリングジョイントの設定
@@ -133,7 +144,7 @@ public class Throw_Rope : MonoBehaviour
                     this.springJoint.spring = this.spring;
                     this.springJoint.enableCollision = true;
                     this.springJoint.maxDistance = distance;
-                    this.springJoint.breakForce = 50;
+                    this.springJoint.breakForce = 75;
 
                     if (hitObject != null)
                     {
@@ -217,6 +228,8 @@ public class Throw_Rope : MonoBehaviour
         hitObject = null;
         lineFlag = false;
         Aim.SetActive(true);
+        animator.SetBool("ThrowFlag", false);
+
 
         Destroy(this.lineRenderer);
     }
