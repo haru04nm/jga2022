@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Throw_Rope : MonoBehaviour
 {
-    private float spring = 20.0f;
+    private float spring = 10.0f;
     private float distance;
 
 
@@ -69,7 +69,7 @@ public class Throw_Rope : MonoBehaviour
         {
             Debug.DrawRay(head.transform.position, dir * hit.distance, Color.yellow);
 
-            if (rightShoulderFlag && hitObject==null)
+            if (rightShoulderFlag && hitObject == null)
             {
                 pushFlag = true;
                 anchorTarget = dir * hit.distance;
@@ -94,7 +94,7 @@ public class Throw_Rope : MonoBehaviour
             this.lineRenderer.SetPosition(0, RightHand.transform.position);
             this.lineRenderer.SetPosition(1, hitObject.transform.TransformPoint(this.springJoint.connectedAnchor));
 
-            //Debug.Log(springJoint.currentForce);
+            Debug.Log(springJoint.currentForce);
         }
 
         if (rightShoulderFlag == false && hitObject)
@@ -113,7 +113,6 @@ public class Throw_Rope : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //sphere.SetActive(false);
 
         if (pushFlag)
         {
@@ -123,6 +122,9 @@ public class Throw_Rope : MonoBehaviour
 
             if (this.springJoint == null)
             {
+                animator.SetBool("ThrowFlag", true);
+
+
                 // スプリングジョイントの設定
                 {
                     this.springJoint = this.gameObject.AddComponent<SpringJoint>();
@@ -131,7 +133,7 @@ public class Throw_Rope : MonoBehaviour
                     this.springJoint.spring = this.spring;
                     this.springJoint.enableCollision = true;
                     this.springJoint.maxDistance = distance;
-                    this.springJoint.breakForce = 150;
+                    this.springJoint.breakForce = 50;
 
                     if (hitObject != null)
                     {
@@ -155,6 +157,8 @@ public class Throw_Rope : MonoBehaviour
         }
         else
         {
+            animator.SetBool("ThrowFlag", false);
+
             lineFlag = false;
             hitObject = null;
             beforeHit = null;
@@ -192,12 +196,10 @@ public class Throw_Rope : MonoBehaviour
             beforeHit = hitObject;
 
             rightShoulderFlag = true;
-            //animator.SetBool("ThrowFlag", true);
         }
         if (context.phase == InputActionPhase.Canceled)
         {
             rightShoulderFlag = false;
-            //animator.SetBool("ThrowFlag", false);
         }
     }
 
@@ -205,7 +207,13 @@ public class Throw_Rope : MonoBehaviour
     private void OnJointBreak(float breakForce)
     {
         sphere.SetActive(false);
-        //hitObject.GetComponent<Rigidbody>().isKinematic = hitKinematic;
+
+        // Rigidbodyがついている場合のみKinematicのtrue,falseを決める
+        if(hitObject.GetComponent<Rigidbody>() ==true)
+        {
+            hitObject.GetComponent<Rigidbody>().isKinematic = hitKinematic;
+        }
+        rightShoulderFlag = false;
         hitObject = null;
         lineFlag = false;
         Aim.SetActive(true);

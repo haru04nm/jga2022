@@ -80,16 +80,16 @@ public class Move : MonoBehaviour
             jumpFlag = false;
             rbody.AddForce(new Vector3(0, jumppower), ForceMode.Impulse);
             animator.SetBool("JumpFlg", true);
-
+            
             jumpSoundFlag = true;
         }
 
         if (groundFlag)
         {
-            animator.SetBool("JumpFlg", false);
 
             if(jumpSoundFlag)
             {
+                
                 audioSource.PlayOneShot(jump);
 
                 jumpSoundFlag = false;
@@ -100,6 +100,7 @@ public class Move : MonoBehaviour
             {
                 // âπÇèoÇ∑
                 audioSource.PlayOneShot(landing);
+                animator.SetBool("JumpFlg", false);
             }
         }
         oldGroundFlag = groundFlag;
