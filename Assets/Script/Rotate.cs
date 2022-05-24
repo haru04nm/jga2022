@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
+    
     [SerializeField]
-    bool direction;
+    float speed;
 
     private void Update()
     {
-        if (direction)
-        {
-            this.transform.Rotate(new Vector3(0, 0, 45) * Time.deltaTime);
-        }
-        else
-        {
-            this.transform.Rotate(new Vector3(0, 0, -45) * Time.deltaTime);
-
-        }
+        
+        this.transform.Rotate(new Vector3(0, 0, speed) * Time.deltaTime);
+        
+        
     }
 
 }

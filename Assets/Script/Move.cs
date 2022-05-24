@@ -49,10 +49,19 @@ public class Move : MonoBehaviour
         animator = transform.Find("Mesh Object").gameObject.GetComponent<Animator>();
         body = GameObject.Find("Body").gameObject;
         audioSource = GetComponent<AudioSource>();
+
+
+        
+        if (this.gameObject.transform.rotation.y >= -90)
+        {
+            leftFlag = true;
+        }
     }
 
     private void FixedUpdate()
     {
+        Debug.Log(leftFlag);
+
         // ‰º•ûŒü‚ÉƒŒƒC‚ð‚Æ‚Î‚·
         groundFlag = Physics.Raycast(transform.position, Vector3.down, 0.3f, LayerMask);
 
