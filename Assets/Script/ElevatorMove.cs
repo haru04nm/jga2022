@@ -28,7 +28,8 @@ public class ElevatorMove : MonoBehaviour
 
     private void Start()
     {
-        rb = GameObject.Find("エレベーター").GetComponent<Rigidbody>();
+        rb = GameObject.Find(this.gameObject.name).GetComponent<Rigidbody>();
+
         tobira = GameObject.Find("出入口").gameObject;
         saka= GameObject.Find("坂").gameObject;
 
@@ -47,7 +48,7 @@ public class ElevatorMove : MonoBehaviour
                 //1.tobira[0],2.saka[0];
                 SetActiveSakaTobira(true, false);
 
-                rb.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
+                this.rb.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
 
                 //下から上に
                 if (areaY[0] < areaY[1])
@@ -99,12 +100,20 @@ public class ElevatorMove : MonoBehaviour
             }
         }
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Barrele" || other.gameObject.tag == "Tama")
+        {
+            deletTime = 0.0f;
+        }
+    }
+
     void UpMove()
     {
         if (this.transform.position.y + float.Epsilon < areaY[nextAreaNum])
         {
-            rb.velocity = new Vector3(0, 8f, 0);
+            this.rb.velocity = new Vector3(0, 8f, 0);
         }
         else
         {
@@ -124,8 +133,8 @@ public class ElevatorMove : MonoBehaviour
             isHitFlag = false;
             deletTime = 0.0f;
 
-            rb.velocity = new Vector3(0, 0, 0);
-            rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
+            this.rb.velocity = new Vector3(0, 0, 0);
+            this.rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
 
             //1.tobira[0],2.saka[0];
             SetActiveSakaTobira(false, true);
@@ -137,7 +146,7 @@ public class ElevatorMove : MonoBehaviour
         //移動
         if (this.transform.position.y - float.Epsilon > areaY[nextAreaNum])
         {
-            rb.velocity = new Vector3(0, -4f, 0);
+            this.rb.velocity = new Vector3(0, -4f, 0);
         }
         else
         {
@@ -157,8 +166,8 @@ public class ElevatorMove : MonoBehaviour
             isHitFlag = false;
             deletTime = 0.0f;
 
-            rb.velocity = new Vector3(0, 0, 0);
-            rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
+            this.rb.velocity = new Vector3(0, 0, 0);
+            this.rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
 
             //1.tobira[0],2.saka[0];
             SetActiveSakaTobira(false, true);
