@@ -6,7 +6,9 @@ public class Expload : MonoBehaviour
 {
     public static bool exploadFlag;
 
-    public AudioClip expload;
+    [SerializeField]
+    AudioClip expload;
+
     AudioSource audioSource;
 
     private void Start()
@@ -24,12 +26,6 @@ public class Expload : MonoBehaviour
         if (exploadFlag)
         {
             audioSource.PlayOneShot(expload);
-
-            /*
-            GetComponent<Exploder>().enabled = true;
-            GetComponent<ParticleComponent>().enabled = true;
-            GetComponent<PseudoVolumetricComponent>().enabled = true;
-            */
 
             exploadFlag = false;
         }
