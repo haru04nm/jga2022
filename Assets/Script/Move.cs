@@ -48,19 +48,12 @@ public class Move : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         animator = transform.Find("Mesh Object").gameObject.GetComponent<Animator>();
         body = GameObject.Find("Body").gameObject;
-        audioSource = GetComponent<AudioSource>();
-
-
-        
-        if (this.gameObject.transform.rotation.y >= -90)
-        {
-            leftFlag = true;
-        }
+        audioSource = GetComponent<AudioSource>();        
     }
 
     private void FixedUpdate()
     {
-        Debug.Log(leftFlag);
+        //Debug.Log(leftFlag);
 
         // ‰º•ûŒü‚ÉƒŒƒC‚ð‚Æ‚Î‚·
         groundFlag = Physics.Raycast(transform.position, Vector3.down, 0.3f, LayerMask);
@@ -95,7 +88,6 @@ public class Move : MonoBehaviour
 
         if (groundFlag)
         {
-
             if(jumpSoundFlag)
             {
                 
@@ -123,7 +115,6 @@ public class Move : MonoBehaviour
         if (_moveInputValue.sqrMagnitude == 0.0f) return;
 
 
-        bool postFlg = leftFlag;
         leftFlag = false;
         if (_moveInputValue.x < 0)
         {
@@ -131,10 +122,7 @@ public class Move : MonoBehaviour
         }
 
         // “ü—Í‚³‚ê‚½•ûŒü‚ÉŒü‚«‚ð•Ï‚¦‚é
-        if(postFlg != leftFlag)
-        {
-            transform.rotation = Quaternion.Euler(0, leftFlag ? -90 : 90, 0);
-        }
+        transform.rotation = Quaternion.Euler(0, leftFlag ? -90 : 90, 0);
     }
 
     public void OnJump(InputAction.CallbackContext context)
