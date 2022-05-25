@@ -33,6 +33,8 @@ public class ElevatorMove : MonoBehaviour
         tobira = GameObject.Find("èoì¸å˚").gameObject;
         saka= GameObject.Find("ç‚").gameObject;
 
+        //this.rb.isKinematic = true;
+
         //1.tobira,2.saka;
         SetActiveSakaTobira(false, false);
     }
@@ -49,6 +51,7 @@ public class ElevatorMove : MonoBehaviour
                 SetActiveSakaTobira(true, false);
 
                 this.rb.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
+                //this.rb.isKinematic = false;
 
                 //â∫Ç©ÇÁè„Ç…
                 if (areaY[0] < areaY[1])
@@ -105,6 +108,7 @@ public class ElevatorMove : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Barrele" || other.gameObject.tag == "Tama")
         {
+            isHitFlag = false;
             deletTime = 0.0f;
         }
     }
@@ -135,6 +139,7 @@ public class ElevatorMove : MonoBehaviour
 
             this.rb.velocity = new Vector3(0, 0, 0);
             this.rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
+            //this.rb.isKinematic = true;
 
             //1.tobira[0],2.saka[0];
             SetActiveSakaTobira(false, true);
@@ -168,6 +173,7 @@ public class ElevatorMove : MonoBehaviour
 
             this.rb.velocity = new Vector3(0, 0, 0);
             this.rb.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionY;
+            //this.rb.isKinematic = true;
 
             //1.tobira[0],2.saka[0];
             SetActiveSakaTobira(false, true);

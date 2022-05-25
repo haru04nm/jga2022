@@ -17,7 +17,7 @@ public class DoorMove : MonoBehaviour
     //float totalPos = 0.0f;
 
     const float ActivePosZ = 0.0f;
-    const float DeactivePosZ = 4.0f;
+    const float DeactivePosZ = 5.0f;
     const float OperationTime = 1.0f;
     float time = 0.0f;
     float startZ;
