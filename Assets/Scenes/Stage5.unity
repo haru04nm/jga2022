@@ -929,7 +929,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DontMoveFloor
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 02a7462ffb7f78c44a44fa5fb2fb7218, type: 3}
 --- !u!1001 &327069270
 PrefabInstance:
@@ -964,7 +965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4803479348494656959, guid: 8d61e4f029391d74ca814cda36dab2ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.57
+      value: 20.56
       objectReference: {fileID: 0}
     - target: {fileID: 4803479348494656959, guid: 8d61e4f029391d74ca814cda36dab2ef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1049,7 +1050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1986038161700278129, guid: 939cd22751628cb43b1fd2656b2382e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.76
+      value: -3.16
       objectReference: {fileID: 0}
     - target: {fileID: 1986038161700278129, guid: 939cd22751628cb43b1fd2656b2382e0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1101,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6005099808219141834, guid: 939cd22751628cb43b1fd2656b2382e0, type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6005099808219141834, guid: 939cd22751628cb43b1fd2656b2382e0, type: 3}
       propertyPath: m_Constraints
@@ -1396,7 +1397,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2982
+  m_Name: pb_Mesh-155282
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2222,8 +2223,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: DontMoveFloor (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -8764701422363589767, guid: 02a7462ffb7f78c44a44fa5fb2fb7218, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02a7462ffb7f78c44a44fa5fb2fb7218, type: 3}
 --- !u!1001 &1142995998
 PrefabInstance:
@@ -3023,7 +3023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6005099808219141834, guid: 939cd22751628cb43b1fd2656b2382e0, type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6005099808219141834, guid: 939cd22751628cb43b1fd2656b2382e0, type: 3}
       propertyPath: m_Constraints
@@ -3090,7 +3090,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DontMoveFloor (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 02a7462ffb7f78c44a44fa5fb2fb7218, type: 3}
 --- !u!1 &1816058059
 GameObject:
@@ -3474,7 +3475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6005099808219141834, guid: 939cd22751628cb43b1fd2656b2382e0, type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6005099808219141834, guid: 939cd22751628cb43b1fd2656b2382e0, type: 3}
       propertyPath: m_Constraints

@@ -11239,7 +11239,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744452890863583962}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 82c5ef9f83c98614eb615d74b55f3976, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -11690,8 +11690,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94f527f2de2eba48a357763164fb041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageAreaNum: 0
-  areaY: []
+  stageAreaNum: 2
+  areaY:
+  - 1.6
+  - 9
 --- !u!65 &5896522804246168861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11713,7 +11715,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5896522804246168848}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -11810,7 +11812,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5896522804627257238}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 82c5ef9f83c98614eb615d74b55f3976, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
