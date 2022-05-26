@@ -43,12 +43,10 @@ public class ElevatorMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("isHitFlag:" + isHitFlag);
         if (isHitFlag)
         {
             deletTime += Time.deltaTime;
 
-            Debug.Log("deletTime >= limtTime:" + (deletTime >= limtTime));
             if (deletTime >= limtTime)
             {
                 //1.tobira[0],2.saka[0];
@@ -96,7 +94,6 @@ public class ElevatorMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Barrele" || collision.gameObject.tag =="Tama")
         {
-            Debug.Log("OnTriggerEnter");
             isHitFlag = true;
 
             if(!movingFlag)
@@ -117,7 +114,6 @@ public class ElevatorMove : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Barrele" || other.gameObject.tag == "Tama")
         {
-            Debug.Log("OnTriggerExit");
             isHitFlag = false;
 
             if (!movingFlag)
@@ -131,13 +127,11 @@ public class ElevatorMove : MonoBehaviour
     {
         if (this.transform.position.y + float.Epsilon < areaY[nextAreaNum])
         {
-            Debug.Log("UpMove:TRUE");
             this.rb.velocity = new Vector3(0, 8f, 0);
             movingFlag = true;
         }
         else
         {
-            Debug.Log("UpMove:FALSE");
             Vector3 pos = this.transform.position;
             pos.y = areaY[nextAreaNum];
             this.transform.position = pos;
@@ -170,13 +164,11 @@ public class ElevatorMove : MonoBehaviour
         //ˆÚ“®
         if (this.transform.position.y - float.Epsilon > areaY[nextAreaNum])
         {
-            Debug.Log("DownMove:TRUE");
             this.rb.velocity = new Vector3(0, -4f, 0);
             movingFlag = true;
         }
         else
         {
-            Debug.Log("DownMove:FALSE");
             Vector3 pos = this.transform.position;
             pos.y = areaY[nextAreaNum];
             this.transform.position = pos;
