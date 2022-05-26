@@ -54,6 +54,11 @@ public class Throw_Rope : MonoBehaviour
         hitObject = null;
         audioSource = GetComponent<AudioSource>();
         sphere.SetActive(false);
+        this.springJoint = GetComponent<SpringJoint>();
+        this.springJoint.spring = 0;
+        this.lineRenderer = null;
+        lineFlag = false;
+
     }
 
     private void Update()
@@ -129,18 +134,19 @@ public class Throw_Rope : MonoBehaviour
             moveObjectFlag = true;
             sphere.SetActive(true);
 
-            if (this.springJoint == null)
+            if (this.springJoint.spring == 0)
             {
 
                 // スプリングジョイントの設定
                 {
-                    this.springJoint = this.gameObject.AddComponent<SpringJoint>();
-                    this.springJoint.autoConfigureConnectedAnchor = false;
-                    this.springJoint.anchor = new Vector3(0, 2.52f, 0);
+                    //this.springJoint = this.gameObject.AddComponent<SpringJoint>();
+                    //this.springJoint.autoConfigureConnectedAnchor = false;
+                    //this.springJoint.anchor = new Vector3(0, 2.52f, 0);
+                    //this.springJoint.spring = this.spring;
+                    //this.springJoint.enableCollision = true;
                     this.springJoint.spring = this.spring;
-                    this.springJoint.enableCollision = true;
                     this.springJoint.maxDistance = distance;
-                    //this.springJoint.breakForce = 75;　unity側のバグにより実装不可
+                    //this.springJoint.breakForce = 75;　unity側のバグにより実装しない
 
                     if (hitObject != null)
                     {
@@ -172,9 +178,10 @@ public class Throw_Rope : MonoBehaviour
             lineFlag = false;
             hitObject = null;
             moveObjectFlag = false;
-            Destroy(this.springJoint);
+            //Destroy(this.springJoint);
             Destroy(this.lineRenderer);
-            this.springJoint = null;
+            //this.springJoint = null;
+            this.springJoint.spring = 0;
             this.lineRenderer = null;
             sphere.SetActive(false);
         }
@@ -188,9 +195,10 @@ public class Throw_Rope : MonoBehaviour
             lineFlag = false;
             Aim.SetActive(true);
             sphere.SetActive(false);
-            Destroy(this.springJoint);
+            //Destroy(this.springJoint);
             Destroy(this.lineRenderer);
-            this.springJoint = null;
+            //this.springJoint = null;
+            this.springJoint.spring = 0;
             this.lineRenderer = null;
         }
 
@@ -213,35 +221,16 @@ public class Throw_Rope : MonoBehaviour
     }
 
 
-///////////////////////////////////////////////////////////////////////////
-    // 実装予定だったが、unity側のバグにより実装不可
-
-    /*
-    private void OnJointBreak(float breakForce)
+    private void OnDestroy()
     {
-        sphere.SetActive(false);
-
-        // Rigidbodyがついている場合のみKinematicのtrue,falseを決める
-        if(hitObject && hitObject.GetComponent<Rigidbody>() != null)
-        {
-            hitObject.GetComponent<Rigidbody>().isKinematic = hitKinematic;
-        }
-        rightShoulderFlag = false;
-        hitObject = null;
         lineFlag = false;
-        Aim.SetActive(true);
-
-        // アニメーション関連
-        animator.SetBool("ThrowFlag", false);
-        animator.SetBool("FastThrowFlag", false);
-
+        //Aim.SetActive(true);
+        //sphere.SetActive(false);
+        //Destroy(this.springJoint);
         Destroy(this.lineRenderer);
-        this.lineRenderer = null;
-
         //this.springJoint = null;
+        //this.springJoint.spring = 0;
+        this.lineRenderer = null;
+        hitObject = null;
     }
-    */
-//////////////////////////////////////////////////////////////////////////
-
-
 }
