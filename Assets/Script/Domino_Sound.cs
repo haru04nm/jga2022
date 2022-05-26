@@ -21,7 +21,6 @@ public class Domino_Sound : MonoBehaviour
         if(soundNum >= 1)
         {
             audioSource.PlayOneShot(dominoSound);
-
         }
 
         soundNum++;
