@@ -26,15 +26,17 @@ public class ButtonSize : MonoBehaviour
         returnButton = GameObject.Find("return");
         buttonSize[0] = returnButton.GetComponent<RectTransform>();
 
-        buttonSize[0].SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 150);
-        buttonSize[0].SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 30);
+        //タイトルに戻るボタン　サイズ初期化
+        buttonSize[0].SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 230);
+        buttonSize[0].SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 45);
 
+        //  1～10のステージ選択ボタン　サイズ初期化
         for (int i = 1; i <= 10; i++)
         {
             buttonSize[i - 1] = GameObject.Find("stage" + i).GetComponent<RectTransform>();
 
-            buttonSize[i - 1].SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
-            buttonSize[i - 1].SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
+            buttonSize[i - 1].SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 150);
+            buttonSize[i - 1].SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 70);
 
             buttonSize[i - 1].GetComponentInChildren<Text>().enabled = true;
         }
@@ -49,8 +51,8 @@ public class ButtonSize : MonoBehaviour
             currentButton.GetComponentInChildren<Text>().enabled = false;
 
             //ボタンのサイズ変更
-            currentButtonSize.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 170);
-            currentButtonSize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 85);
+            currentButtonSize.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 200);
+            currentButtonSize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
         }
     }
 }
