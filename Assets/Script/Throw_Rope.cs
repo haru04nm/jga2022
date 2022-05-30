@@ -76,6 +76,7 @@ public class Throw_Rope : MonoBehaviour
                 if(waitTime >= 0.25)
                 {
                     pushFlag = true;
+                    BoxRay.adhesionFlag = true;
                     anchorTarget = dir * hit.distance;
                     distance = Vector3.Distance(head.transform.position, hit.point);    // 距離計算
                     Aim.SetActive(false);
@@ -92,9 +93,7 @@ public class Throw_Rope : MonoBehaviour
 
                         hitObject.GetComponent<Rigidbody>().isKinematic = false;
                     }
-
                     waitTime = 0;
-
                 }
 
                 // 投げるアニメーション
@@ -117,6 +116,7 @@ public class Throw_Rope : MonoBehaviour
             animator.SetBool("FastThrowFlag", false);
 
             pushFlag = false;
+            BoxRay.adhesionFlag = false;
             Aim.SetActive(true);
 
             if(hitObject.GetComponent<Rigidbody>() != null)
@@ -136,7 +136,6 @@ public class Throw_Rope : MonoBehaviour
 
             if (this.springJoint.spring == 0)
             {
-
                 // スプリングジョイントの設定
                 {
                     //this.springJoint = this.gameObject.AddComponent<SpringJoint>();
@@ -146,7 +145,7 @@ public class Throw_Rope : MonoBehaviour
                     //this.springJoint.enableCollision = true;
                     this.springJoint.spring = this.spring;
                     this.springJoint.maxDistance = distance;
-                    //this.springJoint.breakForce = 75;　unity側のバグにより実装しない
+                    //this.springJoint.breakForce = 75;　
 
                     if (hitObject != null)
                     {
@@ -162,11 +161,7 @@ public class Throw_Rope : MonoBehaviour
                     this.lineRenderer.endWidth = 0.3f;
                     this.GetComponent<LineRenderer>().material.color = new Color32(148, 78, 48, 1);
                 }
-
-                
             }
-
-            
         }
         else
         {
@@ -176,6 +171,7 @@ public class Throw_Rope : MonoBehaviour
 
 
             lineFlag = false;
+            BoxRay.adhesionFlag = false;
             hitObject = null;
             moveObjectFlag = false;
             //Destroy(this.springJoint);
@@ -201,8 +197,6 @@ public class Throw_Rope : MonoBehaviour
             this.springJoint.spring = 0;
             this.lineRenderer = null;
         }
-
-        
     }
 
     

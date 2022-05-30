@@ -23,6 +23,9 @@ public class Move : MonoBehaviour
     private Vector2 _moveInputValue;
     GameObject body;
     RaycastHit hit;
+    GameObject hitObject;
+
+    bool hakoHit=false;
 
     [SerializeField]
     AudioClip run;
@@ -48,7 +51,8 @@ public class Move : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         animator = transform.Find("Mesh Object").gameObject.GetComponent<Animator>();
         body = GameObject.Find("Body").gameObject;
-        audioSource = GetComponent<AudioSource>();        
+        audioSource = GetComponent<AudioSource>();
+        hitObject = null;
     }
 
     private void FixedUpdate()
@@ -56,13 +60,25 @@ public class Move : MonoBehaviour
         //Debug.Log(leftFlag);
 
         // ‰º•ûŒü‚ÉƒŒƒC‚ð‚Æ‚Î‚·
-        groundFlag = Physics.Raycast(transform.position, Vector3.down, 0.3f, LayerMask);
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f))
+        {
+            hitObject = hit.collider.gameObject;
+            
+            if (!hakoHit && groundFlag)
+            {
+                if (hitObject.tag == "Hako")
+                {
+                    hakoHit = true;
+                }
+            }
+        }
 
+        //’n–Ê‚Ì”»’è
+        groundFlag = Physics.Raycast(transform.position, Vector3.down, 0.3f, LayerMask);
 
         rbody.velocity = new Vector3(_moveInputValue.x * speed, rbody.velocity.y, 0);
 
         animator.SetFloat("Move", rbody.velocity.magnitude);
-
 
         if (rbody.velocity.x < 0 || rbody.velocity.x > 0)
         {
@@ -76,7 +92,6 @@ public class Move : MonoBehaviour
             }
         }
 
-        
         if (jumpFlag)
         {
             jumpFlag = false;
@@ -130,6 +145,27 @@ public class Move : MonoBehaviour
         if (context.phase == InputActionPhase.Started && groundFlag/* && !pushFlag*/)
         {
             jumpFlag = true;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag=="Hako")
+        {
+            hakoHit = true;
+        }
+        return;
+    }
+
+    public bool IsHakoHit
+    {
+        get
+        {
+            return hakoHit;
+        }
+        set
+        {
+            hakoHit = value;
         }
     }
 }

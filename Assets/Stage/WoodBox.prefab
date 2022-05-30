@@ -92,12 +92,12 @@ GameObject:
   - component: {fileID: 5721465127585369005}
   - component: {fileID: 5726111649087379696}
   - component: {fileID: 5726111649087379697}
-  - component: {fileID: 5726111649087379702}
   - component: {fileID: 1299625132830099245}
   - component: {fileID: 3047452219917339380}
+  - component: {fileID: 2110290986}
   m_Layer: 0
   m_Name: WoodBox
-  m_TagString: Untagged
+  m_TagString: Hako
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,21 +144,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.72572815, y: 0.6586404, z: 0.7200193}
-  m_Center: {x: 0.0028541565, y: 0.3029614, z: 0.00042068958}
---- !u!65 &5726111649087379702
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5724565708249221731}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.72572815, y: 0.11729336, z: 0.7200193}
-  m_Center: {x: 0.0028541565, y: -0.0021553994, z: 0.00042068958}
+  m_Size: {x: 0.72572815, y: 0.6280136, z: 0.7200193}
+  m_Center: {x: 0.0028541565, y: 0.3182748, z: 0.00042068958}
 --- !u!82 &1299625132830099245
 AudioSource:
   m_ObjectHideFlags: 0
@@ -268,3 +255,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullSound: {fileID: 8300000, guid: 93af8b445346b4b4795f0add8cfab93f, type: 3}
+--- !u!114 &2110290986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724565708249221731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b4f5ea82b7a5748bd01d254698af64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
