@@ -30,7 +30,6 @@ public class BoxRay : MonoBehaviour
 
         if (player.IsHakoHit)
         {
-            rbody.GetComponent<Rigidbody>().mass = 1000;
             rbody.GetComponent<Rigidbody>().isKinematic = true;
             player.IsHakoHit = false;
         }
